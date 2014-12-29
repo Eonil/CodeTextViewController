@@ -1,0 +1,31 @@
+REPORT
+======
+
+
+
+
+
+This is an experiment to test performant text-view handling.
+
+
+
+Conclusion
+----------
+
+-	`NSLayoutManager.setTemporaryAttributes(:forCharacterRange:)` is far faster
+	than `NSTextStorage.setAttributes(:range:)`. On My iMac, former took about 2
+	seconds, and latter took about 17 seconds in optimised build of test suit.
+
+-	Anyway, modifying `NSTextStorage` also took 2 seconds when wrapped by `beginEditing`/`endEditing` pair.
+	So this performance drop is mainly due to inefficient layout refresh. You will get same performance
+	if you can suppress the layout refreshes.
+
+-	You don't need to subclass `NSTextStorage` just for performance. Just set
+	attributes to layout-manager to avoid unnecessary layout cost.
+
+-	Anyway those *temporary* attribution will not be kept when you copy the text.
+	If you want colorised text when copying text to pasteboard, I think you can
+	combine temporary attributes with source text on-the-fly when you copying the text.
+
+
+

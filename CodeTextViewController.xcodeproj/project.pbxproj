@@ -1,0 +1,735 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		453A5DA11A51ED05006A2DF2 /* test-example-full.rs in Resources */ = {isa = PBXBuildFile; fileRef = 453A5DA01A51ED05006A2DF2 /* test-example-full.rs */; };
+		4569D20F1A514A0400C70C61 /* BlockDetectionR1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569D20E1A514A0400C70C61 /* BlockDetectionR1.swift */; };
+		4569D2111A514B4200C70C61 /* MultiblockDetectorR1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569D2101A514B4200C70C61 /* MultiblockDetectorR1.swift */; };
+		4569D2121A514D7A00C70C61 /* BlockDetectionController+Rust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB41A5110A300B156B2 /* BlockDetectionController+Rust.swift */; };
+		4569D2131A514D7A00C70C61 /* BlockDetectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB51A5110A300B156B2 /* BlockDetectionController.swift */; };
+		4569D2141A514D7A00C70C61 /* ExtensionsAndAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB11A5110A300B156B2 /* ExtensionsAndAliases.swift */; };
+		4569D2151A514D7A00C70C61 /* MultiblockDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB31A5110A300B156B2 /* MultiblockDetection.swift */; };
+		4569D2161A514D7A00C70C61 /* BlockDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DAF1A5110A300B156B2 /* BlockDetection.swift */; };
+		4569D2171A514D7A00C70C61 /* CodeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DD61A511BED00B156B2 /* CodeData.swift */; };
+		4569D2181A514D7A00C70C61 /* Cursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB01A5110A300B156B2 /* Cursor.swift */; };
+		4569D2191A514D7A00C70C61 /* UnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DD31A51113600B156B2 /* UnitTest.swift */; };
+		4569D21A1A514D7A00C70C61 /* BinarySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DAE1A5110A300B156B2 /* BinarySearch.swift */; };
+		4586BEA31A5208B90024FBE7 /* NOTE.md in Sources */ = {isa = PBXBuildFile; fileRef = 4586BEA21A5208B90024FBE7 /* NOTE.md */; };
+		45AD58791A514E4200786235 /* test-example.rs in Resources */ = {isa = PBXBuildFile; fileRef = 45AD58781A514E4200786235 /* test-example.rs */; };
+		45C01D531A510ED700B156B2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01D521A510ED700B156B2 /* main.swift */; };
+		45C01D6B1A510FCE00B156B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01D6A1A510FCE00B156B2 /* AppDelegate.swift */; };
+		45C01D6D1A510FCE00B156B2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45C01D6C1A510FCE00B156B2 /* Images.xcassets */; };
+		45C01D701A510FCE00B156B2 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45C01D6E1A510FCE00B156B2 /* MainMenu.xib */; };
+		45C01D8D1A510FFA00B156B2 /* CodeTextViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45C01D8C1A510FFA00B156B2 /* CodeTextViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		45C01D9F1A510FFB00B156B2 /* CodeTextViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C01D881A510FFA00B156B2 /* CodeTextViewController.framework */; };
+		45C01DA01A510FFB00B156B2 /* CodeTextViewController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 45C01D881A510FFA00B156B2 /* CodeTextViewController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		45C01DB61A5110A300B156B2 /* BinarySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DAE1A5110A300B156B2 /* BinarySearch.swift */; };
+		45C01DB71A5110A300B156B2 /* BinarySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DAE1A5110A300B156B2 /* BinarySearch.swift */; };
+		45C01DB81A5110A300B156B2 /* BlockDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DAF1A5110A300B156B2 /* BlockDetection.swift */; };
+		45C01DB91A5110A300B156B2 /* BlockDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DAF1A5110A300B156B2 /* BlockDetection.swift */; };
+		45C01DBA1A5110A300B156B2 /* Cursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB01A5110A300B156B2 /* Cursor.swift */; };
+		45C01DBB1A5110A300B156B2 /* Cursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB01A5110A300B156B2 /* Cursor.swift */; };
+		45C01DBC1A5110A300B156B2 /* ExtensionsAndAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB11A5110A300B156B2 /* ExtensionsAndAliases.swift */; };
+		45C01DBD1A5110A300B156B2 /* ExtensionsAndAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB11A5110A300B156B2 /* ExtensionsAndAliases.swift */; };
+		45C01DBE1A5110A300B156B2 /* IndexSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB21A5110A300B156B2 /* IndexSet.swift */; };
+		45C01DBF1A5110A300B156B2 /* IndexSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB21A5110A300B156B2 /* IndexSet.swift */; };
+		45C01DC01A5110A300B156B2 /* MultiblockDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB31A5110A300B156B2 /* MultiblockDetection.swift */; };
+		45C01DC11A5110A300B156B2 /* MultiblockDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB31A5110A300B156B2 /* MultiblockDetection.swift */; };
+		45C01DC21A5110A300B156B2 /* BlockDetectionController+Rust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB41A5110A300B156B2 /* BlockDetectionController+Rust.swift */; };
+		45C01DC31A5110A300B156B2 /* BlockDetectionController+Rust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB41A5110A300B156B2 /* BlockDetectionController+Rust.swift */; };
+		45C01DC41A5110A300B156B2 /* BlockDetectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB51A5110A300B156B2 /* BlockDetectionController.swift */; };
+		45C01DC51A5110A300B156B2 /* BlockDetectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB51A5110A300B156B2 /* BlockDetectionController.swift */; };
+		45C01DCB1A5110C500B156B2 /* CodeTextScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DC71A5110C500B156B2 /* CodeTextScrollViewController.swift */; };
+		45C01DCC1A5110C500B156B2 /* CodeTextStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DC81A5110C500B156B2 /* CodeTextStorage.swift */; };
+		45C01DCD1A5110C500B156B2 /* CodeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DC91A5110C500B156B2 /* CodeTextView.swift */; };
+		45C01DCE1A5110C500B156B2 /* CodeTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DCA1A5110C500B156B2 /* CodeTextViewController.swift */; };
+		45C01DCF1A5110CC00B156B2 /* CodeTextScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DC71A5110C500B156B2 /* CodeTextScrollViewController.swift */; };
+		45C01DD01A5110CC00B156B2 /* CodeTextStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DC81A5110C500B156B2 /* CodeTextStorage.swift */; };
+		45C01DD11A5110CC00B156B2 /* CodeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DC91A5110C500B156B2 /* CodeTextView.swift */; };
+		45C01DD21A5110CC00B156B2 /* CodeTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DCA1A5110C500B156B2 /* CodeTextViewController.swift */; };
+		45C01DD41A51113600B156B2 /* UnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DD31A51113600B156B2 /* UnitTest.swift */; };
+		45C01DD51A51115500B156B2 /* UnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DD31A51113600B156B2 /* UnitTest.swift */; };
+		45C01DD71A511BED00B156B2 /* CodeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DD61A511BED00B156B2 /* CodeData.swift */; };
+		45C01DD81A511C3B00B156B2 /* CodeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DD61A511BED00B156B2 /* CodeData.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		45C01D9D1A510FFB00B156B2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4569C7AD1A4DD10600979B72 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 45C01D871A510FFA00B156B2;
+			remoteInfo = CodeTextViewController;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		45C01D4E1A510ED700B156B2 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		45C01DA41A510FFB00B156B2 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				45C01DA01A510FFB00B156B2 /* CodeTextViewController.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		45378BBE1A4FE6F900ABA800 /* CodeSyntaxHighlighting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeSyntaxHighlighting.swift; sourceTree = "<group>"; };
+		45378BBF1A4FE6F900ABA800 /* LiveTokenMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveTokenMap.swift; sourceTree = "<group>"; };
+		45378BC01A4FE6F900ABA800 /* TestProcessor1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestProcessor1.swift; sourceTree = "<group>"; };
+		453A5DA01A51ED05006A2DF2 /* test-example-full.rs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-example-full.rs"; sourceTree = "<group>"; };
+		4569C7B91A4DD10600979B72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4569C7BA1A4DD10600979B72 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4569C7BC1A4DD10600979B72 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		4569C7BF1A4DD10600979B72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		4569C7E01A4DD9DA00979B72 /* test-example.rs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-example.rs"; sourceTree = "<group>"; };
+		4569C7E41A4DF0ED00979B72 /* REPORT */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = REPORT; sourceTree = "<group>"; };
+		4569C7E81A4E065900979B72 /* Atomics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Atomics.swift; sourceTree = "<group>"; };
+		4569C7F01A4E081E00979B72 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		4569D20E1A514A0400C70C61 /* BlockDetectionR1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockDetectionR1.swift; sourceTree = "<group>"; };
+		4569D2101A514B4200C70C61 /* MultiblockDetectorR1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiblockDetectorR1.swift; sourceTree = "<group>"; };
+		4586BEA21A5208B90024FBE7 /* NOTE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = NOTE.md; sourceTree = "<group>"; };
+		45AD58781A514E4200786235 /* test-example.rs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-example.rs"; sourceTree = "<group>"; };
+		45C01D501A510ED700B156B2 /* UnitTests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = UnitTests; sourceTree = BUILT_PRODUCTS_DIR; };
+		45C01D521A510ED700B156B2 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		45C01D661A510FCE00B156B2 /* TesterApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TesterApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		45C01D691A510FCE00B156B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		45C01D6A1A510FCE00B156B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		45C01D6C1A510FCE00B156B2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		45C01D6F1A510FCE00B156B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		45C01D881A510FFA00B156B2 /* CodeTextViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CodeTextViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		45C01D8B1A510FFA00B156B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		45C01D8C1A510FFA00B156B2 /* CodeTextViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CodeTextViewController.h; sourceTree = "<group>"; };
+		45C01DAE1A5110A300B156B2 /* BinarySearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinarySearch.swift; sourceTree = "<group>"; };
+		45C01DAF1A5110A300B156B2 /* BlockDetection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockDetection.swift; sourceTree = "<group>"; };
+		45C01DB01A5110A300B156B2 /* Cursor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cursor.swift; sourceTree = "<group>"; };
+		45C01DB11A5110A300B156B2 /* ExtensionsAndAliases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionsAndAliases.swift; sourceTree = "<group>"; };
+		45C01DB21A5110A300B156B2 /* IndexSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexSet.swift; sourceTree = "<group>"; };
+		45C01DB31A5110A300B156B2 /* MultiblockDetection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiblockDetection.swift; sourceTree = "<group>"; };
+		45C01DB41A5110A300B156B2 /* BlockDetectionController+Rust.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BlockDetectionController+Rust.swift"; sourceTree = "<group>"; };
+		45C01DB51A5110A300B156B2 /* BlockDetectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockDetectionController.swift; sourceTree = "<group>"; };
+		45C01DC71A5110C500B156B2 /* CodeTextScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeTextScrollViewController.swift; sourceTree = "<group>"; };
+		45C01DC81A5110C500B156B2 /* CodeTextStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeTextStorage.swift; sourceTree = "<group>"; };
+		45C01DC91A5110C500B156B2 /* CodeTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeTextView.swift; sourceTree = "<group>"; };
+		45C01DCA1A5110C500B156B2 /* CodeTextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeTextViewController.swift; sourceTree = "<group>"; };
+		45C01DD31A51113600B156B2 /* UnitTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitTest.swift; sourceTree = "<group>"; };
+		45C01DD61A511BED00B156B2 /* CodeData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeData.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		45C01D4D1A510ED700B156B2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45C01D631A510FCE00B156B2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45C01D9F1A510FFB00B156B2 /* CodeTextViewController.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45C01D841A510FFA00B156B2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		45378BBD1A4FE6F900ABA800 /* Junkyard */ = {
+			isa = PBXGroup;
+			children = (
+				45378BBE1A4FE6F900ABA800 /* CodeSyntaxHighlighting.swift */,
+				45378BBF1A4FE6F900ABA800 /* LiveTokenMap.swift */,
+				45378BC01A4FE6F900ABA800 /* TestProcessor1.swift */,
+			);
+			path = Junkyard;
+			sourceTree = "<group>";
+		};
+		4569C7AC1A4DD10600979B72 = {
+			isa = PBXGroup;
+			children = (
+				4569C7E41A4DF0ED00979B72 /* REPORT */,
+				4586BEA21A5208B90024FBE7 /* NOTE.md */,
+				4569C7B71A4DD10600979B72 /* CodeTextViewController */,
+				45C01D891A510FFA00B156B2 /* CodeTextViewController */,
+				45C01D671A510FCE00B156B2 /* TesterApp */,
+				45C01D511A510ED700B156B2 /* UnitTests */,
+				4569C7B61A4DD10600979B72 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4569C7B61A4DD10600979B72 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				45C01D501A510ED700B156B2 /* UnitTests */,
+				45C01D661A510FCE00B156B2 /* TesterApp.app */,
+				45C01D881A510FFA00B156B2 /* CodeTextViewController.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4569C7B71A4DD10600979B72 /* CodeTextViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4569C7BA1A4DD10600979B72 /* AppDelegate.swift */,
+				45C01DC61A5110C500B156B2 /* GUI */,
+				45C01DAD1A5110A300B156B2 /* Backstage */,
+				45378BBD1A4FE6F900ABA800 /* Junkyard */,
+				4569C7F01A4E081E00979B72 /* Utility.swift */,
+				4569C7E81A4E065900979B72 /* Atomics.swift */,
+				4569C7E01A4DD9DA00979B72 /* test-example.rs */,
+				4569C7BC1A4DD10600979B72 /* Images.xcassets */,
+				4569C7BE1A4DD10600979B72 /* MainMenu.xib */,
+				4569C7B81A4DD10600979B72 /* Supporting Files */,
+			);
+			path = CodeTextViewController;
+			sourceTree = "<group>";
+		};
+		4569C7B81A4DD10600979B72 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4569C7B91A4DD10600979B72 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4569D20D1A51435F00C70C61 /* (junkyard) */ = {
+			isa = PBXGroup;
+			children = (
+				45C01DB21A5110A300B156B2 /* IndexSet.swift */,
+				4569D2101A514B4200C70C61 /* MultiblockDetectorR1.swift */,
+				4569D20E1A514A0400C70C61 /* BlockDetectionR1.swift */,
+			);
+			name = "(junkyard)";
+			sourceTree = "<group>";
+		};
+		45C01D511A510ED700B156B2 /* UnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				45C01D521A510ED700B156B2 /* main.swift */,
+			);
+			path = UnitTests;
+			sourceTree = "<group>";
+		};
+		45C01D671A510FCE00B156B2 /* TesterApp */ = {
+			isa = PBXGroup;
+			children = (
+				45AD58781A514E4200786235 /* test-example.rs */,
+				453A5DA01A51ED05006A2DF2 /* test-example-full.rs */,
+				45C01D6A1A510FCE00B156B2 /* AppDelegate.swift */,
+				45C01D6C1A510FCE00B156B2 /* Images.xcassets */,
+				45C01D6E1A510FCE00B156B2 /* MainMenu.xib */,
+				45C01D681A510FCE00B156B2 /* Supporting Files */,
+			);
+			path = TesterApp;
+			sourceTree = "<group>";
+		};
+		45C01D681A510FCE00B156B2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				45C01D691A510FCE00B156B2 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		45C01D891A510FFA00B156B2 /* CodeTextViewController */ = {
+			isa = PBXGroup;
+			children = (
+				45C01D8C1A510FFA00B156B2 /* CodeTextViewController.h */,
+				45C01D8A1A510FFA00B156B2 /* Supporting Files */,
+			);
+			path = CodeTextViewController;
+			sourceTree = "<group>";
+		};
+		45C01D8A1A510FFA00B156B2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				45C01D8B1A510FFA00B156B2 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		45C01DAD1A5110A300B156B2 /* Backstage */ = {
+			isa = PBXGroup;
+			children = (
+				45C01DB11A5110A300B156B2 /* ExtensionsAndAliases.swift */,
+				45C01DB41A5110A300B156B2 /* BlockDetectionController+Rust.swift */,
+				45C01DB51A5110A300B156B2 /* BlockDetectionController.swift */,
+				45C01DB31A5110A300B156B2 /* MultiblockDetection.swift */,
+				45C01DAF1A5110A300B156B2 /* BlockDetection.swift */,
+				45C01DD61A511BED00B156B2 /* CodeData.swift */,
+				45C01DB01A5110A300B156B2 /* Cursor.swift */,
+				45C01DD31A51113600B156B2 /* UnitTest.swift */,
+				45C01DAE1A5110A300B156B2 /* BinarySearch.swift */,
+				4569D20D1A51435F00C70C61 /* (junkyard) */,
+			);
+			path = Backstage;
+			sourceTree = "<group>";
+		};
+		45C01DC61A5110C500B156B2 /* GUI */ = {
+			isa = PBXGroup;
+			children = (
+				45C01DC71A5110C500B156B2 /* CodeTextScrollViewController.swift */,
+				45C01DC81A5110C500B156B2 /* CodeTextStorage.swift */,
+				45C01DC91A5110C500B156B2 /* CodeTextView.swift */,
+				45C01DCA1A5110C500B156B2 /* CodeTextViewController.swift */,
+			);
+			path = GUI;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		45C01D851A510FFA00B156B2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45C01D8D1A510FFA00B156B2 /* CodeTextViewController.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		45C01D4F1A510ED700B156B2 /* UnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 45C01D541A510ED700B156B2 /* Build configuration list for PBXNativeTarget "UnitTests" */;
+			buildPhases = (
+				45C01D4C1A510ED700B156B2 /* Sources */,
+				45C01D4D1A510ED700B156B2 /* Frameworks */,
+				45C01D4E1A510ED700B156B2 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UnitTests;
+			productName = UnitTests;
+			productReference = 45C01D501A510ED700B156B2 /* UnitTests */;
+			productType = "com.apple.product-type.tool";
+		};
+		45C01D651A510FCE00B156B2 /* TesterApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 45C01D7D1A510FCE00B156B2 /* Build configuration list for PBXNativeTarget "TesterApp" */;
+			buildPhases = (
+				45C01D621A510FCE00B156B2 /* Sources */,
+				45C01D631A510FCE00B156B2 /* Frameworks */,
+				45C01D641A510FCE00B156B2 /* Resources */,
+				45C01DA41A510FFB00B156B2 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				45C01D9E1A510FFB00B156B2 /* PBXTargetDependency */,
+			);
+			name = TesterApp;
+			productName = TesterApp;
+			productReference = 45C01D661A510FCE00B156B2 /* TesterApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		45C01D871A510FFA00B156B2 /* CodeTextViewController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 45C01DA11A510FFB00B156B2 /* Build configuration list for PBXNativeTarget "CodeTextViewController" */;
+			buildPhases = (
+				45C01D831A510FFA00B156B2 /* Sources */,
+				45C01D841A510FFA00B156B2 /* Frameworks */,
+				45C01D851A510FFA00B156B2 /* Headers */,
+				45C01D861A510FFA00B156B2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CodeTextViewController;
+			productName = CodeTextViewController;
+			productReference = 45C01D881A510FFA00B156B2 /* CodeTextViewController.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4569C7AD1A4DD10600979B72 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = Eonil;
+				TargetAttributes = {
+					45C01D4F1A510ED700B156B2 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					45C01D651A510FCE00B156B2 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					45C01D871A510FFA00B156B2 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
+			};
+			buildConfigurationList = 4569C7B01A4DD10600979B72 /* Build configuration list for PBXProject "CodeTextViewController" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4569C7AC1A4DD10600979B72;
+			productRefGroup = 4569C7B61A4DD10600979B72 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				45C01D871A510FFA00B156B2 /* CodeTextViewController */,
+				45C01D651A510FCE00B156B2 /* TesterApp */,
+				45C01D4F1A510ED700B156B2 /* UnitTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		45C01D641A510FCE00B156B2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				453A5DA11A51ED05006A2DF2 /* test-example-full.rs in Resources */,
+				45C01D6D1A510FCE00B156B2 /* Images.xcassets in Resources */,
+				45C01D701A510FCE00B156B2 /* MainMenu.xib in Resources */,
+				45AD58791A514E4200786235 /* test-example.rs in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45C01D861A510FFA00B156B2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		45C01D4C1A510ED700B156B2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45C01DD81A511C3B00B156B2 /* CodeData.swift in Sources */,
+				45C01DC31A5110A300B156B2 /* BlockDetectionController+Rust.swift in Sources */,
+				45C01DBB1A5110A300B156B2 /* Cursor.swift in Sources */,
+				45C01DC11A5110A300B156B2 /* MultiblockDetection.swift in Sources */,
+				45C01DB71A5110A300B156B2 /* BinarySearch.swift in Sources */,
+				45C01DC51A5110A300B156B2 /* BlockDetectionController.swift in Sources */,
+				45C01DB91A5110A300B156B2 /* BlockDetection.swift in Sources */,
+				45C01DBD1A5110A300B156B2 /* ExtensionsAndAliases.swift in Sources */,
+				45C01DBF1A5110A300B156B2 /* IndexSet.swift in Sources */,
+				45C01D531A510ED700B156B2 /* main.swift in Sources */,
+				45C01DD51A51115500B156B2 /* UnitTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45C01D621A510FCE00B156B2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4569D2171A514D7A00C70C61 /* CodeData.swift in Sources */,
+				45C01DD11A5110CC00B156B2 /* CodeTextView.swift in Sources */,
+				45C01DD21A5110CC00B156B2 /* CodeTextViewController.swift in Sources */,
+				4569D2141A514D7A00C70C61 /* ExtensionsAndAliases.swift in Sources */,
+				4569D21A1A514D7A00C70C61 /* BinarySearch.swift in Sources */,
+				4569D2151A514D7A00C70C61 /* MultiblockDetection.swift in Sources */,
+				4569D2181A514D7A00C70C61 /* Cursor.swift in Sources */,
+				4569D2191A514D7A00C70C61 /* UnitTest.swift in Sources */,
+				45C01D6B1A510FCE00B156B2 /* AppDelegate.swift in Sources */,
+				4569D2161A514D7A00C70C61 /* BlockDetection.swift in Sources */,
+				45C01DD01A5110CC00B156B2 /* CodeTextStorage.swift in Sources */,
+				45C01DCF1A5110CC00B156B2 /* CodeTextScrollViewController.swift in Sources */,
+				4569D2121A514D7A00C70C61 /* BlockDetectionController+Rust.swift in Sources */,
+				4569D2131A514D7A00C70C61 /* BlockDetectionController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45C01D831A510FFA00B156B2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45C01DC41A5110A300B156B2 /* BlockDetectionController.swift in Sources */,
+				45C01DCC1A5110C500B156B2 /* CodeTextStorage.swift in Sources */,
+				45C01DD71A511BED00B156B2 /* CodeData.swift in Sources */,
+				45C01DB61A5110A300B156B2 /* BinarySearch.swift in Sources */,
+				4586BEA31A5208B90024FBE7 /* NOTE.md in Sources */,
+				45C01DB81A5110A300B156B2 /* BlockDetection.swift in Sources */,
+				45C01DC21A5110A300B156B2 /* BlockDetectionController+Rust.swift in Sources */,
+				45C01DBC1A5110A300B156B2 /* ExtensionsAndAliases.swift in Sources */,
+				4569D20F1A514A0400C70C61 /* BlockDetectionR1.swift in Sources */,
+				4569D2111A514B4200C70C61 /* MultiblockDetectorR1.swift in Sources */,
+				45C01DD41A51113600B156B2 /* UnitTest.swift in Sources */,
+				45C01DC01A5110A300B156B2 /* MultiblockDetection.swift in Sources */,
+				45C01DBE1A5110A300B156B2 /* IndexSet.swift in Sources */,
+				45C01DBA1A5110A300B156B2 /* Cursor.swift in Sources */,
+				45C01DCB1A5110C500B156B2 /* CodeTextScrollViewController.swift in Sources */,
+				45C01DCE1A5110C500B156B2 /* CodeTextViewController.swift in Sources */,
+				45C01DCD1A5110C500B156B2 /* CodeTextView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		45C01D9E1A510FFB00B156B2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 45C01D871A510FFA00B156B2 /* CodeTextViewController */;
+			targetProxy = 45C01D9D1A510FFB00B156B2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4569C7BE1A4DD10600979B72 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4569C7BF1A4DD10600979B72 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		45C01D6E1A510FCE00B156B2 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				45C01D6F1A510FCE00B156B2 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4569C7CD1A4DD10600979B72 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4569C7CE1A4DD10600979B72 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		45C01D551A510ED700B156B2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		45C01D561A510ED700B156B2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		45C01D7E1A510FCE00B156B2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = TesterApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		45C01D7F1A510FCE00B156B2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = TesterApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		45C01DA21A510FFB00B156B2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CodeTextViewController/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		45C01DA31A510FFB00B156B2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = CodeTextViewController/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4569C7B01A4DD10600979B72 /* Build configuration list for PBXProject "CodeTextViewController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4569C7CD1A4DD10600979B72 /* Debug */,
+				4569C7CE1A4DD10600979B72 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		45C01D541A510ED700B156B2 /* Build configuration list for PBXNativeTarget "UnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45C01D551A510ED700B156B2 /* Debug */,
+				45C01D561A510ED700B156B2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		45C01D7D1A510FCE00B156B2 /* Build configuration list for PBXNativeTarget "TesterApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45C01D7E1A510FCE00B156B2 /* Debug */,
+				45C01D7F1A510FCE00B156B2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		45C01DA11A510FFB00B156B2 /* Build configuration list for PBXNativeTarget "CodeTextViewController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45C01DA21A510FFB00B156B2 /* Debug */,
+				45C01DA31A510FFB00B156B2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4569C7AD1A4DD10600979B72 /* Project object */;
+}
