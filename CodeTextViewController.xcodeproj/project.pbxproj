@@ -10,16 +10,24 @@
 		453A5DA11A51ED05006A2DF2 /* test-example-full.rs in Resources */ = {isa = PBXBuildFile; fileRef = 453A5DA01A51ED05006A2DF2 /* test-example-full.rs */; };
 		4569D20F1A514A0400C70C61 /* BlockDetectionR1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569D20E1A514A0400C70C61 /* BlockDetectionR1.swift */; };
 		4569D2111A514B4200C70C61 /* MultiblockDetectorR1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4569D2101A514B4200C70C61 /* MultiblockDetectorR1.swift */; };
-		4569D2121A514D7A00C70C61 /* BlockDetectionController+Rust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB41A5110A300B156B2 /* BlockDetectionController+Rust.swift */; };
-		4569D2131A514D7A00C70C61 /* BlockDetectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB51A5110A300B156B2 /* BlockDetectionController.swift */; };
+		4569D2121A514D7A00C70C61 /* BlockDetectionProcessor+Rust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB41A5110A300B156B2 /* BlockDetectionProcessor+Rust.swift */; };
+		4569D2131A514D7A00C70C61 /* BlockDetectionProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB51A5110A300B156B2 /* BlockDetectionProcessor.swift */; };
 		4569D2141A514D7A00C70C61 /* ExtensionsAndAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB11A5110A300B156B2 /* ExtensionsAndAliases.swift */; };
-		4569D2151A514D7A00C70C61 /* MultiblockDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB31A5110A300B156B2 /* MultiblockDetection.swift */; };
-		4569D2161A514D7A00C70C61 /* BlockDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DAF1A5110A300B156B2 /* BlockDetection.swift */; };
+		4569D2151A514D7A00C70C61 /* MultiblockDetectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB31A5110A300B156B2 /* MultiblockDetectionState.swift */; };
+		4569D2161A514D7A00C70C61 /* BlockDetectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DAF1A5110A300B156B2 /* BlockDetectionState.swift */; };
 		4569D2171A514D7A00C70C61 /* CodeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DD61A511BED00B156B2 /* CodeData.swift */; };
 		4569D2181A514D7A00C70C61 /* Cursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB01A5110A300B156B2 /* Cursor.swift */; };
 		4569D2191A514D7A00C70C61 /* UnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DD31A51113600B156B2 /* UnitTest.swift */; };
 		4569D21A1A514D7A00C70C61 /* BinarySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DAE1A5110A300B156B2 /* BinarySearch.swift */; };
-		4586BEA31A5208B90024FBE7 /* NOTE.md in Sources */ = {isa = PBXBuildFile; fileRef = 4586BEA21A5208B90024FBE7 /* NOTE.md */; };
+		4575E3801A52479C001B2C8C /* CodeTextViewSyntaxHighlightingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4575E37F1A52479C001B2C8C /* CodeTextViewSyntaxHighlightingController.swift */; };
+		4575E3821A5247C8001B2C8C /* CodeTextViewSyntaxHighlightingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4575E37F1A52479C001B2C8C /* CodeTextViewSyntaxHighlightingController.swift */; };
+		4575E3831A5247C9001B2C8C /* CodeTextViewSyntaxHighlightingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4575E37F1A52479C001B2C8C /* CodeTextViewSyntaxHighlightingController.swift */; };
+		459BB40D1A525192006C7E66 /* BlockDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459BB40C1A525192006C7E66 /* BlockDefinition.swift */; };
+		459BB40E1A5251C0006C7E66 /* BlockDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459BB40C1A525192006C7E66 /* BlockDefinition.swift */; };
+		459BB40F1A5251C0006C7E66 /* BlockDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459BB40C1A525192006C7E66 /* BlockDefinition.swift */; };
+		459BB4111A52521F006C7E66 /* MultiblockDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459BB4101A52521F006C7E66 /* MultiblockDefinition.swift */; };
+		459BB4121A5252CB006C7E66 /* MultiblockDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459BB4101A52521F006C7E66 /* MultiblockDefinition.swift */; };
+		459BB4131A5252CB006C7E66 /* MultiblockDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459BB4101A52521F006C7E66 /* MultiblockDefinition.swift */; };
 		45AD58791A514E4200786235 /* test-example.rs in Resources */ = {isa = PBXBuildFile; fileRef = 45AD58781A514E4200786235 /* test-example.rs */; };
 		45C01D531A510ED700B156B2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01D521A510ED700B156B2 /* main.swift */; };
 		45C01D6B1A510FCE00B156B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01D6A1A510FCE00B156B2 /* AppDelegate.swift */; };
@@ -30,20 +38,20 @@
 		45C01DA01A510FFB00B156B2 /* CodeTextViewController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 45C01D881A510FFA00B156B2 /* CodeTextViewController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		45C01DB61A5110A300B156B2 /* BinarySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DAE1A5110A300B156B2 /* BinarySearch.swift */; };
 		45C01DB71A5110A300B156B2 /* BinarySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DAE1A5110A300B156B2 /* BinarySearch.swift */; };
-		45C01DB81A5110A300B156B2 /* BlockDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DAF1A5110A300B156B2 /* BlockDetection.swift */; };
-		45C01DB91A5110A300B156B2 /* BlockDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DAF1A5110A300B156B2 /* BlockDetection.swift */; };
+		45C01DB81A5110A300B156B2 /* BlockDetectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DAF1A5110A300B156B2 /* BlockDetectionState.swift */; };
+		45C01DB91A5110A300B156B2 /* BlockDetectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DAF1A5110A300B156B2 /* BlockDetectionState.swift */; };
 		45C01DBA1A5110A300B156B2 /* Cursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB01A5110A300B156B2 /* Cursor.swift */; };
 		45C01DBB1A5110A300B156B2 /* Cursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB01A5110A300B156B2 /* Cursor.swift */; };
 		45C01DBC1A5110A300B156B2 /* ExtensionsAndAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB11A5110A300B156B2 /* ExtensionsAndAliases.swift */; };
 		45C01DBD1A5110A300B156B2 /* ExtensionsAndAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB11A5110A300B156B2 /* ExtensionsAndAliases.swift */; };
 		45C01DBE1A5110A300B156B2 /* IndexSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB21A5110A300B156B2 /* IndexSet.swift */; };
 		45C01DBF1A5110A300B156B2 /* IndexSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB21A5110A300B156B2 /* IndexSet.swift */; };
-		45C01DC01A5110A300B156B2 /* MultiblockDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB31A5110A300B156B2 /* MultiblockDetection.swift */; };
-		45C01DC11A5110A300B156B2 /* MultiblockDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB31A5110A300B156B2 /* MultiblockDetection.swift */; };
-		45C01DC21A5110A300B156B2 /* BlockDetectionController+Rust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB41A5110A300B156B2 /* BlockDetectionController+Rust.swift */; };
-		45C01DC31A5110A300B156B2 /* BlockDetectionController+Rust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB41A5110A300B156B2 /* BlockDetectionController+Rust.swift */; };
-		45C01DC41A5110A300B156B2 /* BlockDetectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB51A5110A300B156B2 /* BlockDetectionController.swift */; };
-		45C01DC51A5110A300B156B2 /* BlockDetectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB51A5110A300B156B2 /* BlockDetectionController.swift */; };
+		45C01DC01A5110A300B156B2 /* MultiblockDetectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB31A5110A300B156B2 /* MultiblockDetectionState.swift */; };
+		45C01DC11A5110A300B156B2 /* MultiblockDetectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB31A5110A300B156B2 /* MultiblockDetectionState.swift */; };
+		45C01DC21A5110A300B156B2 /* BlockDetectionProcessor+Rust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB41A5110A300B156B2 /* BlockDetectionProcessor+Rust.swift */; };
+		45C01DC31A5110A300B156B2 /* BlockDetectionProcessor+Rust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB41A5110A300B156B2 /* BlockDetectionProcessor+Rust.swift */; };
+		45C01DC41A5110A300B156B2 /* BlockDetectionProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB51A5110A300B156B2 /* BlockDetectionProcessor.swift */; };
+		45C01DC51A5110A300B156B2 /* BlockDetectionProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB51A5110A300B156B2 /* BlockDetectionProcessor.swift */; };
 		45C01DCB1A5110C500B156B2 /* CodeTextScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DC71A5110C500B156B2 /* CodeTextScrollViewController.swift */; };
 		45C01DCC1A5110C500B156B2 /* CodeTextStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DC81A5110C500B156B2 /* CodeTextStorage.swift */; };
 		45C01DCD1A5110C500B156B2 /* CodeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DC91A5110C500B156B2 /* CodeTextView.swift */; };
@@ -106,7 +114,10 @@
 		4569C7F01A4E081E00979B72 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		4569D20E1A514A0400C70C61 /* BlockDetectionR1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockDetectionR1.swift; sourceTree = "<group>"; };
 		4569D2101A514B4200C70C61 /* MultiblockDetectorR1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiblockDetectorR1.swift; sourceTree = "<group>"; };
+		4575E37F1A52479C001B2C8C /* CodeTextViewSyntaxHighlightingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeTextViewSyntaxHighlightingController.swift; sourceTree = "<group>"; };
 		4586BEA21A5208B90024FBE7 /* NOTE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = NOTE.md; sourceTree = "<group>"; };
+		459BB40C1A525192006C7E66 /* BlockDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockDefinition.swift; sourceTree = "<group>"; };
+		459BB4101A52521F006C7E66 /* MultiblockDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiblockDefinition.swift; sourceTree = "<group>"; };
 		45AD58781A514E4200786235 /* test-example.rs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-example.rs"; sourceTree = "<group>"; };
 		45C01D501A510ED700B156B2 /* UnitTests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = UnitTests; sourceTree = BUILT_PRODUCTS_DIR; };
 		45C01D521A510ED700B156B2 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -119,13 +130,13 @@
 		45C01D8B1A510FFA00B156B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45C01D8C1A510FFA00B156B2 /* CodeTextViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CodeTextViewController.h; sourceTree = "<group>"; };
 		45C01DAE1A5110A300B156B2 /* BinarySearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinarySearch.swift; sourceTree = "<group>"; };
-		45C01DAF1A5110A300B156B2 /* BlockDetection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockDetection.swift; sourceTree = "<group>"; };
+		45C01DAF1A5110A300B156B2 /* BlockDetectionState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockDetectionState.swift; sourceTree = "<group>"; };
 		45C01DB01A5110A300B156B2 /* Cursor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cursor.swift; sourceTree = "<group>"; };
 		45C01DB11A5110A300B156B2 /* ExtensionsAndAliases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionsAndAliases.swift; sourceTree = "<group>"; };
 		45C01DB21A5110A300B156B2 /* IndexSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexSet.swift; sourceTree = "<group>"; };
-		45C01DB31A5110A300B156B2 /* MultiblockDetection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiblockDetection.swift; sourceTree = "<group>"; };
-		45C01DB41A5110A300B156B2 /* BlockDetectionController+Rust.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BlockDetectionController+Rust.swift"; sourceTree = "<group>"; };
-		45C01DB51A5110A300B156B2 /* BlockDetectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockDetectionController.swift; sourceTree = "<group>"; };
+		45C01DB31A5110A300B156B2 /* MultiblockDetectionState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiblockDetectionState.swift; sourceTree = "<group>"; };
+		45C01DB41A5110A300B156B2 /* BlockDetectionProcessor+Rust.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BlockDetectionProcessor+Rust.swift"; sourceTree = "<group>"; };
+		45C01DB51A5110A300B156B2 /* BlockDetectionProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockDetectionProcessor.swift; sourceTree = "<group>"; };
 		45C01DC71A5110C500B156B2 /* CodeTextScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeTextScrollViewController.swift; sourceTree = "<group>"; };
 		45C01DC81A5110C500B156B2 /* CodeTextStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeTextStorage.swift; sourceTree = "<group>"; };
 		45C01DC91A5110C500B156B2 /* CodeTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeTextView.swift; sourceTree = "<group>"; };
@@ -278,10 +289,12 @@
 			isa = PBXGroup;
 			children = (
 				45C01DB11A5110A300B156B2 /* ExtensionsAndAliases.swift */,
-				45C01DB41A5110A300B156B2 /* BlockDetectionController+Rust.swift */,
-				45C01DB51A5110A300B156B2 /* BlockDetectionController.swift */,
-				45C01DB31A5110A300B156B2 /* MultiblockDetection.swift */,
-				45C01DAF1A5110A300B156B2 /* BlockDetection.swift */,
+				45C01DB41A5110A300B156B2 /* BlockDetectionProcessor+Rust.swift */,
+				45C01DB51A5110A300B156B2 /* BlockDetectionProcessor.swift */,
+				45C01DB31A5110A300B156B2 /* MultiblockDetectionState.swift */,
+				459BB4101A52521F006C7E66 /* MultiblockDefinition.swift */,
+				45C01DAF1A5110A300B156B2 /* BlockDetectionState.swift */,
+				459BB40C1A525192006C7E66 /* BlockDefinition.swift */,
 				45C01DD61A511BED00B156B2 /* CodeData.swift */,
 				45C01DB01A5110A300B156B2 /* Cursor.swift */,
 				45C01DD31A51113600B156B2 /* UnitTest.swift */,
@@ -298,6 +311,7 @@
 				45C01DC81A5110C500B156B2 /* CodeTextStorage.swift */,
 				45C01DC91A5110C500B156B2 /* CodeTextView.swift */,
 				45C01DCA1A5110C500B156B2 /* CodeTextViewController.swift */,
+				4575E37F1A52479C001B2C8C /* CodeTextViewSyntaxHighlightingController.swift */,
 			);
 			path = GUI;
 			sourceTree = "<group>";
@@ -436,14 +450,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				459BB40E1A5251C0006C7E66 /* BlockDefinition.swift in Sources */,
+				4575E3831A5247C9001B2C8C /* CodeTextViewSyntaxHighlightingController.swift in Sources */,
 				45C01DD81A511C3B00B156B2 /* CodeData.swift in Sources */,
-				45C01DC31A5110A300B156B2 /* BlockDetectionController+Rust.swift in Sources */,
+				45C01DC31A5110A300B156B2 /* BlockDetectionProcessor+Rust.swift in Sources */,
 				45C01DBB1A5110A300B156B2 /* Cursor.swift in Sources */,
-				45C01DC11A5110A300B156B2 /* MultiblockDetection.swift in Sources */,
+				45C01DC11A5110A300B156B2 /* MultiblockDetectionState.swift in Sources */,
 				45C01DB71A5110A300B156B2 /* BinarySearch.swift in Sources */,
-				45C01DC51A5110A300B156B2 /* BlockDetectionController.swift in Sources */,
-				45C01DB91A5110A300B156B2 /* BlockDetection.swift in Sources */,
+				45C01DC51A5110A300B156B2 /* BlockDetectionProcessor.swift in Sources */,
+				45C01DB91A5110A300B156B2 /* BlockDetectionState.swift in Sources */,
 				45C01DBD1A5110A300B156B2 /* ExtensionsAndAliases.swift in Sources */,
+				459BB4131A5252CB006C7E66 /* MultiblockDefinition.swift in Sources */,
 				45C01DBF1A5110A300B156B2 /* IndexSet.swift in Sources */,
 				45C01D531A510ED700B156B2 /* main.swift in Sources */,
 				45C01DD51A51115500B156B2 /* UnitTest.swift in Sources */,
@@ -454,20 +471,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4575E3821A5247C8001B2C8C /* CodeTextViewSyntaxHighlightingController.swift in Sources */,
 				4569D2171A514D7A00C70C61 /* CodeData.swift in Sources */,
 				45C01DD11A5110CC00B156B2 /* CodeTextView.swift in Sources */,
 				45C01DD21A5110CC00B156B2 /* CodeTextViewController.swift in Sources */,
+				459BB40F1A5251C0006C7E66 /* BlockDefinition.swift in Sources */,
 				4569D2141A514D7A00C70C61 /* ExtensionsAndAliases.swift in Sources */,
 				4569D21A1A514D7A00C70C61 /* BinarySearch.swift in Sources */,
-				4569D2151A514D7A00C70C61 /* MultiblockDetection.swift in Sources */,
+				4569D2151A514D7A00C70C61 /* MultiblockDetectionState.swift in Sources */,
 				4569D2181A514D7A00C70C61 /* Cursor.swift in Sources */,
 				4569D2191A514D7A00C70C61 /* UnitTest.swift in Sources */,
 				45C01D6B1A510FCE00B156B2 /* AppDelegate.swift in Sources */,
-				4569D2161A514D7A00C70C61 /* BlockDetection.swift in Sources */,
+				4569D2161A514D7A00C70C61 /* BlockDetectionState.swift in Sources */,
 				45C01DD01A5110CC00B156B2 /* CodeTextStorage.swift in Sources */,
 				45C01DCF1A5110CC00B156B2 /* CodeTextScrollViewController.swift in Sources */,
-				4569D2121A514D7A00C70C61 /* BlockDetectionController+Rust.swift in Sources */,
-				4569D2131A514D7A00C70C61 /* BlockDetectionController.swift in Sources */,
+				459BB4121A5252CB006C7E66 /* MultiblockDefinition.swift in Sources */,
+				4569D2121A514D7A00C70C61 /* BlockDetectionProcessor+Rust.swift in Sources */,
+				4569D2131A514D7A00C70C61 /* BlockDetectionProcessor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,21 +495,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45C01DC41A5110A300B156B2 /* BlockDetectionController.swift in Sources */,
+				45C01DC41A5110A300B156B2 /* BlockDetectionProcessor.swift in Sources */,
 				45C01DCC1A5110C500B156B2 /* CodeTextStorage.swift in Sources */,
 				45C01DD71A511BED00B156B2 /* CodeData.swift in Sources */,
 				45C01DB61A5110A300B156B2 /* BinarySearch.swift in Sources */,
-				4586BEA31A5208B90024FBE7 /* NOTE.md in Sources */,
-				45C01DB81A5110A300B156B2 /* BlockDetection.swift in Sources */,
-				45C01DC21A5110A300B156B2 /* BlockDetectionController+Rust.swift in Sources */,
+				45C01DB81A5110A300B156B2 /* BlockDetectionState.swift in Sources */,
+				45C01DC21A5110A300B156B2 /* BlockDetectionProcessor+Rust.swift in Sources */,
 				45C01DBC1A5110A300B156B2 /* ExtensionsAndAliases.swift in Sources */,
 				4569D20F1A514A0400C70C61 /* BlockDetectionR1.swift in Sources */,
 				4569D2111A514B4200C70C61 /* MultiblockDetectorR1.swift in Sources */,
 				45C01DD41A51113600B156B2 /* UnitTest.swift in Sources */,
-				45C01DC01A5110A300B156B2 /* MultiblockDetection.swift in Sources */,
+				459BB40D1A525192006C7E66 /* BlockDefinition.swift in Sources */,
+				45C01DC01A5110A300B156B2 /* MultiblockDetectionState.swift in Sources */,
 				45C01DBE1A5110A300B156B2 /* IndexSet.swift in Sources */,
 				45C01DBA1A5110A300B156B2 /* Cursor.swift in Sources */,
+				4575E3801A52479C001B2C8C /* CodeTextViewSyntaxHighlightingController.swift in Sources */,
 				45C01DCB1A5110C500B156B2 /* CodeTextScrollViewController.swift in Sources */,
+				459BB4111A52521F006C7E66 /* MultiblockDefinition.swift in Sources */,
 				45C01DCE1A5110C500B156B2 /* CodeTextViewController.swift in Sources */,
 				45C01DCD1A5110C500B156B2 /* CodeTextView.swift in Sources */,
 			);

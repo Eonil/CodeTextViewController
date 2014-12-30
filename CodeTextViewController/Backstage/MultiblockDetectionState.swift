@@ -1,5 +1,5 @@
 //
-//  MultiblockDetection.swift
+//  MultiblockDetectionState.swift
 //  CodeTextViewController
 //
 //  Created by Hoon H. on 2014/12/29.
@@ -14,78 +14,81 @@ import Foundation
 ///	Mainly designed to provide incremental tokeniser.
 ///
 ///
-struct MultiblockDetection {
-	class Definition {
-		let	blocks:[BlockDetection.Definition]
-		init(blocks:[BlockDetection.Definition]) {
-			self.blocks	=	blocks
+enum MultiblockDetectionState {
+	case None(position:UTF16Index)
+	case Incomplete(subdefintion:BlockDefinition, substate:BlockDetectionState)
+	case Complete(subdefintion:BlockDefinition, substate:BlockDetectionState)
+	
+	var deinition:BlockDefinition? {
+		get {
+			switch self {
+			case .None(let s):
+				return	nil
+			case .Incomplete(let s):
+				return	s.subdefintion
+			case .Complete(let s):
+				return	s.subdefintion
+			}
+		}
+	}
+	var selection:UTF16Range {
+		get {
+			switch self {
+			case .None(let s):
+				return	s.position..<s.position
+			case .Incomplete(let s):
+				return	s.substate.selection
+			case .Complete(let s):
+				return	s.substate.selection
+			}
+		}
+	}
+	mutating func step(definition:MultiblockDefinition, data:CodeData) {
+		assert(selection.endIndex < data.utf16.endIndex)
+		
+		switch self {
+		case .None(let s):
+			for b in definition.blocks {
+				var	s1	=	BlockDetectionState(mode: BlockDetectionState.Mode.None, selection: s.position..<s.position)
+				s1.step(b, data: data)
+				switch s1.mode {
+				case .None:
+					assert(s1.selection.startIndex == s1.selection.endIndex)
+					//	No change on position and retry with another detector.
+					
+				case .Incomplete:
+					self	=	MultiblockDetectionState.Incomplete(subdefintion: b, substate: s1)
+					return	//	Exit early.
+					
+				case .Complete:
+					self	=	MultiblockDetectionState.Complete(subdefintion: b, substate: s1)
+					return	//	Exit early.
+				}
+			}
+			self	=	MultiblockDetectionState.None(position: s.position.successor())	//	Advance position if nothing has been detected.
+			
+		case .Incomplete(let s):
+			someStep(s.subdefintion, substate: s.substate, data: data)
+			
+		case .Complete(let s):
+			someStep(s.subdefintion, substate: s.substate, data: data)
 		}
 	}
 	
-	enum State {
-		case None(position:UIndex)
-		case Incomplete(subdefintion:BlockDetection.Definition, substate:BlockDetection.State)
-		case Complete(subdefintion:BlockDetection.Definition, substate:BlockDetection.State)
+	private mutating func someStep(subdefinition:BlockDefinition, substate:BlockDetectionState, data:CodeData) {
+		var	s1	=	substate
+		s1.step(subdefinition, data: data)
 		
-		var selection:URange {
-			get {
-				switch self {
-				case .None(let s):
-					return	s.position..<s.position
-				case .Incomplete(let s):
-					return	s.substate.selection
-				case .Complete(let s):
-					return	s.substate.selection
-				}
-			}
-		}
-		mutating func step(definition:Definition, data:CodeData) {
-			assert(selection.endIndex < data.unicodeScalars.endIndex)
+		switch s1.mode {
+		case .None:
+			assert(s1.selection.startIndex == s1.selection.endIndex)
+			self	=	MultiblockDetectionState.None(position: s1.selection.startIndex)
 			
-			switch self {
-			case .None(let s):
-				for b in definition.blocks {
-					var	s1	=	BlockDetection.State(mode: BlockDetection.State.Mode.None, selection: s.position..<s.position)
-					s1.step(b, data: data)
-					switch s1.mode {
-					case .None:
-						assert(s1.selection.startIndex == s1.selection.endIndex)
-						//	No change on position and retry with another detector.
-						
-					case .Incomplete:
-						self	=	State.Incomplete(subdefintion: b, substate: s1)
-						return	//	Exit early.
-						
-					case .Complete:
-						self	=	State.Complete(subdefintion: b, substate: s1)
-						return	//	Exit early.
-					}
-				}
-				self	=	State.None(position: s.position.successor())	//	Advance position if nothing has been detected.
-				
-			case .Incomplete(let s):
-				someStep(s.subdefintion, substate: s.substate, data: data)
-				
-			case .Complete(let s):
-				someStep(s.subdefintion, substate: s.substate, data: data)
-			}
-		}
-		
-		private mutating func someStep(subdefinition:BlockDetection.Definition, substate:BlockDetection.State, data:CodeData) {
-			var	s1	=	substate
-			s1.step(subdefinition, data: data)
+		case .Incomplete:
+			self	=	MultiblockDetectionState.Incomplete(subdefintion: subdefinition, substate: s1)
 			
-			switch s1.mode {
-			case .None:
-				assert(s1.selection.startIndex == s1.selection.endIndex)
-				self	=	State.None(position: s1.selection.startIndex)
-				
-			case .Incomplete:
-				self	=	State.Incomplete(subdefintion: subdefinition, substate: s1)
-				
-			case .Complete:
-				self	=	State.Complete(subdefintion: subdefinition, substate: s1)
-			}
+		case .Complete:
+			self	=	MultiblockDetectionState.Complete(subdefintion: subdefinition, substate: s1)
 		}
 	}
 }
@@ -136,13 +139,13 @@ extension UnitTest {
 	}
 	private static func test1() {
 		let	d	=	CodeData(target: NSMutableAttributedString(string: "<a>[b](c)"))
-		let	def	=	MultiblockDetection.Definition(blocks: [
-			BlockDetection.Definition(startMark: "<", endMark: ">"),
-			BlockDetection.Definition(startMark: "(", endMark: ")"),
-			BlockDetection.Definition(startMark: "[", endMark: "]"),
+		let	def	=	MultiblockDefinition(blocks: [
+			BlockDefinition(startMark: "<", endMark: ">"),
+			BlockDefinition(startMark: "(", endMark: ")"),
+			BlockDefinition(startMark: "[", endMark: "]"),
 			])
 		
-		var	s	=	MultiblockDetection.State.None(position: d.unicodeScalars.startIndex)
+		var	s	=	MultiblockDetectionState.None(position: d.utf16.startIndex)
 		assert(s.selectionInDataForTest(d) == "")
 		assert(s.isNone())
 		
@@ -207,19 +210,19 @@ extension UnitTest {
 		println(s.selectionInDataForTest(d))
 		println(s.restInDataForTest(d))
 		assert(s.isIncomplete())
-		assert(s.selection.endIndex.successor().successor() == d.unicodeScalars.endIndex)
+		assert(s.selection.endIndex.successor().successor() == d.utf16.endIndex)
 		assert(s.selectionInDataForTest(d) == "(")
 		assert(s.restInDataForTest(d) == "c)")
 		
 		s.step(def, data: d)
 		assert(s.isIncomplete())
-		assert(s.selection.endIndex.successor() == d.unicodeScalars.endIndex)
+		assert(s.selection.endIndex.successor() == d.utf16.endIndex)
 		assert(s.selectionInDataForTest(d) == "(c")
 		assert(s.restInDataForTest(d) == ")")
 		
 		s.step(def, data: d)
 		assert(s.isComplete())
-		assert(s.selection.endIndex == d.unicodeScalars.endIndex)
+		assert(s.selection.endIndex == d.utf16.endIndex)
 		assert(s.selectionInDataForTest(d) == "(c)")
 		assert(s.restInDataForTest(d) == "")
 		
@@ -227,11 +230,11 @@ extension UnitTest {
 	}
 	private static func test2() {
 		let	d	=	CodeData(target: NSMutableAttributedString(string: "abc/*def*/ghi"))
-		let	def	=	MultiblockDetection.Definition(blocks: [
-			BlockDetection.Definition(startMark: "/*", endMark: "*/"),
+		let	def	=	MultiblockDefinition(blocks: [
+			BlockDefinition(startMark: "/*", endMark: "*/"),
 			])
 		
-		var	s	=	MultiblockDetection.State.None(position: d.unicodeScalars.startIndex)
+		var	s	=	MultiblockDetectionState.None(position: d.utf16.startIndex)
 		
 		s.step(def, data: d)
 		assert(s.isNone())
@@ -261,11 +264,11 @@ extension UnitTest {
 	}
 	private static func test3CornerCase1() {
 		let	d	=	CodeData(target: NSMutableAttributedString(string: "//\n//\n;"))
-		let	def	=	MultiblockDetection.Definition(blocks: [
-			BlockDetection.Definition(startMark: "//", endMark: "\n"),
+		let	def	=	MultiblockDefinition(blocks: [
+			BlockDefinition(startMark: "//", endMark: "\n"),
 			])
 		
-		var	s	=	MultiblockDetection.State.None(position: d.unicodeScalars.startIndex)
+		var	s	=	MultiblockDetectionState.None(position: d.utf16.startIndex)
 		
 		s.step(def, data: d)
 		assert(s.isIncomplete())
@@ -292,14 +295,14 @@ extension UnitTest {
 		
 		s.step(def, data: d)
 		assert(s.isNone())
-		assert(s.selection.endIndex == d.unicodeScalars.endIndex)
+		assert(s.selection.endIndex == d.utf16.endIndex)
 	}
 }
 
 
 
 
-extension MultiblockDetection.State: Printable {
+extension MultiblockDetectionState: Printable {
 	var description:String {
 		get {
 			switch self {
@@ -343,7 +346,7 @@ extension MultiblockDetection.State: Printable {
 	func restInDataForTest(data:CodeData) -> String {
 		switch self {
 		case .None(let s):
-			return	String(data.unicodeScalars[s.position..<data.unicodeScalars.endIndex])
+			return	String(data.substringWithUTF16Range(s.position..<data.utf16.endIndex))
 		case .Incomplete(let s):
 			return	s.substate.restInDataForTest(data)
 		case .Complete(let s):

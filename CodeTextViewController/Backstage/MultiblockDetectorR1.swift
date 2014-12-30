@@ -24,8 +24,8 @@
 //	
 //	enum State {
 //		case None(position:UIndex)
-//		case Incomplete(subdefintion:BlockDetection.Definition, substate:BlockDetection.State)
-//		case Complete(subdefintion:BlockDetection.Definition, substate:BlockDetection.State)
+//		case Incomplete(subdefintion:BlockDetection.Definition, substate:BlockDetectionState)
+//		case Complete(subdefintion:BlockDetection.Definition, substate:BlockDetectionState)
 //		
 //		var selection:URange {
 //			get {
@@ -44,7 +44,7 @@
 //			case .None(let s):
 //				BLOCK_LOOP:
 //				for b in definition.blocks {
-//					var	s1	=	BlockDetection.State.None(position: s.position)
+//					var	s1	=	BlockDetectionState.None(position: s.position)
 //					s1.step(b, data: data)
 //					switch s1 {
 //					case .None(let s2):
@@ -69,7 +69,7 @@
 //			}
 //		}
 //		
-//		private mutating func someStep(subdefinition:BlockDetection.Definition, substate:BlockDetection.State, data:CodeData) {
+//		private mutating func someStep(subdefinition:BlockDetection.Definition, substate:BlockDetectionState, data:CodeData) {
 //			var	s1	=	substate
 //			s1.step(subdefinition, data: data)
 //			
@@ -138,7 +138,7 @@
 //			BlockDetection.Definition(startMark: "[", endMark: "]"),
 //			])
 //		
-//		var	s	=	MultiblockDetection.State.None(position: d.unicodeScalars.startIndex)
+//		var	s	=	MultiblockDetectionState.None(position: d.unicodeScalars.startIndex)
 //		assert(s.selectionInDataForTest(d) == "")
 //		assert(s.isNone())
 //		
@@ -231,7 +231,7 @@
 //			BlockDetection.Definition(startMark: "/*", endMark: "*/"),
 //			])
 //		
-//		var	s	=	MultiblockDetection.State.None(position: d.unicodeScalars.startIndex)
+//		var	s	=	MultiblockDetectionState.None(position: d.unicodeScalars.startIndex)
 //		
 //		s.step(def, data: d)
 //		assert(s.isNone())
@@ -264,7 +264,7 @@
 //
 //
 //
-//extension MultiblockDetection.State: Printable {
+//extension MultiblockDetectionState: Printable {
 //	var description:String {
 //		get {
 //			switch self {

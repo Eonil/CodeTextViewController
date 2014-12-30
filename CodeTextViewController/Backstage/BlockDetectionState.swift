@@ -1,5 +1,5 @@
 //
-//  BlockDetection.swift
+//  BlockDetectionState.swift
 //  CodeTextViewController
 //
 //  Created by Hoon H. on 2014/12/29.
@@ -7,10 +7,6 @@
 //
 
 import Foundation
-
-
-
-
 
 
 
@@ -53,71 +49,50 @@ import Foundation
 ///		7	---		`None` continues.
 ///
 ///
-struct BlockDetection {
-	class Definition {
-		let	startMark:String
-		let	endMark:String
-		init(startMark:String, endMark:String) {
-			self.startMark	=	startMark
-			self.endMark	=	endMark
-		}
-		
-		var	startMarkUnicodeScalarCount:UDistance {
-			get {
-				return	countElements(startMark.unicodeScalars)
-			}
-		}
-		var	endMarkUnicodeScalarCount:UDistance {
-			get {
-				return	countElements(startMark.unicodeScalars)
-			}
-		}
+struct BlockDetectionState {
+	var	mode:Mode
+	var	selection:UTF16Range
+	
+	enum Mode {
+		case None
+		case Incomplete
+		case Complete
 	}
-	struct State {
-		var	mode:Mode
-		var	selection:URange
+	mutating func step(definition:BlockDefinition, data:CodeData) {
+		assert(selection.endIndex < data.utf16.endIndex)
 		
-		enum Mode {
-			case None
-			case Incomplete
-			case Complete
-		}
-		mutating func step(definition:Definition, data:CodeData) {
-			assert(selection.endIndex < data.unicodeScalars.endIndex)
-			
-			switch mode {
-			case .None:
-				assert(selection.startIndex == selection.endIndex)
-				let	p	=	selection.startIndex
-				let	s	=	data.unicodeScalars.substringFromIndex(p)
-				if s.hasPrefix(definition.startMark) {
-					let	p1		=	advance(p, definition.startMarkUnicodeScalarCount)
-					mode		=	Mode.Incomplete
-					selection	=	URange(start: p, end: p1)
-					
-				} else {
-					let	p1	=	p.successor()
-					mode		=	Mode.None
-					selection	=	p1..<p1
-				}
+		switch mode {
+		case .None:
+			assert(selection.startIndex == selection.endIndex)
+			let	p	=	selection.startIndex
+			let	s	=	data.substringFromUTF16Index(p)
+			if s.hasPrefix(definition.startMark) {
+				let	p1		=	advance(p, definition.startMarkUnicodeScalarCount)
+				mode		=	Mode.Incomplete
+				selection	=	UTF16Range(start: p, end: p1)
 				
-			case .Incomplete:
-				let	p	=	selection.endIndex
-				let	x	=	data.unicodeScalars.substringFromIndex(p)
-				if x.hasPrefix(definition.endMark) {
-					let	p2		=	advance(p, countElements(definition.endMark))
-					mode		=	Mode.Complete
-					selection	=	URange(start: selection.startIndex, end: p2)
-				} else {
-					let	p2	=	p.successor()
-					mode		=	Mode.Incomplete
-					selection	=	URange(start: selection.startIndex, end: p2)
-				}
-				
-			case .Complete:
+			} else {
+				let	p1	=	p.successor()
 				mode		=	Mode.None
-				selection	=	selection.endIndex..<selection.endIndex
+				selection	=	p1..<p1
 			}
+			
+		case .Incomplete:
+			let	p	=	selection.endIndex
+			let	x	=	data.substringFromUTF16Index(p)
+			if x.hasPrefix(definition.endMark) {
+				let	p2		=	advance(p, countElements(definition.endMark))
+				mode		=	Mode.Complete
+				selection	=	UTF16Range(start: selection.startIndex, end: p2)
+			} else {
+				let	p2	=	p.successor()
+				mode		=	Mode.Incomplete
+				selection	=	UTF16Range(start: selection.startIndex, end: p2)
+			}
+			
+		case .Complete:
+			mode		=	Mode.None
+			selection	=	selection.endIndex..<selection.endIndex
 		}
 	}
 }
@@ -182,10 +157,10 @@ extension UnitTest {
 	
 	private static func test1() {
 		let	d	=	CodeData(target: NSMutableAttributedString(string: "ABCD"))
-		let	p	=	d.unicodeScalars.startIndex
+		let	p	=	d.utf16.startIndex
 		
-		let	def	=	BlockDetection.Definition(startMark: "A", endMark: "C")
-		var	s	=	BlockDetection.State(mode: BlockDetection.State.Mode.None, selection: d.unicodeScalars.startIndex..<d.unicodeScalars.startIndex)
+		let	def	=	BlockDefinition(startMark: "A", endMark: "C")
+		var	s	=	BlockDetectionState(mode: BlockDetectionState.Mode.None, selection: d.utf16.startIndex..<d.utf16.startIndex)
 		
 		s.step(def, data: d)
 		println(s)
@@ -233,8 +208,8 @@ extension UnitTest {
 		let	d	=	CodeData(target: NSMutableAttributedString(string: "abc/*def*/ghi"))
 		let	p	=	d.unicodeScalars.startIndex
 		
-		let	def	=	BlockDetection.Definition(startMark: "/*", endMark: "*/")
-		var	s	=	BlockDetection.State(mode: BlockDetection.State.Mode.None, selection: d.unicodeScalars.startIndex..<d.unicodeScalars.startIndex)
+		let	def	=	BlockDefinition(startMark: "/*", endMark: "*/")
+		var	s	=	BlockDetectionState(mode: BlockDetectionState.Mode.None, selection: d.utf16.startIndex..<d.utf16.startIndex)
 		
 		s.step(def, data: d)
 		assert(s.isNone())
@@ -290,8 +265,8 @@ extension UnitTest {
 		let	d	=	CodeData(target: NSMutableAttributedString(string: "abc/*def"))
 		let	p	=	d.unicodeScalars.startIndex
 		
-		let	def	=	BlockDetection.Definition(startMark: "/*", endMark: "*/")
-		var	s	=	BlockDetection.State(mode: BlockDetection.State.Mode.None, selection: d.unicodeScalars.startIndex..<d.unicodeScalars.startIndex)
+		let	def	=	BlockDefinition(startMark: "/*", endMark: "*/")
+		var	s	=	BlockDetectionState(mode: BlockDetectionState.Mode.None, selection: d.utf16.startIndex..<d.utf16.startIndex)
 		
 		s.step(def, data: d)
 		assert(s.isNone())
@@ -314,7 +289,7 @@ extension UnitTest {
 		s.step(def, data: d)
 		assert(s.isIncomplete())
 		assert(s.selectionInDataForTest(d) == "/*de")
-		assert(s.selection.endIndex < d.unicodeScalars.endIndex)
+		assert(s.selection.endIndex < d.utf16.endIndex)
 		
 		s.step(def, data: d)
 		assert(s.isIncomplete())
@@ -324,11 +299,11 @@ extension UnitTest {
 		//	User must stop stepping by investigating selection.
 		//	Stepping at last is not allowed, but if the state is `Complete` 
 		//	it will be changed into `None` once.
-		assert(s.selection.endIndex == d.unicodeScalars.endIndex)
+		assert(s.selection.endIndex == d.utf16.endIndex)
 	}
 }
 
-extension BlockDetection.State {
+extension BlockDetectionState {
 	func isNone() -> Bool {
 		return	mode == .None
 	}
@@ -339,10 +314,10 @@ extension BlockDetection.State {
 		return	mode == .Complete
 	}
 	func selectionInDataForTest(data:CodeData) -> String {
-		return	String(data.unicodeScalars[selection])
+		return	String(data.substringWithUTF16Range(selection))
 	}
 	func restInDataForTest(data:CodeData) -> String {
-		return	String(data.unicodeScalars[selection.endIndex..<data.unicodeScalars.endIndex])
+		return	String(data.substringWithUTF16Range(selection.endIndex..<data.utf16.endIndex))
 	}
 }
 

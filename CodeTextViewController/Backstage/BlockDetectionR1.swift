@@ -189,7 +189,7 @@
 //		let	p	=	d.unicodeScalars.startIndex
 //		
 //		let	def	=	BlockDetection.Definition(startMark: "A", endMark: "C")
-//		var	s	=	BlockDetection.State.None(position: d.unicodeScalars.startIndex)
+//		var	s	=	BlockDetectionState.None(position: d.unicodeScalars.startIndex)
 //		
 //		s.step(def, data: d)
 //		println(s)
@@ -197,12 +197,12 @@
 //		println(s.restInDataForTest(d))
 //		assert(s.selectionInDataForTest(d) == "A")
 //		assert(s.restInDataForTest(d) == "BCD")
-//		assert(s == BlockDetection.State.Incomplete(selection: URange(start: p, end: p.successor())))
+//		assert(s == BlockDetectionState.Incomplete(selection: URange(start: p, end: p.successor())))
 //		
 //		s.step(def, data: d)
 //		assert(s.selectionInDataForTest(d) == "AB")
 //		assert(s.restInDataForTest(d) == "CD")
-//		assert(s == BlockDetection.State.Incomplete(selection: URange(start: p, end: p.successor().successor())))
+//		assert(s == BlockDetectionState.Incomplete(selection: URange(start: p, end: p.successor().successor())))
 //		
 //		s.step(def, data: d)
 //		println(s)
@@ -210,7 +210,7 @@
 //		println(s.restInDataForTest(d))
 //		assert(s.selectionInDataForTest(d) == "ABC")
 //		assert(s.restInDataForTest(d) == "D")
-//		assert(s == BlockDetection.State.Complete(selection: URange(start: p, end: p.successor().successor().successor())))
+//		assert(s == BlockDetectionState.Complete(selection: URange(start: p, end: p.successor().successor().successor())))
 //		
 //		s.step(def, data: d)
 //		println(s)
@@ -218,7 +218,7 @@
 //		println(s.restInDataForTest(d))
 //		assert(s.selectionInDataForTest(d) == "")
 //		assert(s.restInDataForTest(d) == "D")
-//		assert(s == BlockDetection.State.None(position: p.successor().successor().successor()))
+//		assert(s == BlockDetectionState.None(position: p.successor().successor().successor()))
 //		
 //		s.step(def, data: d)
 //		println(s)
@@ -226,14 +226,14 @@
 //		println(s.restInDataForTest(d))
 //		assert(s.selectionInDataForTest(d) == "")
 //		assert(s.restInDataForTest(d) == "")
-//		assert(s == BlockDetection.State.None(position: p.successor().successor().successor().successor()))
+//		assert(s == BlockDetectionState.None(position: p.successor().successor().successor().successor()))
 //	}
 //	private static func test2() {
 //		let	d	=	CodeData(target: NSMutableAttributedString(string: "abc/*def*/ghi"))
 //		let	p	=	d.unicodeScalars.startIndex
 //		
 //		let	def	=	BlockDetection.Definition(startMark: "/*", endMark: "*/")
-//		var	s	=	BlockDetection.State.None(position: d.unicodeScalars.startIndex)
+//		var	s	=	BlockDetectionState.None(position: d.unicodeScalars.startIndex)
 //		
 //		s.step(def, data: d)
 //		assert(s.isNone())
@@ -287,7 +287,7 @@
 //	}
 //}
 //
-//extension BlockDetection.State {
+//extension BlockDetectionState {
 //	func isNone() -> Bool {
 //		switch self {
 //		case .None(let s):			return	true

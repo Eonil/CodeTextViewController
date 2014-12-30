@@ -22,6 +22,34 @@ final class CodeData {
 			return	target.string.unicodeScalars
 		}
 	}
+	var utf16:String.UTF16View {
+		get {
+			return	target.string.utf16
+		}
+	}
+}
+
+extension CodeData {
+//	var UTF16StartIndex:UTF16Index {
+//		get {
+//			return	UTF16Index(utf16.startIndex)
+//		}
+//	}
+//	var UTF16EndIndex:UTF16Index {
+//		get {
+//			return	UTF16Index(utf16.endIndex)
+//		}
+//	}
+	func substringWithUTF16Range(range:UTF16Range) -> String {
+		let	r	=	NSRange(location: range.startIndex, length: range.endIndex - range.startIndex)
+		return	(target.string as NSString).substringWithRange(r)
+	}
+	func substringFromUTF16Index(index:UTF16Index) -> String {
+		return	(target.string as NSString).substringFromIndex(index)
+	}
+	func substringToUTF16Index(index:UTF16Index) -> String {
+		return	(target.string as NSString).substringToIndex(index)
+	}
 }
 
 
