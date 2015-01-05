@@ -90,6 +90,45 @@ extension NSRange {
 
 
 
+extension String {
+	func convertNSRangeToRange(range:NSRange) -> Range<String.Index> {
+		assert(range.location != NSNotFound)
+		
+		let	s	=	self as NSString
+		let	s1	=	s.substringToIndex(range.location)
+		let	s2	=	s.substringToIndex(range.location + range.length)
+		let	b	=	s1.endIndex
+		let	e	=	s2.endIndex
+		return	b..<e
+	}
+	func convertRangeFromNSRange(range:Range<String.Index>) -> NSRange {
+		assert(range.startIndex <= range.endIndex)
+		
+		let	s1	=	self[startIndex..<range.startIndex]
+		let	s2	=	self[startIndex..<range.endIndex]
+		return	NSRange(location: s1.utf16Count, length: s2.utf16Count - s1.utf16Count)
+	}
+	
+	func convertNSStringLocationToIndex(location:Int) -> String.Index {
+		assert(location != NSNotFound)
+		
+		let	s	=	self as NSString
+		let	s1	=	s.substringToIndex(location)
+		let	b	=	s1.endIndex
+		return	b
+	}
+	func convertRangeFromNSStringLocation(index:String.Index) -> Int {
+		let	s1	=	self[startIndex..<index]
+		return	s1.utf16Count
+	}
+}
+
+
+
+
+
+
+
 
 
 

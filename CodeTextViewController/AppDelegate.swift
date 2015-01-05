@@ -77,7 +77,7 @@
 //	var	state:State
 //	
 //	mutating func step() -> URange? {
-//		return	state.step(definition, cursor: cursor)
+//		return	state.step(&definition, cursor: cursor)
 //	}
 //	
 //	struct Definition {
@@ -91,7 +91,7 @@
 //			var	state:IncrementalEnclosedBlockDetector.State
 //		}
 //		
-//		mutating func step(definition:Definition, cursor:Cursor) -> URange? {
+//		mutating func step(&definition:Definition, cursor:Cursor) -> URange? {
 //			if let s = selection {
 //				let	bdef	=	definition.blockDefinitions[s.index]
 //				var	s2		=	s
@@ -159,7 +159,7 @@
 //		func endingAt(definition:Definition, cursor:Cursor) -> Bool {
 //			return	String(cursor.target.unicodeScalars[cursor.position]).hasPrefix(definition.endMarker)
 //		}
-//		mutating func step(definition:Definition, cursor:Cursor) -> URange? {
+//		mutating func step(&definition:Definition, cursor:Cursor) -> URange? {
 //			cursor.position++
 //			
 //			if selectionStartingIndex == nil {

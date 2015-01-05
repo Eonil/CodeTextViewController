@@ -34,6 +34,7 @@ class CodeTextViewSyntaxHighlightingController: BlockDetectionProcessorDelegate 
 		
 		let	s1	=	(text.string as NSString).substringToIndex(location)
 		detectionProcessor.invalidateFromIndex(s1.utf16.endIndex)
+//		detectionProcessor.invalidateFromIndex(0)
 		
 		useInteractiveRecoloring	=	location > 0
 		latestTokenRange			=	UTF16Range(start: location, end: location)
@@ -114,7 +115,7 @@ class CodeTextViewSyntaxHighlightingController: BlockDetectionProcessorDelegate 
 		
 		text.beginEditing()
 		
-		let	iterationCount	=	useInteractiveRecoloring ? 1 : 256		//	Larger than 256 doesn't improve performance so much.
+		let	iterationCount	=	useInteractiveRecoloring ? 1 : 8192		//	Larger than 256 doesn't improve performance so much.
 		for _ in 0..<iterationCount {
 			if context.cancellation {
 				break

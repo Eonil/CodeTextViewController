@@ -39,7 +39,7 @@
 //				}
 //			}
 //		}
-//		mutating func step(definition:Definition, data:CodeData) {
+//		mutating func step(&definition:Definition, data:CodeData) {
 //			switch self {
 //			case .None(let s):
 //				BLOCK_LOOP:
@@ -142,32 +142,32 @@
 //		assert(s.selectionInDataForTest(d) == "")
 //		assert(s.isNone())
 //		
-//		s.step(def, data: d)
+//		s.step(&def, data: d)
 //		println(s)
 //		println(s.selectionInDataForTest(d))
 //		assert(s.isIncomplete())
 //		assert(s.selectionInDataForTest(d) == "<")
 //		
-//		s.step(def, data: d)
+//		s.step(&def, data: d)
 //		println(s)
 //		println(s.selectionInDataForTest(d))
 //		assert(s.isIncomplete())
 //		assert(s.selectionInDataForTest(d) == "<a")
 //		
-//		s.step(def, data: d)
+//		s.step(&def, data: d)
 //		println(s)
 //		println(s.selectionInDataForTest(d))
 //		assert(s.isComplete())
 //		assert(s.selectionInDataForTest(d) == "<a>")
 //		
-//		s.step(def, data: d)
+//		s.step(&def, data: d)
 //		println(s)
 //		println(s.selectionInDataForTest(d))
 //		println(s.restInDataForTest(d))
 //		assert(s.isNone())
 //		assert(s.selectionInDataForTest(d) == "")
 //		
-//		s.step(def, data: d)
+//		s.step(&def, data: d)
 //		println(s)
 //		println(s.selectionInDataForTest(d))
 //		println(s.restInDataForTest(d))
@@ -175,7 +175,7 @@
 //		assert(s.selectionInDataForTest(d) == "[")
 //		assert(s.restInDataForTest(d) == "b](c)")
 //		
-//		s.step(def, data: d)
+//		s.step(&def, data: d)
 //		println(s)
 //		println(s.selectionInDataForTest(d))
 //		println(s.restInDataForTest(d))
@@ -183,7 +183,7 @@
 //		assert(s.selectionInDataForTest(d) == "[b")
 //		assert(s.restInDataForTest(d) == "](c)")
 //		
-//		s.step(def, data: d)
+//		s.step(&def, data: d)
 //		println(s)
 //		println(s.selectionInDataForTest(d))
 //		println(s.restInDataForTest(d))
@@ -191,7 +191,7 @@
 //		assert(s.selectionInDataForTest(d) == "[b]")
 //		assert(s.restInDataForTest(d) == "(c)")
 //		
-//		s.step(def, data: d)
+//		s.step(&def, data: d)
 //		println(s)
 //		println(s.selectionInDataForTest(d))
 //		println(s.restInDataForTest(d))
@@ -199,7 +199,7 @@
 //		assert(s.selectionInDataForTest(d) == "")
 //		assert(s.restInDataForTest(d) == "(c)")
 //		
-//		s.step(def, data: d)
+//		s.step(&def, data: d)
 //		println(s.selectionInDataForTest(d))
 //		println(s.restInDataForTest(d))
 //		assert(s.isIncomplete())
@@ -207,19 +207,19 @@
 //		assert(s.selectionInDataForTest(d) == "(")
 //		assert(s.restInDataForTest(d) == "c)")
 //		
-//		s.step(def, data: d)
+//		s.step(&def, data: d)
 //		assert(s.isIncomplete())
 //		assert(s.selection.endIndex.successor() == d.unicodeScalars.endIndex)
 //		assert(s.selectionInDataForTest(d) == "(c")
 //		assert(s.restInDataForTest(d) == ")")
 //		
-//		s.step(def, data: d)
+//		s.step(&def, data: d)
 //		assert(s.isComplete())
 //		assert(s.selection.endIndex == d.unicodeScalars.endIndex)
 //		assert(s.selectionInDataForTest(d) == "(c)")
 //		assert(s.restInDataForTest(d) == "")
 //		
-//		s.step(def, data: d)
+//		s.step(&def, data: d)
 //		assert(s.isNone())
 //		assert(s.selection.endIndex == d.unicodeScalars.endIndex)
 //		assert(s.selectionInDataForTest(d) == "")
@@ -233,29 +233,29 @@
 //		
 //		var	s	=	MultiblockDetectionState.None(position: d.unicodeScalars.startIndex)
 //		
-//		s.step(def, data: d)
+//		s.step(&def, data: d)
 //		assert(s.isNone())
 //		
-//		s.step(def, data: d)
+//		s.step(&def, data: d)
 //		assert(s.isNone())
 //		
-//		s.step(def, data: d)
+//		s.step(&def, data: d)
 //		assert(s.isNone())
 //		
-//		s.step(def, data: d)
+//		s.step(&def, data: d)
 //		assert(s.isIncomplete())
 //		assert(s.selectionInDataForTest(d) == "/*")
 //		
-//		s.step(def, data: d)
+//		s.step(&def, data: d)
 //		assert(s.isIncomplete())
 //		
-//		s.step(def, data: d)
+//		s.step(&def, data: d)
 //		assert(s.isIncomplete())
 //		
-//		s.step(def, data: d)
+//		s.step(&def, data: d)
 //		assert(s.isIncomplete())
 //		
-//		s.step(def, data: d)
+//		s.step(&def, data: d)
 //		assert(s.isComplete())
 //		assert(s.selectionInDataForTest(d) == "/*def*/")
 //	}

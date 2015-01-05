@@ -48,6 +48,9 @@ enum MultiblockDetectionState {
 		
 		switch self {
 		case .None(let s):
+			//			for i in 0..<definition.blocks.count {
+			//				unowned let	b	=	definition.blocks[i]
+			////			}
 			for b in definition.blocks {
 				var	s1	=	BlockDetectionState(mode: BlockDetectionState.Mode.None, selection: s.position..<s.position)
 				s1.step(b, data: data)
@@ -74,7 +77,47 @@ enum MultiblockDetectionState {
 			someStep(s.subdefintion, substate: s.substate, data: data)
 		}
 	}
-	
+//	mutating func stepOpt1(definition:MultiblockDefinition, data:CodeData) {
+//		assert(selection.endIndex < data.utf16.endIndex)
+//		
+//		switch self {
+//		case .None(let s):
+////			for i in 0..<definition.blocks.count {
+////				unowned let	b	=	definition.blocks[i]
+//////			}
+//			for b in definition.blocks {
+//				var	s1	=	BlockDetectionState(mode: BlockDetectionState.Mode.None, selection: s.position..<s.position)
+//				let	b1	=	Unmanaged<BlockDefinition>.passUnretained(b)
+//				let	d1	=	Unmanaged<CodeData>.passUnretained(data)
+//				s1.stepOpt1(b1, data: d1)
+//				switch s1.mode {
+//				case .None:
+//					assert(s1.selection.startIndex == s1.selection.endIndex)
+//					//	No change on position and retry with another detector.
+//					
+//				case .Incomplete:
+//					self	=	MultiblockDetectionState.Incomplete(subdefintion: b, substate: s1)
+//					return	//	Exit early.
+//					
+//				case .Complete:
+//					self	=	MultiblockDetectionState.Complete(subdefintion: b, substate: s1)
+//					return	//	Exit early.
+//				}
+//			}
+//			self	=	MultiblockDetectionState.None(position: s.position.successor())	//	Advance position if nothing has been detected.
+//			
+//		case .Incomplete(let s):
+//			let	b1	=	Unmanaged<BlockDefinition>.passUnretained(s.subdefintion)
+//			let	d1	=	Unmanaged<CodeData>.passUnretained(data)
+//			someStepOpt1(b1, substate: s.substate, data: d1)
+//			
+//		case .Complete(let s):
+//			let	b1	=	Unmanaged<BlockDefinition>.passUnretained(s.subdefintion)
+//			let	d1	=	Unmanaged<CodeData>.passUnretained(data)
+//			someStepOpt1(b1, substate: s.substate, data: d1)
+//		}
+//	}
+
 	private mutating func someStep(subdefinition:BlockDefinition, substate:BlockDetectionState, data:CodeData) {
 		var	s1	=	substate
 		s1.step(subdefinition, data: data)
@@ -91,6 +134,23 @@ enum MultiblockDetectionState {
 			self	=	MultiblockDetectionState.Complete(subdefintion: subdefinition, substate: s1)
 		}
 	}
+//	private mutating func someStepOpt1(subdefinition:Unmanaged<BlockDefinition>, substate:BlockDetectionState, data:Unmanaged<CodeData>) {
+//		var	s1	=	substate
+//		s1.stepOpt1(subdefinition, data: data)
+//		
+//		switch s1.mode {
+//		case .None:
+//			assert(s1.selection.startIndex == s1.selection.endIndex)
+//			self	=	MultiblockDetectionState.None(position: s1.selection.startIndex)
+//			
+//		case .Incomplete:
+//			self	=	MultiblockDetectionState.Incomplete(subdefintion: subdefinition.takeRetainedValue(), substate: s1)
+//			
+//		case .Complete:
+//			self	=	MultiblockDetectionState.Complete(subdefintion: subdefinition.takeRetainedValue(), substate: s1)
+//		}
+//	}
+
 }
 
 

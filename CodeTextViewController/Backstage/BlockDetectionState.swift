@@ -34,15 +34,15 @@ import Foundation
 ///
 ///		0	---		`None`.
 ///
-///		1	---		First `None`, second `Incomplete` with zero-length selection.
+///		1	---		First `None`, second `Incomplete` with selection of length 2.
 ///			'/'
-///		2	---		No state. Detector jumps starter mark at once.
+///		2	---		No state. Detector skips start mark at once.
 ///			'*'
 ///		3	---		`Incomplete` with `1..<3` range.
 ///			A
 ///		4	---		`Incomplete` with `1..<4` range.
 ///			'*'
-///		5	---		No state. Detector jumps starter mark at once.
+///		5	---		No state. Detector skips end mark at once.
 ///			'/'
 ///		6	---		First `Complete` with `1..<6` range, second `None`. Second phase will not happend at the end of data.
 ///
@@ -65,9 +65,9 @@ struct BlockDetectionState {
 		case .None:
 			assert(selection.startIndex == selection.endIndex)
 			let	p	=	selection.startIndex
-			let	s	=	data.substringFromUTF16Index(p)
-			if s.hasPrefix(definition.startMark) {
-				let	p1		=	advance(p, definition.startMarkUnicodeScalarCount)
+			let	ok	=	data.hasPrefixAtUTF16Index(definition.startMark, index: p)
+			if ok {
+				let	p1		=	advance(p, definition.startMark.utf16.endIndex)
 				mode		=	Mode.Incomplete
 				selection	=	UTF16Range(start: p, end: p1)
 				
@@ -79,9 +79,9 @@ struct BlockDetectionState {
 			
 		case .Incomplete:
 			let	p	=	selection.endIndex
-			let	x	=	data.substringFromUTF16Index(p)
-			if x.hasPrefix(definition.endMark) {
-				let	p2		=	advance(p, countElements(definition.endMark))
+			let	ok	=	data.hasPrefixAtUTF16Index(definition.endMark, index: p)
+			if ok {
+				let	p2		=	advance(p, definition.endMark.utf16.endIndex)
 				mode		=	Mode.Complete
 				selection	=	UTF16Range(start: selection.startIndex, end: p2)
 			} else {
@@ -95,6 +95,43 @@ struct BlockDetectionState {
 			selection	=	selection.endIndex..<selection.endIndex
 		}
 	}
+//	mutating func stepOpt1(definition:Unmanaged<BlockDefinition>, data:Unmanaged<CodeData>) {
+//		assert(selection.endIndex < data.takeUnretainedValue().utf16.endIndex)
+//		
+//		switch mode {
+//		case .None:
+//			assert(selection.startIndex == selection.endIndex)
+//			let	p	=	selection.startIndex
+//			let	ok	=	data.takeUnretainedValue().hasPrefixAtUTF16Index(definition.takeUnretainedValue().startMark, index: p)
+//			if ok {
+//				let	p1		=	advance(p, definition.takeUnretainedValue().startMark.utf16.endIndex)
+//				mode		=	Mode.Incomplete
+//				selection	=	UTF16Range(start: p, end: p1)
+//				
+//			} else {
+//				let	p1	=	p.successor()
+//				mode		=	Mode.None
+//				selection	=	p1..<p1
+//			}
+//			
+//		case .Incomplete:
+//			let	p	=	selection.endIndex
+//			let	ok	=	data.takeUnretainedValue().hasPrefixAtUTF16Index(definition.takeUnretainedValue().endMark, index: p)
+//			if ok {
+//				let	p2		=	advance(p, definition.takeUnretainedValue().endMark.utf16.endIndex)
+//				mode		=	Mode.Complete
+//				selection	=	UTF16Range(start: selection.startIndex, end: p2)
+//			} else {
+//				let	p2	=	p.successor()
+//				mode		=	Mode.Incomplete
+//				selection	=	UTF16Range(start: selection.startIndex, end: p2)
+//			}
+//			
+//		case .Complete:
+//			mode		=	Mode.None
+//			selection	=	selection.endIndex..<selection.endIndex
+//		}
+//	}
 }
 
 
@@ -156,7 +193,7 @@ extension UnitTest {
 	}
 	
 	private static func test1() {
-		let	d	=	CodeData(target: NSMutableAttributedString(string: "ABCD"))
+		var	d	=	CodeData(target: NSMutableAttributedString(string: "ABCD"))
 		let	p	=	d.utf16.startIndex
 		
 		let	def	=	BlockDefinition(startMark: "A", endMark: "C")
@@ -205,7 +242,7 @@ extension UnitTest {
 		assert(s.selection == p.successor().successor().successor().successor()..<p.successor().successor().successor().successor())
 	}
 	private static func test2() {
-		let	d	=	CodeData(target: NSMutableAttributedString(string: "abc/*def*/ghi"))
+		var	d	=	CodeData(target: NSMutableAttributedString(string: "abc/*def*/ghi"))
 		let	p	=	d.unicodeScalars.startIndex
 		
 		let	def	=	BlockDefinition(startMark: "/*", endMark: "*/")
@@ -262,7 +299,7 @@ extension UnitTest {
 		assert(s.restInDataForTest(d) == "")
 	}
 	private static func test3IncompleteFragment() {
-		let	d	=	CodeData(target: NSMutableAttributedString(string: "abc/*def"))
+		var	d	=	CodeData(target: NSMutableAttributedString(string: "abc/*def"))
 		let	p	=	d.unicodeScalars.startIndex
 		
 		let	def	=	BlockDefinition(startMark: "/*", endMark: "*/")

@@ -41,32 +41,34 @@ class BlockDetectionProcessor {
 	
 	var available:Bool {
 		get {
-			return	state.selection.endIndex < data.utf16.endIndex
+			return	state.selection.endIndex < data.utf16Count
+//			return	state.selection.endIndex < data.utf16.endIndex
 		}
 	}
 	
 	func invalidateFromIndex(index:UTF16Index) {
-//		//
-//		//	Take care that the String indexes/ranges are all will be invalidated after mutating the string.
-//		//	For example, an index of 7 captured when the String length is 7 will not advance to next index
-//		//	even the extra characters are appended to the string becuase the index thinks the length of string
-//		//	is still 7.
-//		//
-//		//	To deal with this, measure the location of the indexes/ranges and re-create them from the
-//		//	location for the new string.
-//		//
-//		if let p = binarySearchForIndexOfSmallestValueEqualToOrGreaterThanValue(checkpoints, MultiblockDetectionState.None(position: index), 0..<checkpoints.count) {
-//			checkpoints.removeRange(p..<checkpoints.count)
-//			let	pos	=	p == 0 ? data.utf16.startIndex : checkpoints[p-1].utf16StartIndex
-//			
-//			state	=	MultiblockDetectionState.None(position: pos)
-//		}
+		//
+		//	Take care that the String indexes/ranges are all will be invalidated after mutating the string.
+		//	For example, an index of 7 captured when the String length is 7 will not advance to next index
+		//	even the extra characters are appended to the string becuase the index thinks the length of string
+		//	is still 7.
+		//
+		//	To deal with this, measure the location of the indexes/ranges and re-create them from the
+		//	location for the new string.
+		//
+		if let p = binarySearchForIndexOfSmallestValueEqualToOrGreaterThanValue(checkpoints, MultiblockDetectionState.None(position: index), 0..<checkpoints.count) {
+			checkpoints.removeRange(p..<checkpoints.count)
+			let	pos	=	p == 0 ? data.utf16.startIndex : checkpoints[p-1].utf16StartIndex
+			
+			state	=	MultiblockDetectionState.None(position: pos)
+		}
 		
-		checkpoints	=	[]
-		state		=	MultiblockDetectionState.None(position: 0)
+//		checkpoints	=	[]
+//		state		=	MultiblockDetectionState.None(position: 0)
 	}
 	func step() {
 		assert(available)
+		
 		state.step(definition, data: data)
 		
 		switch state {
@@ -88,7 +90,7 @@ class BlockDetectionProcessor {
 	private let	definition:MultiblockDefinition
 	private var	state:MultiblockDetectionState
 	
-	private var	checkpoints:[MultiblockDetectionState]
+	private var	checkpoints:[MultiblockDetectionState]	//	Sorted in ascending order.
 }
 
 
@@ -224,13 +226,25 @@ func == (left:BlockDetectionState, right:BlockDetectionState) -> Bool {
 ///	MARK:
 ///	MARK:	Unit Test
 
+
+
 extension UnitTest {
+	private	class DummyDelegateForUnitTest: BlockDetectionProcessorDelegate {
+		func onBlockNone(range:UTF16Range) {
+		}
+		func onBlockIncomplete(range:UTF16Range) {
+		}
+		func onBlockComplete(range:UTF16Range) {
+		}
+	}
+	
 	static func testBlockDetectionController() {
 		test1()
 	}
 	private static func test1() {
+		
 		let	a	=	NSMutableAttributedString(string: "//\n//\n;")
-		let	c	=	testSyntax1(a)
+		let	c	=	testSyntax1(a) as BlockDetectionProcessor
 		
 		assert(c.state.isNone())
 		assert(c.state.restInDataForTest(c.data) == "//\n//\n;")
@@ -256,9 +270,12 @@ extension UnitTest {
 		assert(c.available == false)
 		
 		a.insertAttributedString(NSAttributedString(string: "\n"), atIndex: "//\n//\n".utf16Count)
-		c.invalidateFromIndex("//\n//\n".utf16.endIndex)
+		assert(c.data.utf16Count == 8)
+		c.invalidateFromIndex("//\n//\n".utf16Count)
 		assert(a.string == "//\n//\n\n;")
 		println(a.string)
+		assert(c.state.selection.startIndex == "//\n".utf16.endIndex)
+		assert(c.state.selection.endIndex == "//\n".utf16.endIndex)
 		assert(c.state.restInDataForTest(c.data) == "//\n\n;")
 		
 		c.step()
@@ -268,10 +285,16 @@ extension UnitTest {
 		c.step()
 		assert(c.state.isNone())
 		assert(c.state.restInDataForTest(c.data) == "\n;")
+		assert(c.state.selection.startIndex == "//\n//\n".utf16.endIndex)
+		assert(c.state.selection.endIndex == "//\n//\n".utf16.endIndex)
 		
 		c.step()
 		assert(c.state.isNone())
 		assert(c.state.restInDataForTest(c.data) == ";")
+		assert(c.state.selection.endIndex < a.length)
+		println(c.state.selection.endIndex)
+		println(c.data.utf16Count)
+		println(c.available)
 		assert(c.available == true)
 		
 		c.step()

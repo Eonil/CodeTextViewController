@@ -18,7 +18,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTextStorageDelegate {
 	func applicationDidFinishLaunching(aNotification: NSNotification) {
 		window.contentView	=	vc.scrollView
 		
-		let	p	=	NSBundle.mainBundle().pathForResource("test-example-full", ofType: "rs")!
+		let	p	=	NSBundle.mainBundle().pathForResource("test-example-5000kb", ofType: "rs")!
+//		let	p	=	NSBundle.mainBundle().pathForResource("test-example-1kb", ofType: "rs")!
+//		let	p	=	NSBundle.mainBundle().pathForResource("test-example", ofType: "rs")!
 		let	s	=	NSString(contentsOfFile: p, encoding: NSUTF8StringEncoding, error: nil)!
 		vc.codeTextViewController.codeTextView.typingAttributes	=	[
 			NSForegroundColorAttributeName:	NSColor.redColor(),

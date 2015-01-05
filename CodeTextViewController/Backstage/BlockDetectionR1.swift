@@ -83,7 +83,7 @@
 //				}
 //			}
 //		}
-//		mutating func step(definition:Definition, data:CodeData) {
+//		mutating func step(&definition:Definition, data:CodeData) {
 //			switch self {
 //			case .None(let s):
 //				let	p	=	s.position
@@ -191,7 +191,7 @@
 //		let	def	=	BlockDetection.Definition(startMark: "A", endMark: "C")
 //		var	s	=	BlockDetectionState.None(position: d.unicodeScalars.startIndex)
 //		
-//		s.step(def, data: d)
+//		s.step(&def, data: d)
 //		println(s)
 //		println(s.selectionInDataForTest(d))
 //		println(s.restInDataForTest(d))
@@ -199,12 +199,12 @@
 //		assert(s.restInDataForTest(d) == "BCD")
 //		assert(s == BlockDetectionState.Incomplete(selection: URange(start: p, end: p.successor())))
 //		
-//		s.step(def, data: d)
+//		s.step(&def, data: d)
 //		assert(s.selectionInDataForTest(d) == "AB")
 //		assert(s.restInDataForTest(d) == "CD")
 //		assert(s == BlockDetectionState.Incomplete(selection: URange(start: p, end: p.successor().successor())))
 //		
-//		s.step(def, data: d)
+//		s.step(&def, data: d)
 //		println(s)
 //		println(s.selectionInDataForTest(d))
 //		println(s.restInDataForTest(d))
@@ -212,7 +212,7 @@
 //		assert(s.restInDataForTest(d) == "D")
 //		assert(s == BlockDetectionState.Complete(selection: URange(start: p, end: p.successor().successor().successor())))
 //		
-//		s.step(def, data: d)
+//		s.step(&def, data: d)
 //		println(s)
 //		println(s.selectionInDataForTest(d))
 //		println(s.restInDataForTest(d))
@@ -220,7 +220,7 @@
 //		assert(s.restInDataForTest(d) == "D")
 //		assert(s == BlockDetectionState.None(position: p.successor().successor().successor()))
 //		
-//		s.step(def, data: d)
+//		s.step(&def, data: d)
 //		println(s)
 //		println(s.selectionInDataForTest(d))
 //		println(s.restInDataForTest(d))
@@ -235,52 +235,52 @@
 //		let	def	=	BlockDetection.Definition(startMark: "/*", endMark: "*/")
 //		var	s	=	BlockDetectionState.None(position: d.unicodeScalars.startIndex)
 //		
-//		s.step(def, data: d)
+//		s.step(&def, data: d)
 //		assert(s.isNone())
 //		
-//		s.step(def, data: d)
+//		s.step(&def, data: d)
 //		assert(s.isNone())
 //		
-//		s.step(def, data: d)
+//		s.step(&def, data: d)
 //		assert(s.isNone())
 //		assert(s.restInDataForTest(d) == "/*def*/ghi")
 //		
-//		s.step(def, data: d)
+//		s.step(&def, data: d)
 //		assert(s.isIncomplete())
 //		assert(s.selectionInDataForTest(d) == "/*")
 //		
-//		s.step(def, data: d)
+//		s.step(&def, data: d)
 //		assert(s.isIncomplete())
 //		assert(s.selectionInDataForTest(d) == "/*d")
 //		
-//		s.step(def, data: d)
+//		s.step(&def, data: d)
 //		assert(s.isIncomplete())
 //		assert(s.selectionInDataForTest(d) == "/*de")
 //		
-//		s.step(def, data: d)
+//		s.step(&def, data: d)
 //		assert(s.isIncomplete())
 //		assert(s.selectionInDataForTest(d) == "/*def")
 //		
-//		s.step(def, data: d)
+//		s.step(&def, data: d)
 //		assert(s.isComplete())
 //		assert(s.selectionInDataForTest(d) == "/*def*/")
 //		
-//		s.step(def, data: d)
+//		s.step(&def, data: d)
 //		assert(s.isNone())
 //		assert(s.selectionInDataForTest(d) == "")
 //		assert(s.restInDataForTest(d) == "ghi")
 //		
-//		s.step(def, data: d)
+//		s.step(&def, data: d)
 //		assert(s.isNone())
 //		assert(s.selectionInDataForTest(d) == "")
 //		assert(s.restInDataForTest(d) == "hi")
 //		
-//		s.step(def, data: d)
+//		s.step(&def, data: d)
 //		assert(s.isNone())
 //		assert(s.selectionInDataForTest(d) == "")
 //		assert(s.restInDataForTest(d) == "i")
 //		
-//		s.step(def, data: d)
+//		s.step(&def, data: d)
 //		assert(s.isNone())
 //		assert(s.selectionInDataForTest(d) == "")
 //		assert(s.restInDataForTest(d) == "")
