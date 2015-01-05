@@ -22,7 +22,7 @@ class CodeTextViewSyntaxHighlightingController: BlockDetectionProcessorDelegate 
 		
 		self.latestTokenRange	=	UTF16Range(start: 0, end: 0)
 		
-		self.detectionProcessor				=	BlockDetectionProcessor.syntaxHighlightingBlockDetectionControllerForRust(target)
+		self.detectionProcessor				=	BlockDetectionProcessor<CodeTextViewSyntaxHighlightingController>.syntaxHighlightingBlockDetectionControllerForRust(target)
 		self.detectionProcessor.delegate	=	self
 	}
 	func startProcessingFromLocation(location:Int) {
@@ -97,7 +97,7 @@ class CodeTextViewSyntaxHighlightingController: BlockDetectionProcessorDelegate 
 	
 	private let	text:NSTextStorage
 	private let	view:NSTextView
-	private let	detectionProcessor:BlockDetectionProcessor
+	private let	detectionProcessor:BlockDetectionProcessor<CodeTextViewSyntaxHighlightingController>
 	
 	private var	currentContext:ProcessingContext?
 	private var	useInteractiveRecoloring:Bool	=	false

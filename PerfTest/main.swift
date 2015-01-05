@@ -7,20 +7,23 @@
 //
 
 import Foundation
+import AppKit
 
-
-//final class Processor1: BlockDetectionProcessorDelegate {
-//	func onBlockNone(range:UTF16Range) {
-//		
-//	}
-//	func onBlockIncomplete(range:UTF16Range) {
-//		
-//	}
-//	func onBlockComplete(range:UTF16Range) {
-//		println(range)
-//	}
-//}
-//let	p1	=	Processor1()
+final class Processor1: BlockDetectionProcessorDelegate {
+	init(targetString:NSMutableAttributedString) {
+		self.targetString	=	targetString
+	}
+	var targetString:NSMutableAttributedString
+	func onBlockNone(range:UTF16Range) {
+		
+	}
+	func onBlockIncomplete(range:UTF16Range) {
+		
+	}
+	func onBlockComplete(range:UTF16Range) {
+		targetString.addAttribute(NSForegroundColorAttributeName, value: NSColor.greenColor(), range: NSRange.fromUTF16Range(range))
+	}
+}
 
 ////
 
@@ -29,14 +32,16 @@ let	def	=	MultiblockDefinition(blocks: [
 	BlockDefinition(startMark: "//", endMark: "\n"),
 	])
 let	src	=	String(contentsOfFile: "/Users/Eonil/Workshop/Sandbox3/CodeTextViewController/TesterApp/test-example-5000kb.rs", encoding: NSUTF8StringEncoding, error: nil)!
-let	d	=	CodeData(target: NSMutableAttributedString(string: src))
+let	a	=	NSMutableAttributedString(string: src)
+let	d	=	CodeData(target: a)
 let	s	=	MultiblockDetectionState.None(position: 0)
-let	p	=	BlockDetectionProcessor(definition: def, state: s, data: d)
+let	del	=	Processor1(targetString: a)
+let	p	=	BlockDetectionProcessor<Processor1>(definition: def, state: s, data: d)
 
-
-//p.delegate	=	p1
+p.delegate	=	del
 while p.available {
 	p.step()
 }
 
+println()
 println("DONE!")

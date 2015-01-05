@@ -27,9 +27,8 @@ protocol BlockDetectionProcessorDelegate: class {
 }
 
 
-class BlockDetectionProcessor {
-	weak var delegate:BlockDetectionProcessorDelegate?
-	
+class BlockDetectionProcessor<T:BlockDetectionProcessorDelegate> {
+	weak var delegate:T?
 	let	data:CodeData
 	
 	init(definition:MultiblockDefinition, state:MultiblockDetectionState, data:CodeData) {
@@ -70,6 +69,26 @@ class BlockDetectionProcessor {
 		assert(available)
 		
 		state.step(definition, data: data)
+		
+		switch state {
+		case .None(let s):
+			delegate?.onBlockNone(UTF16Range(start: s.position, end: s.position))
+			
+		case .Incomplete(let s):
+			delegate?.onBlockIncomplete(s.substate.selection)
+			
+		case .Complete(let s):
+			checkpoints.append(state)
+			assert(s.substate.mode == .Complete)
+			delegate?.onBlockComplete(s.substate.selection)
+		}
+	}
+	func stepOpt1() {
+		assert(available)
+		
+		let	de1	=	Unmanaged<MultiblockDefinition>.passUnretained(definition)
+		let	d1	=	Unmanaged<CodeData>.passUnretained(data)
+		state.stepOpt1(de1, data: d1)
 		
 		switch state {
 		case .None(let s):
@@ -242,9 +261,9 @@ extension UnitTest {
 		test1()
 	}
 	private static func test1() {
-		
+		let	del	=	DummyDelegateForUnitTest()
 		let	a	=	NSMutableAttributedString(string: "//\n//\n;")
-		let	c	=	testSyntax1(a) as BlockDetectionProcessor
+		let	c	=	testSyntax1(a, del) as BlockDetectionProcessor<DummyDelegateForUnitTest>
 		
 		assert(c.state.isNone())
 		assert(c.state.restInDataForTest(c.data) == "//\n//\n;")
@@ -310,14 +329,14 @@ extension UnitTest {
 	}
 }
 
-private func testSyntax1(text:NSMutableAttributedString) -> BlockDetectionProcessor {
+private func testSyntax1<T:BlockDetectionProcessorDelegate>(text:NSMutableAttributedString, delegate:T) -> BlockDetectionProcessor<T> {
 	let	def	=	MultiblockDefinition(blocks: [
 		BlockDefinition(startMark: "/*", endMark: "*/"),
 		BlockDefinition(startMark: "//", endMark: "\n"),
 		])
 	let	s	=	MultiblockDetectionState.None(position: text.string.utf16.startIndex)
 	let	d	=	CodeData(target: text)
-	let	sh	=	BlockDetectionProcessor(definition: def, state: s, data: d)
+	let	sh	=	BlockDetectionProcessor<T>(definition: def, state: s, data: d)
 	return	sh
 }
 

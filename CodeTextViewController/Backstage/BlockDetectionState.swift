@@ -95,43 +95,43 @@ struct BlockDetectionState {
 			selection	=	selection.endIndex..<selection.endIndex
 		}
 	}
-//	mutating func stepOpt1(definition:Unmanaged<BlockDefinition>, data:Unmanaged<CodeData>) {
-//		assert(selection.endIndex < data.takeUnretainedValue().utf16.endIndex)
-//		
-//		switch mode {
-//		case .None:
-//			assert(selection.startIndex == selection.endIndex)
-//			let	p	=	selection.startIndex
-//			let	ok	=	data.takeUnretainedValue().hasPrefixAtUTF16Index(definition.takeUnretainedValue().startMark, index: p)
-//			if ok {
-//				let	p1		=	advance(p, definition.takeUnretainedValue().startMark.utf16.endIndex)
-//				mode		=	Mode.Incomplete
-//				selection	=	UTF16Range(start: p, end: p1)
-//				
-//			} else {
-//				let	p1	=	p.successor()
-//				mode		=	Mode.None
-//				selection	=	p1..<p1
-//			}
-//			
-//		case .Incomplete:
-//			let	p	=	selection.endIndex
-//			let	ok	=	data.takeUnretainedValue().hasPrefixAtUTF16Index(definition.takeUnretainedValue().endMark, index: p)
-//			if ok {
-//				let	p2		=	advance(p, definition.takeUnretainedValue().endMark.utf16.endIndex)
-//				mode		=	Mode.Complete
-//				selection	=	UTF16Range(start: selection.startIndex, end: p2)
-//			} else {
-//				let	p2	=	p.successor()
-//				mode		=	Mode.Incomplete
-//				selection	=	UTF16Range(start: selection.startIndex, end: p2)
-//			}
-//			
-//		case .Complete:
-//			mode		=	Mode.None
-//			selection	=	selection.endIndex..<selection.endIndex
-//		}
-//	}
+	mutating func stepOpt1(definition:Unmanaged<BlockDefinition>, data:Unmanaged<CodeData>) {
+		assert(selection.endIndex < data.takeUnretainedValue().utf16.endIndex)
+		
+		switch mode {
+		case .None:
+			assert(selection.startIndex == selection.endIndex)
+			let	p	=	selection.startIndex
+			let	ok	=	data.takeUnretainedValue().hasPrefixAtUTF16Index(definition.takeUnretainedValue().startMark, index: p)
+			if ok {
+				let	p1		=	advance(p, definition.takeUnretainedValue().startMark.utf16.endIndex)
+				mode		=	Mode.Incomplete
+				selection	=	UTF16Range(start: p, end: p1)
+				
+			} else {
+				let	p1	=	p.successor()
+				mode		=	Mode.None
+				selection	=	p1..<p1
+			}
+			
+		case .Incomplete:
+			let	p	=	selection.endIndex
+			let	ok	=	data.takeUnretainedValue().hasPrefixAtUTF16Index(definition.takeUnretainedValue().endMark, index: p)
+			if ok {
+				let	p2		=	advance(p, definition.takeUnretainedValue().endMark.utf16.endIndex)
+				mode		=	Mode.Complete
+				selection	=	UTF16Range(start: selection.startIndex, end: p2)
+			} else {
+				let	p2	=	p.successor()
+				mode		=	Mode.Incomplete
+				selection	=	UTF16Range(start: selection.startIndex, end: p2)
+			}
+			
+		case .Complete:
+			mode		=	Mode.None
+			selection	=	selection.endIndex..<selection.endIndex
+		}
+	}
 }
 
 
