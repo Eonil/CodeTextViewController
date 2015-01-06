@@ -20,15 +20,14 @@ import Foundation
 
 
 
-protocol BlockDetectionProcessorDelegate: class {
+protocol BlockDetectionProcessorReaction: class {
 	func onBlockNone(range:UTF16Range)
 	func onBlockIncomplete(range:UTF16Range)
 	func onBlockComplete(range:UTF16Range)
 }
 
 
-class BlockDetectionProcessor<T:BlockDetectionProcessorDelegate> {
-	weak var delegate:T?
+class BlockDetectionProcessor<T:BlockDetectionProcessorReaction> {
 	let	data:CodeData
 	
 	init(definition:MultiblockDefinition, state:MultiblockDetectionState, data:CodeData) {
@@ -65,42 +64,25 @@ class BlockDetectionProcessor<T:BlockDetectionProcessorDelegate> {
 //		checkpoints	=	[]
 //		state		=	MultiblockDetectionState.None(position: 0)
 	}
-	func step() {
-		assert(available)
-		
-		state.step(definition, data: data)
-		
-		switch state {
-		case .None(let s):
-			delegate?.onBlockNone(UTF16Range(start: s.position, end: s.position))
-			
-		case .Incomplete(let s):
-			delegate?.onBlockIncomplete(s.substate.selection)
-			
-		case .Complete(let s):
-			checkpoints.append(state)
-			assert(s.substate.mode == .Complete)
-			delegate?.onBlockComplete(s.substate.selection)
-		}
+	func step(reactions:T) {
+		self.stepOpt(Unmanaged<T>.passUnretained(reactions))
 	}
-	func stepOpt1() {
+	func stepOpt(reactions:Unmanaged<T>) {
 		assert(available)
 		
-		let	de1	=	Unmanaged<MultiblockDefinition>.passUnretained(definition)
-		let	d1	=	Unmanaged<CodeData>.passUnretained(data)
-		state.stepOpt1(de1, data: d1)
+		state.stepOpt(Unowned1(definition), data:Unowned1(data))
 		
 		switch state {
 		case .None(let s):
-			delegate?.onBlockNone(UTF16Range(start: s.position, end: s.position))
+			reactions.takeUnretainedValue().onBlockNone(UTF16Range(start: s.position, end: s.position))
 			
 		case .Incomplete(let s):
-			delegate?.onBlockIncomplete(s.substate.selection)
+			reactions.takeUnretainedValue().onBlockIncomplete(s.subdata.state.selection)
 			
 		case .Complete(let s):
 			checkpoints.append(state)
-			assert(s.substate.mode == .Complete)
-			delegate?.onBlockComplete(s.substate.selection)
+			assert(s.subdata.state.mode == .Complete)
+			reactions.takeUnretainedValue().onBlockComplete(s.subdata.state.selection)
 		}
 	}
 	
@@ -144,9 +126,9 @@ extension MultiblockDetectionState: Comparable {
 			case .None(let s):
 				return	s.position
 			case .Incomplete(let s):
-				return	s.substate.utf16StartIndex
+				return	s.subdata.state.utf16StartIndex
 			case .Complete(let s):
-				return	s.substate.utf16StartIndex
+				return	s.subdata.state.utf16StartIndex
 			}
 		}
 	}
@@ -248,7 +230,7 @@ func == (left:BlockDetectionState, right:BlockDetectionState) -> Bool {
 
 
 extension UnitTest {
-	private	class DummyDelegateForUnitTest: BlockDetectionProcessorDelegate {
+	private	class DummyDelegateForUnitTest: BlockDetectionProcessorReaction {
 		func onBlockNone(range:UTF16Range) {
 		}
 		func onBlockIncomplete(range:UTF16Range) {
@@ -268,22 +250,22 @@ extension UnitTest {
 		assert(c.state.isNone())
 		assert(c.state.restInDataForTest(c.data) == "//\n//\n;")
 		
-		c.step()
+		c.step(del)
 		assert(c.state.isIncomplete())
-		c.step()
+		c.step(del)
 		assert(c.state.isComplete())
-		c.step()
+		c.step(del)
 		assert(c.state.isNone())
 		
-		c.step()
+		c.step(del)
 		assert(c.state.isIncomplete())
-		c.step()
+		c.step(del)
 		assert(c.state.isComplete())
-		c.step()
+		c.step(del)
 		assert(c.state.isNone())
 		assert(c.state.restInDataForTest(c.data) == ";")
 		
-		c.step()
+		c.step(del)
 		assert(c.state.isNone())
 		assert(c.state.restInDataForTest(c.data) == "")
 		assert(c.available == false)
@@ -297,17 +279,17 @@ extension UnitTest {
 		assert(c.state.selection.endIndex == "//\n".utf16.endIndex)
 		assert(c.state.restInDataForTest(c.data) == "//\n\n;")
 		
-		c.step()
+		c.step(del)
 		assert(c.state.isIncomplete())
-		c.step()
+		c.step(del)
 		assert(c.state.isComplete())
-		c.step()
+		c.step(del)
 		assert(c.state.isNone())
 		assert(c.state.restInDataForTest(c.data) == "\n;")
 		assert(c.state.selection.startIndex == "//\n//\n".utf16.endIndex)
 		assert(c.state.selection.endIndex == "//\n//\n".utf16.endIndex)
 		
-		c.step()
+		c.step(del)
 		assert(c.state.isNone())
 		assert(c.state.restInDataForTest(c.data) == ";")
 		assert(c.state.selection.endIndex < a.length)
@@ -316,7 +298,7 @@ extension UnitTest {
 		println(c.available)
 		assert(c.available == true)
 		
-		c.step()
+		c.step(del)
 		
 		println(String(c.data.unicodeScalars))
 		let	v1	=	c.state.selection.endIndex
@@ -329,7 +311,7 @@ extension UnitTest {
 	}
 }
 
-private func testSyntax1<T:BlockDetectionProcessorDelegate>(text:NSMutableAttributedString, delegate:T) -> BlockDetectionProcessor<T> {
+private func testSyntax1<T:BlockDetectionProcessorReaction>(text:NSMutableAttributedString, delegate:T) -> BlockDetectionProcessor<T> {
 	let	def	=	MultiblockDefinition(blocks: [
 		BlockDefinition(startMark: "/*", endMark: "*/"),
 		BlockDefinition(startMark: "//", endMark: "\n"),

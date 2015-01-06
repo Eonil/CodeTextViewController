@@ -15,9 +15,14 @@ import Foundation
 ///
 ///
 enum MultiblockDetectionState {
+	struct Subdata {
+		let	definition:Unowned1<BlockDefinition>
+		let	state:BlockDetectionState
+	}
+	
 	case None(position:UTF16Index)
-	case Incomplete(subdefintion:BlockDefinition, substate:BlockDetectionState)
-	case Complete(subdefintion:BlockDefinition, substate:BlockDetectionState)
+	case Incomplete(subdata:Subdata)
+	case Complete(subdata:Subdata)
 	
 	var deinition:BlockDefinition? {
 		get {
@@ -25,9 +30,9 @@ enum MultiblockDetectionState {
 			case .None(let s):
 				return	nil
 			case .Incomplete(let s):
-				return	s.subdefintion
+				return	s.subdata.definition.ref.takeUnretainedValue()
 			case .Complete(let s):
-				return	s.subdefintion
+				return	s.subdata.definition.ref.takeUnretainedValue()
 			}
 		}
 	}
@@ -37,87 +42,55 @@ enum MultiblockDetectionState {
 			case .None(let s):
 				return	s.position..<s.position
 			case .Incomplete(let s):
-				return	s.substate.selection
+				return	s.subdata.state.selection
 			case .Complete(let s):
-				return	s.substate.selection
+				return	s.subdata.state.selection
 			}
 		}
 	}
 	mutating func step(definition:MultiblockDefinition, data:CodeData) {
-		assert(selection.endIndex < data.utf16.endIndex)
+		self.stepOpt(Unowned1(definition), data: Unowned1(data))
+	}
+	mutating func stepOpt(definition:Unowned1<MultiblockDefinition>, data:Unowned1<CodeData>) {
+		assert(selection.endIndex < data.ref.takeUnretainedValue().utf16.endIndex)
 		
 		switch self {
 		case .None(let s):
-			//			for i in 0..<definition.blocks.count {
-			//				unowned let	b	=	definition.blocks[i]
-			////			}
-			for b in definition.blocks {
+			for b1 in definition.ref.takeUnretainedValue().blockUnownedReferences {
+				unowned let	b	=	b1.ref.takeUnretainedValue()
 				var	s1	=	BlockDetectionState(mode: BlockDetectionState.Mode.None, selection: s.position..<s.position)
-				s1.step(b, data: data)
+				s1.stepOpt(Unowned1(b), data: data)
 				switch s1.mode {
 				case .None:
 					assert(s1.selection.startIndex == s1.selection.endIndex)
 					//	No change on position and retry with another detector.
 					
 				case .Incomplete:
-					self	=	MultiblockDetectionState.Incomplete(subdefintion: b, substate: s1)
+					let	sd	=	Subdata(definition: Unowned1(b), state: s1)
+					self	=	MultiblockDetectionState.Incomplete(subdata: sd)
 					return	//	Exit early.
 					
 				case .Complete:
-					self	=	MultiblockDetectionState.Complete(subdefintion: b, substate: s1)
+					let	sd	=	Subdata(definition: Unowned1(b), state: s1)
+					self	=	MultiblockDetectionState.Complete(subdata: sd)
 					return	//	Exit early.
 				}
 			}
 			self	=	MultiblockDetectionState.None(position: s.position.successor())	//	Advance position if nothing has been detected.
 			
 		case .Incomplete(let s):
-			someStep(s.subdefintion, substate: s.substate, data: data)
+			someStepOpt(s, data: data)
 			
 		case .Complete(let s):
-			someStep(s.subdefintion, substate: s.substate, data: data)
+			someStepOpt(s, data: data)
 		}
 	}
-	mutating func stepOpt1(definition:Unmanaged<MultiblockDefinition>, data:Unmanaged<CodeData>) {
-		assert(selection.endIndex < data.takeUnretainedValue().utf16.endIndex)
-		
-		switch self {
-		case .None(let s):
-//			for i in 0..<definition.blocks.count {
-//				unowned let	b	=	definition.blocks[i]
-////			}
-			for b in definition.takeUnretainedValue().blocks {
-				var	s1	=	BlockDetectionState(mode: BlockDetectionState.Mode.None, selection: s.position..<s.position)
-				let	b1	=	Unmanaged<BlockDefinition>.passUnretained(b)
-				s1.stepOpt1(b1, data: data)
-				switch s1.mode {
-				case .None:
-					assert(s1.selection.startIndex == s1.selection.endIndex)
-					//	No change on position and retry with another detector.
-					
-				case .Incomplete:
-					self	=	MultiblockDetectionState.Incomplete(subdefintion: b, substate: s1)
-					return	//	Exit early.
-					
-				case .Complete:
-					self	=	MultiblockDetectionState.Complete(subdefintion: b, substate: s1)
-					return	//	Exit early.
-				}
-			}
-			self	=	MultiblockDetectionState.None(position: s.position.successor())	//	Advance position if nothing has been detected.
-			
-		case .Incomplete(let s):
-			let	b1	=	Unmanaged<BlockDefinition>.passUnretained(s.subdefintion)
-			someStepOpt1(b1, substate: s.substate, data: data)
-			
-		case .Complete(let s):
-			let	b1	=	Unmanaged<BlockDefinition>.passUnretained(s.subdefintion)
-			someStepOpt1(b1, substate: s.substate, data: data)
-		}
-	}
-
-	private mutating func someStep(subdefinition:BlockDefinition, substate:BlockDetectionState, data:CodeData) {
-		var	s1	=	substate
-		s1.step(subdefinition, data: data)
+//	private mutating func someStep(subdata:Subdata, data:CodeData) {
+//		self.someStepOpt(subdata, data: Unowned1(data))
+//	}
+	private mutating func someStepOpt(subdata:Subdata, data:Unowned1<CodeData>) {
+		var	s1	=	subdata.state
+		s1.stepOpt(subdata.definition, data: data)
 		
 		switch s1.mode {
 		case .None:
@@ -125,26 +98,12 @@ enum MultiblockDetectionState {
 			self	=	MultiblockDetectionState.None(position: s1.selection.startIndex)
 			
 		case .Incomplete:
-			self	=	MultiblockDetectionState.Incomplete(subdefintion: subdefinition, substate: s1)
+			let	sd	=	Subdata(definition: subdata.definition, state: s1)
+			self	=	MultiblockDetectionState.Incomplete(subdata: sd)
 			
 		case .Complete:
-			self	=	MultiblockDetectionState.Complete(subdefintion: subdefinition, substate: s1)
-		}
-	}
-	private mutating func someStepOpt1(subdefinition:Unmanaged<BlockDefinition>, substate:BlockDetectionState, data:Unmanaged<CodeData>) {
-		var	s1	=	substate
-		s1.stepOpt1(subdefinition, data: data)
-		
-		switch s1.mode {
-		case .None:
-			assert(s1.selection.startIndex == s1.selection.endIndex)
-			self	=	MultiblockDetectionState.None(position: s1.selection.startIndex)
-			
-		case .Incomplete:
-			self	=	MultiblockDetectionState.Incomplete(subdefintion: subdefinition.takeRetainedValue(), substate: s1)
-			
-		case .Complete:
-			self	=	MultiblockDetectionState.Complete(subdefintion: subdefinition.takeRetainedValue(), substate: s1)
+			let	sd	=	Subdata(definition: subdata.definition, state: s1)
+			self	=	MultiblockDetectionState.Complete(subdata: sd)
 		}
 	}
 
@@ -395,9 +354,9 @@ extension MultiblockDetectionState: Printable {
 		case .None(let s):
 			return	""
 		case .Incomplete(let s):
-			return	s.substate.selectionInDataForTest(data)
+			return	s.subdata.state.selectionInDataForTest(data)
 		case .Complete(let s):
-			return	s.substate.selectionInDataForTest(data)
+			return	s.subdata.state.selectionInDataForTest(data)
 		}
 	}
 	func restInDataForTest(data:CodeData) -> String {
@@ -405,9 +364,9 @@ extension MultiblockDetectionState: Printable {
 		case .None(let s):
 			return	String(data.substringWithUTF16Range(s.position..<data.utf16.endIndex))
 		case .Incomplete(let s):
-			return	s.substate.restInDataForTest(data)
+			return	s.subdata.state.restInDataForTest(data)
 		case .Complete(let s):
-			return	s.substate.restInDataForTest(data)
+			return	s.subdata.state.restInDataForTest(data)
 		}
 	}
 }

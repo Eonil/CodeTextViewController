@@ -9,7 +9,7 @@
 import Foundation
 import AppKit
 
-final class Processor1: BlockDetectionProcessorDelegate {
+final class Processor1: BlockDetectionProcessorReaction {
 	init(targetString:NSMutableAttributedString) {
 		self.targetString	=	targetString
 	}
@@ -38,9 +38,9 @@ let	s	=	MultiblockDetectionState.None(position: 0)
 let	del	=	Processor1(targetString: a)
 let	p	=	BlockDetectionProcessor<Processor1>(definition: def, state: s, data: d)
 
-p.delegate	=	del
+let	de1	=	Unmanaged<Processor1>.passUnretained(del)
 while p.available {
-	p.step()
+	p.stepOpt(de1)
 }
 
 println()

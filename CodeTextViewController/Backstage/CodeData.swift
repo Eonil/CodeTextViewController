@@ -72,7 +72,6 @@ extension CodeData {
 		if availableLen < stringLen {
 			return	false
 		}
-		
 		for i in 0..<stringLen {
 			let	c1	=	string.utf16[i]
 			let	c2	=	targetNSMutableStringRef.characterAtIndex(index+i)
@@ -83,7 +82,7 @@ extension CodeData {
 		return	true
 	}
 	
-
+	
 	///	Optimised to avoid conversion as much as possible.
 	func hasPrefixAtUTF16Index(string:String , index:UTF16Index) -> Bool {
 		let	stringLen		=	string.utf16.endIndex

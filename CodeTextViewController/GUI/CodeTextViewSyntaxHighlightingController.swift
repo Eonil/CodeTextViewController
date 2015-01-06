@@ -15,7 +15,7 @@ import Cocoa
 
 
 ///	Performs incremental syntax-highlighting processing.
-class CodeTextViewSyntaxHighlightingController: BlockDetectionProcessorDelegate {
+class CodeTextViewSyntaxHighlightingController: BlockDetectionProcessorReaction {
 	init(target:NSTextStorage, view:NSTextView) {
 		self.text				=	target
 		self.view				=	view
