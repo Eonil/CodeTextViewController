@@ -11,6 +11,7 @@ import AppKit
 
 
 protocol SyntaxHighlightingControllerDelegate: class {
+	func syntaxHighlightingWantsDisplayUpdate()
 	func processingWillStart()
 	func processingDidFinish()
 }
@@ -52,6 +53,7 @@ class SyntaxHighlightingController: SyntaxHighlightingProtocol {
 		latestCancellation?.flag	=	true
 		latestCancellation			=	nil
 		delegate?.processingDidFinish()
+		delegate?.syntaxHighlightingWantsDisplayUpdate()
 	}
 	
 	
@@ -86,6 +88,7 @@ class SyntaxHighlightingController: SyntaxHighlightingProtocol {
 				break
 			}
 		}
+		delegate?.syntaxHighlightingWantsDisplayUpdate()
 		
 		if mode == Mode.Processing {
 			dispatchMain { [weak self] in
@@ -108,17 +111,16 @@ private final class Reactor: BlockDetectionProcessorReaction {
 		self.owner	=	owner
 	}
 	func onBlockNone(range: UTF16Range) {
-		if range.endIndex - range.startIndex > 0 {
-			println("OK!")
-		}
+		owner.target.addAttribute(NSForegroundColorAttributeName, value: NSColor.blueColor(), range: NSRange.fromUTF16Range(range))
+		owner.target.addAttribute(NSBackgroundColorAttributeName, value: NSColor.grayColor(), range: NSRange.fromUTF16Range(range))
+	}
+	func onBlockIncomplete(range: UTF16Range) {
 		owner.target.addAttribute(NSForegroundColorAttributeName, value: NSColor.redColor(), range: NSRange.fromUTF16Range(range))
 		owner.target.addAttribute(NSBackgroundColorAttributeName, value: NSColor.blackColor(), range: NSRange.fromUTF16Range(range))
 	}
-	func onBlockIncomplete(range: UTF16Range) {
-		
-	}
 	func onBlockComplete(range: UTF16Range) {
 		owner.target.addAttribute(NSForegroundColorAttributeName, value: NSColor.greenColor(), range: NSRange.fromUTF16Range(range))
+		owner.target.addAttribute(NSBackgroundColorAttributeName, value: NSColor.yellowColor(), range: NSRange.fromUTF16Range(range))
 	}
 }
 

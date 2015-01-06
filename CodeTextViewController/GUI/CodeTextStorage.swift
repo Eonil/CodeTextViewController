@@ -51,6 +51,11 @@ extension CodeTextStorage {
 	}
 	
 	override func attributesAtIndex(location: Int, effectiveRange range: NSRangePointer) -> [NSObject : AnyObject] {
+		//	Ah fucking Apple.
+		if location > s.length {
+			return	[:]
+		}
+		
 		return	s.attributesAtIndex(location, effectiveRange: range)
 	}
 	

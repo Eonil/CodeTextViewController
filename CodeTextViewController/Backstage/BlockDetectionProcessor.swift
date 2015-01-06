@@ -62,7 +62,7 @@ class BlockDetectionProcessor<T:BlockDetectionProcessorReaction> {
 		}
 		
 //		checkpoints	=	[]
-//		state		=	MultiblockDetectionState.None(position: 0)
+//		state		=	MultiblockDetectionState.none(selection: 0..<0)
 	}
 	func step(reactions:T) {
 		self.stepOpt(Unmanaged<T>.passUnretained(reactions))

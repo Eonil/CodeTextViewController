@@ -17,13 +17,15 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTextStorageDelegate, CodeT
 	
 	var	sh	:	SyntaxHighlightingController?
 	
+	func syntaxHighlightingWantsDisplayUpdate() {
+		let	r	=	NSRange(location: 0, length: vc.codeTextViewController.codeTextStorage.length)
+		vc.codeTextViewController.codeTextView.needsDisplay	=	true
+		vc.codeTextViewController.codeTextView.displayIfNeeded()
+	}
 	func processingWillStart() {
 		
 	}
 	func processingDidFinish() {
-		let	r	=	NSRange(location: 0, length: vc.codeTextViewController.codeTextStorage.length)
-		vc.codeTextViewController.codeTextView.needsDisplay	=	true
-		vc.codeTextViewController.codeTextView.displayIfNeeded()
 	}
 	func codeTextStorageShouldProcessCharacterEditing(sender: CodeTextStorage, range: NSRange) {
 		if sh == nil {
@@ -40,9 +42,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTextStorageDelegate, CodeT
 	func applicationDidFinishLaunching(aNotification: NSNotification) {
 		window.contentView	=	vc.scrollView
 		
-//		let	p	=	NSBundle.mainBundle().pathForResource("test-example-50kb", ofType: "rs")!
+		let	p	=	NSBundle.mainBundle().pathForResource("test-example-50kb", ofType: "rs")!
 //		let	p	=	NSBundle.mainBundle().pathForResource("test-example-1kb", ofType: "rs")!
-		let	p	=	NSBundle.mainBundle().pathForResource("test-example", ofType: "rs")!
+//		let	p	=	NSBundle.mainBundle().pathForResource("test-example", ofType: "rs")!
 		let	s	=	NSString(contentsOfFile: p, encoding: NSUTF8StringEncoding, error: nil)!
 		vc.codeTextViewController.codeTextView.typingAttributes	=	[
 			NSForegroundColorAttributeName:	NSColor.redColor(),
