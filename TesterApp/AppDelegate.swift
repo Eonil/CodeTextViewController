@@ -20,12 +20,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTextStorageDelegate, CodeT
 	func syntaxHighlightingWantsDisplayUpdate() {
 		let	r	=	NSRange(location: 0, length: vc.codeTextViewController.codeTextStorage.length)
 		vc.codeTextViewController.codeTextView.needsDisplay	=	true
-//		vc.codeTextViewController.codeTextView.displayIfNeeded()
-	}
-	func processingWillStart() {
-		
-	}
-	func processingDidFinish() {
 	}
 	func codeTextStorageShouldProcessCharacterEditing(sender: CodeTextStorage, range: NSRange) {
 		if sh == nil {
