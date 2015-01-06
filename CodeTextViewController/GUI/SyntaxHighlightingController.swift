@@ -111,18 +111,33 @@ private final class Reactor: BlockDetectionProcessorReaction {
 		self.owner	=	owner
 	}
 	func onBlockNone(range: UTF16Range) {
-		owner.target.addAttribute(NSForegroundColorAttributeName, value: NSColor.blueColor(), range: NSRange.fromUTF16Range(range))
-		owner.target.addAttribute(NSBackgroundColorAttributeName, value: NSColor.grayColor(), range: NSRange.fromUTF16Range(range))
+		owner.target.addAttribute(NSForegroundColorAttributeName, value: NSColor.blackColor(), range: NSRange.fromUTF16Range(range))
 	}
 	func onBlockIncomplete(range: UTF16Range) {
-		owner.target.addAttribute(NSForegroundColorAttributeName, value: NSColor.redColor(), range: NSRange.fromUTF16Range(range))
-		owner.target.addAttribute(NSBackgroundColorAttributeName, value: NSColor.blackColor(), range: NSRange.fromUTF16Range(range))
+		owner.target.addAttribute(NSForegroundColorAttributeName, value: NSColor.greenColor(), range: NSRange.fromUTF16Range(range))
 	}
 	func onBlockComplete(range: UTF16Range) {
 		owner.target.addAttribute(NSForegroundColorAttributeName, value: NSColor.greenColor(), range: NSRange.fromUTF16Range(range))
-		owner.target.addAttribute(NSBackgroundColorAttributeName, value: NSColor.yellowColor(), range: NSRange.fromUTF16Range(range))
 	}
 }
+//private final class Reactor: BlockDetectionProcessorReaction {
+//	unowned let	owner:SyntaxHighlightingController
+//	init(owner:SyntaxHighlightingController) {
+//		self.owner	=	owner
+//	}
+//	func onBlockNone(range: UTF16Range) {
+//		owner.target.addAttribute(NSForegroundColorAttributeName, value: NSColor.blueColor(), range: NSRange.fromUTF16Range(range))
+//		owner.target.addAttribute(NSBackgroundColorAttributeName, value: NSColor.grayColor(), range: NSRange.fromUTF16Range(range))
+//	}
+//	func onBlockIncomplete(range: UTF16Range) {
+//		owner.target.addAttribute(NSForegroundColorAttributeName, value: NSColor.redColor(), range: NSRange.fromUTF16Range(range))
+//		owner.target.addAttribute(NSBackgroundColorAttributeName, value: NSColor.blackColor(), range: NSRange.fromUTF16Range(range))
+//	}
+//	func onBlockComplete(range: UTF16Range) {
+//		owner.target.addAttribute(NSForegroundColorAttributeName, value: NSColor.greenColor(), range: NSRange.fromUTF16Range(range))
+//		owner.target.addAttribute(NSBackgroundColorAttributeName, value: NSColor.yellowColor(), range: NSRange.fromUTF16Range(range))
+//	}
+//}
 
 
 

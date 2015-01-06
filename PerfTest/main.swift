@@ -34,7 +34,7 @@ let	def	=	MultiblockDefinition(blocks: [
 let	src	=	String(contentsOfFile: "/Users/Eonil/Workshop/Sandbox3/CodeTextViewController/TesterApp/test-example-5000kb.rs", encoding: NSUTF8StringEncoding, error: nil)!
 let	a	=	NSMutableAttributedString(string: src)
 let	d	=	CodeData(target: a)
-let	s	=	MultiblockDetectionState.None(position: 0)
+let	s	=	MultiblockDetectionState.none(selection: 0..<0)
 let	del	=	Processor1(targetString: a)
 let	p	=	BlockDetectionProcessor<Processor1>(definition: def, state: s, data: d)
 
