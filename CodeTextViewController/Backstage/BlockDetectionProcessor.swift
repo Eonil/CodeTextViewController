@@ -54,11 +54,11 @@ class BlockDetectionProcessor<T:BlockDetectionProcessorReaction> {
 		//	To deal with this, measure the location of the indexes/ranges and re-create them from the
 		//	location for the new string.
 		//
-		if let p = binarySearchForIndexOfSmallestValueEqualToOrGreaterThanValue(checkpoints, MultiblockDetectionState.None(position: index), 0..<checkpoints.count) {
+		if let p = binarySearchForIndexOfSmallestValueEqualToOrGreaterThanValue(checkpoints, MultiblockDetectionState.None(position: index..<index), 0..<checkpoints.count) {
 			checkpoints.removeRange(p..<checkpoints.count)
 			let	pos	=	p == 0 ? data.utf16.startIndex : checkpoints[p-1].utf16StartIndex
 			
-			state	=	MultiblockDetectionState.None(position: pos)
+			state	=	MultiblockDetectionState.None(position: pos..<pos)
 		}
 		
 //		checkpoints	=	[]
@@ -69,12 +69,15 @@ class BlockDetectionProcessor<T:BlockDetectionProcessorReaction> {
 	}
 	func stepOpt(reactions:Unmanaged<T>) {
 		assert(available)
+//		if state.selection.startIndex % 1000 == 0 {
+//			println(state.selection)
+//		}
 		
 		state.step(definition, data:data)
 		
 		switch state {
 		case .None(let s):
-			reactions.takeUnretainedValue().onBlockNone(UTF16Range(start: s.position, end: s.position))
+			reactions.takeUnretainedValue().onBlockNone(s.position)
 			
 		case .Incomplete(let s):
 			reactions.takeUnretainedValue().onBlockIncomplete(s.subdata.state.selection)
@@ -124,7 +127,7 @@ extension MultiblockDetectionState: Comparable {
 		get {
 			switch self {
 			case .None(let s):
-				return	s.position
+				return	s.position.startIndex
 			case .Incomplete(let s):
 				return	s.subdata.state.utf16StartIndex
 			case .Complete(let s):
@@ -316,7 +319,7 @@ private func testSyntax1<T:BlockDetectionProcessorReaction>(text:NSMutableAttrib
 		BlockDefinition(startMark: "/*", endMark: "*/"),
 		BlockDefinition(startMark: "//", endMark: "\n"),
 		])
-	let	s	=	MultiblockDetectionState.None(position: text.string.utf16.startIndex)
+	let	s	=	MultiblockDetectionState.None(position: text.string.utf16.startIndex..<text.string.utf16.startIndex)
 	let	d	=	CodeData(target: text)
 	let	sh	=	BlockDetectionProcessor<T>(definition: def, state: s, data: d)
 	return	sh

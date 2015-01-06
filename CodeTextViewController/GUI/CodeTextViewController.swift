@@ -15,15 +15,15 @@ import AppKit
 ///	This also owns the text-view.
 ///
 class CodeTextViewController: NSViewController {
-	private lazy var	_codeTextStorage	=	NSTextStorage()
-//	private lazy var	_codeTextStorage	=	CodeTextStorage()
+//	private lazy var	_codeTextStorage	=	NSTextStorage()
+	private lazy var	_codeTextStorage	=	CodeTextStorage()
 }
 
 
 
 ///	MARK:	Concrete type accessors.
 extension CodeTextViewController {
-	var codeTextStorage:NSTextStorage {
+	var codeTextStorage:CodeTextStorage {
 		get {
 			return	_codeTextStorage
 		}

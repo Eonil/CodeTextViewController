@@ -32,21 +32,21 @@ import Foundation
 ///
 ///	Example states.
 ///
-///		0	---		`None`.
+///		0	---		`None(0..<0)`.
 ///
-///		1	---		First `None`, second `Incomplete` with selection of length 2.
+///		1	---		First `None(0..<1)`, second `Incomplete(1..<3)`.
 ///			'/'
 ///		2	---		No state. Detector skips start mark at once.
 ///			'*'
-///		3	---		`Incomplete` with `1..<3` range.
+///		3	---		`Incomplete(1..<3)` range.
 ///			A
-///		4	---		`Incomplete` with `1..<4` range.
+///		4	---		`Incomplete(1..<4)` range.
 ///			'*'
 ///		5	---		No state. Detector skips end mark at once.
 ///			'/'
-///		6	---		First `Complete` with `1..<6` range, second `None`. Second phase will not happend at the end of data.
+///		6	---		First `Complete(1..<6)` range, second `None(6..<6)`. Second phase will not happend at the end of data.
 ///
-///		7	---		`None` continues.
+///		7	---		`None(6..<7)` continues.
 ///
 ///
 struct BlockDetectionState {
@@ -64,8 +64,7 @@ struct BlockDetectionState {
 		
 		switch mode {
 		case .None:
-			assert(selection.startIndex == selection.endIndex)
-			let	p	=	selection.startIndex
+			let	p	=	selection.endIndex
 			let	ok	=	data.hasPrefixAtUTF16Index(definition.startMark, index: p)
 			if ok {
 				let	p1		=	advance(p, definition.startMark.utf16.endIndex)
@@ -75,7 +74,7 @@ struct BlockDetectionState {
 			} else {
 				let	p1		=	p.successor()
 				mode		=	Mode.None
-				selection	=	p1..<p1
+				selection	=	p..<p1
 			}
 			
 		case .Incomplete:
@@ -200,10 +199,10 @@ extension UnitTest {
 		println(s)
 		println(s.selectionInDataForTest(d))
 		println(s.restInDataForTest(d))
-		assert(s.selectionInDataForTest(d) == "")
+		assert(s.selectionInDataForTest(d) == "D")
 		assert(s.restInDataForTest(d) == "")
 		assert(s.mode == .None)
-		assert(s.selection == p.successor().successor().successor().successor()..<p.successor().successor().successor().successor())
+		assert(s.selection == p.successor().successor().successor()..<p.successor().successor().successor().successor())
 	}
 	private static func test2() {
 		var	d	=	CodeData(target: NSMutableAttributedString(string: "abc/*def*/ghi"))
@@ -249,17 +248,17 @@ extension UnitTest {
 		
 		s.step(def, data: d)
 		assert(s.isNone())
-		assert(s.selectionInDataForTest(d) == "")
+		assert(s.selectionInDataForTest(d) == "g")
 		assert(s.restInDataForTest(d) == "hi")
 		
 		s.step(def, data: d)
 		assert(s.isNone())
-		assert(s.selectionInDataForTest(d) == "")
+		assert(s.selectionInDataForTest(d) == "h")
 		assert(s.restInDataForTest(d) == "i")
 		
 		s.step(def, data: d)
 		assert(s.isNone())
-		assert(s.selectionInDataForTest(d) == "")
+		assert(s.selectionInDataForTest(d) == "i")
 		assert(s.restInDataForTest(d) == "")
 	}
 	private static func test3IncompleteFragment() {

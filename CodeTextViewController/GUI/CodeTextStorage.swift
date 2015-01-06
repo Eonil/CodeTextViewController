@@ -10,8 +10,25 @@ import Foundation
 import AppKit
 
 
+
+
+protocol CodeTextStorageDelegate: NSTextStorageDelegate {
+	func codeTextStorageShouldProcessCharacterEditing(sender:CodeTextStorage, range:NSRange)
+}
+
 ///	Ignores all per-character styling attributes.
 class CodeTextStorage: NSTextStorage {
+	
+	weak var codeTextStorageDelegate:CodeTextStorageDelegate?
+	
+	///	Provides internal text storage.
+	///	Editing this object will change the text attributes but will not cause any layout.
+	var text:NSMutableAttributedString {
+		get {
+			return	s
+		}
+	}
+	
 	///	Must be `NSTextStorage` class. No `NSMutableAttributedString`.
 	///	`NSMutableAttributedString` class doesn't seem to be optimised for random positional editing
 	///	and makes editing slow down. `NSTextStorage` doesn't have such issue.
@@ -47,6 +64,18 @@ extension CodeTextStorage {
 		s.setAttributes(attrs, range: range)
 		self.edited(Int(NSTextStorageEditedOptions.Attributes.rawValue), range: range, changeInLength: 0)
 	}
+	
+	
+	
+	override func processEditing() {
+		let	m	=	self.editedMask
+		if (UInt(m) & NSTextStorageEditedOptions.Characters.rawValue) == NSTextStorageEditedOptions.Characters.rawValue {
+			let	r	=	self.editedRange
+			codeTextStorageDelegate?.codeTextStorageShouldProcessCharacterEditing(self, range: r)
+		}
+		super.processEditing()
+	}
+
 }
 
 

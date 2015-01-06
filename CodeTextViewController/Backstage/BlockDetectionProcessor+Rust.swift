@@ -15,7 +15,7 @@ extension BlockDetectionProcessor {
 			BlockDefinition(startMark: "/*", endMark: "*/"),
 			BlockDefinition(startMark: "//", endMark: "\n"),
 			])
-		let	s	=	MultiblockDetectionState.None(position: text.string.utf16.startIndex)
+		let	s	=	MultiblockDetectionState.None(position: text.string.utf16.startIndex..<text.string.utf16.startIndex)
 		let	d	=	CodeData(target: text)
 		let	sh	=	BlockDetectionProcessor(definition: def, state: s, data: d)
 		return	sh
