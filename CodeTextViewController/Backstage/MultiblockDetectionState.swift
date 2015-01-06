@@ -16,7 +16,7 @@ import Foundation
 ///
 enum MultiblockDetectionState {
 	struct Subdata {
-		let	definition:Unowned1<BlockDefinition>
+		let	definition:BlockDefinition
 		let	state:BlockDetectionState
 	}
 	
@@ -30,9 +30,9 @@ enum MultiblockDetectionState {
 			case .None(let s):
 				return	nil
 			case .Incomplete(let s):
-				return	s.subdata.definition.ref.takeUnretainedValue()
+				return	s.subdata.definition
 			case .Complete(let s):
-				return	s.subdata.definition.ref.takeUnretainedValue()
+				return	s.subdata.definition
 			}
 		}
 	}
@@ -49,29 +49,25 @@ enum MultiblockDetectionState {
 		}
 	}
 	mutating func step(definition:MultiblockDefinition, data:CodeData) {
-		self.stepOpt(Unowned1(definition), data: Unowned1(data))
-	}
-	mutating func stepOpt(definition:Unowned1<MultiblockDefinition>, data:Unowned1<CodeData>) {
-		assert(selection.endIndex < data.ref.takeUnretainedValue().utf16.endIndex)
+		assert(selection.endIndex < data.utf16.endIndex)
 		
 		switch self {
 		case .None(let s):
-			for b1 in definition.ref.takeUnretainedValue().blockUnownedReferences {
-				unowned let	b	=	b1.ref.takeUnretainedValue()
+			for b in definition.blocks {
 				var	s1	=	BlockDetectionState(mode: BlockDetectionState.Mode.None, selection: s.position..<s.position)
-				s1.stepOpt(Unowned1(b), data: data)
+				s1.step(b, data: data)
 				switch s1.mode {
 				case .None:
 					assert(s1.selection.startIndex == s1.selection.endIndex)
 					//	No change on position and retry with another detector.
 					
 				case .Incomplete:
-					let	sd	=	Subdata(definition: Unowned1(b), state: s1)
+					let	sd	=	Subdata(definition: b, state: s1)
 					self	=	MultiblockDetectionState.Incomplete(subdata: sd)
 					return	//	Exit early.
 					
 				case .Complete:
-					let	sd	=	Subdata(definition: Unowned1(b), state: s1)
+					let	sd	=	Subdata(definition: b, state: s1)
 					self	=	MultiblockDetectionState.Complete(subdata: sd)
 					return	//	Exit early.
 				}
@@ -79,18 +75,15 @@ enum MultiblockDetectionState {
 			self	=	MultiblockDetectionState.None(position: s.position.successor())	//	Advance position if nothing has been detected.
 			
 		case .Incomplete(let s):
-			someStepOpt(s, data: data)
+			someStep(s, data: data)
 			
 		case .Complete(let s):
-			someStepOpt(s, data: data)
+			someStep(s, data: data)
 		}
 	}
-//	private mutating func someStep(subdata:Subdata, data:CodeData) {
-//		self.someStepOpt(subdata, data: Unowned1(data))
-//	}
-	private mutating func someStepOpt(subdata:Subdata, data:Unowned1<CodeData>) {
+	private mutating func someStep(subdata:Subdata, data:CodeData) {
 		var	s1	=	subdata.state
-		s1.stepOpt(subdata.definition, data: data)
+		s1.step(subdata.definition, data: data)
 		
 		switch s1.mode {
 		case .None:

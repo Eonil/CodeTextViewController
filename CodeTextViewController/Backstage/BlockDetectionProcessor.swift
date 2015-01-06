@@ -70,7 +70,7 @@ class BlockDetectionProcessor<T:BlockDetectionProcessorReaction> {
 	func stepOpt(reactions:Unmanaged<T>) {
 		assert(available)
 		
-		state.stepOpt(Unowned1(definition), data:Unowned1(data))
+		state.step(definition, data:data)
 		
 		switch state {
 		case .None(let s):
