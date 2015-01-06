@@ -14,97 +14,78 @@ import Foundation
 ///	Mainly designed to provide incremental tokeniser.
 ///
 ///
-enum MultiblockDetectionState {
-	struct Subdata {
-		let	definition:BlockDefinition
-		let	state:BlockDetectionState
-	}
+struct MultiblockDetectionState {
+	var	substate:BlockDetectionState
+	var	subdefinition:BlockDefinition?
 	
-	case None(position:UTF16Range)
-	case Incomplete(subdata:Subdata)
-	case Complete(subdata:Subdata)
-	
-	var deinition:BlockDefinition? {
+	var mode:BlockDetectionState.Mode {
 		get {
-			switch self {
-			case .None(let s):
-				return	nil
-			case .Incomplete(let s):
-				return	s.subdata.definition
-			case .Complete(let s):
-				return	s.subdata.definition
-			}
+			return	substate.mode
 		}
 	}
 	var selection:UTF16Range {
 		get {
-			switch self {
-			case .None(let s):
-				return	s.position
-			case .Incomplete(let s):
-				return	s.subdata.state.selection
-			case .Complete(let s):
-				return	s.subdata.state.selection
-			}
+			return	substate.selection
 		}
 	}
 	mutating func step(definition:MultiblockDefinition, data:CodeData) {
 		assert(selection.endIndex < data.utf16.endIndex)
 		
-		switch self {
-		case .None(let s):
+		switch mode {
+		case .None:
 			for b in definition.blocks {
-				var	s1	=	BlockDetectionState(mode: BlockDetectionState.Mode.None, selection: s.position)
+				var	s1	=	substate
 				s1.step(b, data: data)
 				switch s1.mode {
 				case .None:
 					break
 					//	No change on position and retry with another detector.
 					
-				case .Incomplete:
-					let	sd	=	Subdata(definition: b, state: s1)
-					self	=	MultiblockDetectionState.Incomplete(subdata: sd)
-					return	//	Exit early.
-					
-				case .Complete:
-					let	sd	=	Subdata(definition: b, state: s1)
-					self	=	MultiblockDetectionState.Complete(subdata: sd)
+				case .Incomplete:	fallthrough
+				case .Complete:		fallthrough
+				default:
+					substate	=	s1
+					subdefinition	=	b
 					return	//	Exit early.
 				}
 			}
-			var	sp1	=	s.position
-			sp1.startIndex++
-			sp1.endIndex++
-			self	=	MultiblockDetectionState.None(position: sp1)	//	Advance position if nothing has been detected.
 			
-		case .Incomplete(let s):
-			someStep(s, data: data)
+			//	Advance position if nothing has been detected.
+			substate.selection.startIndex	=	substate.selection.endIndex
+			substate.selection.endIndex		=	substate.selection.startIndex.successor()
 			
-		case .Complete(let s):
-			someStep(s, data: data)
+		case .Incomplete:	fallthrough
+		case .Complete:		fallthrough
+		default:
+			substate.step(subdefinition!, data: data)
 		}
 	}
-	private mutating func someStep(subdata:Subdata, data:CodeData) {
-		var	s1	=	subdata.state
-		s1.step(subdata.definition, data: data)
-		
-		switch s1.mode {
-		case .None:
-			assert(s1.selection.startIndex == s1.selection.endIndex)
-			self	=	MultiblockDetectionState.None(position: s1.selection)
-			
-		case .Incomplete:
-			let	sd	=	Subdata(definition: subdata.definition, state: s1)
-			self	=	MultiblockDetectionState.Incomplete(subdata: sd)
-			
-		case .Complete:
-			let	sd	=	Subdata(definition: subdata.definition, state: s1)
-			self	=	MultiblockDetectionState.Complete(subdata: sd)
-		}
-	}
+//	private mutating func someStep(subdata:Subdata, data:CodeData) {
+//		var	s1	=	subdata.state
+//		s1.step(subdata.definition, data: data)
+//		
+//		switch s1.mode {
+//		case .None:
+//			assert(s1.selection.startIndex == s1.selection.endIndex)
+//			self	=	MultiblockDetectionState.None(position: s1.selection)
+//			
+//		case .Incomplete:
+//			let	sd	=	Subdata(definition: subdata.definition, state: s1)
+//			self	=	MultiblockDetectionState.Incomplete(subdata: sd)
+//			
+//		case .Complete:
+//			let	sd	=	Subdata(definition: subdata.definition, state: s1)
+//			self	=	MultiblockDetectionState.Complete(subdata: sd)
+//		}
+//	}
 
 }
-
+extension MultiblockDetectionState {
+	static func none(#selection:UTF16Range) -> MultiblockDetectionState {
+		let	ss	=	BlockDetectionState(mode: BlockDetectionState.Mode.None, selection: selection)
+		return	MultiblockDetectionState(substate: ss, subdefinition: nil)
+	}
+}
 
 
 
@@ -157,7 +138,7 @@ extension UnitTest {
 			BlockDefinition(startMark: "[", endMark: "]"),
 			])
 		
-		var	s	=	MultiblockDetectionState.None(position: d.utf16.startIndex..<d.utf16.startIndex)
+		var	s	=	MultiblockDetectionState.none(selection: d.utf16.startIndex..<d.utf16.startIndex)
 		assert(s.selectionInDataForTest(d) == "")
 		assert(s.isNone())
 		
@@ -246,7 +227,7 @@ extension UnitTest {
 			BlockDefinition(startMark: "/*", endMark: "*/"),
 			])
 		
-		var	s	=	MultiblockDetectionState.None(position: d.utf16.startIndex..<d.utf16.startIndex)
+		var	s	=	MultiblockDetectionState.none(selection: d.utf16.startIndex..<d.utf16.startIndex)
 		
 		s.step(def, data: d)
 		assert(s.isNone())
@@ -280,7 +261,7 @@ extension UnitTest {
 			BlockDefinition(startMark: "//", endMark: "\n"),
 			])
 		
-		var	s	=	MultiblockDetectionState.None(position: d.utf16.startIndex..<d.utf16.startIndex)
+		var	s	=	MultiblockDetectionState.none(selection: d.utf16.startIndex..<d.utf16.startIndex)
 		
 		s.step(def, data: d)
 		assert(s.isIncomplete())
@@ -317,53 +298,30 @@ extension UnitTest {
 extension MultiblockDetectionState: Printable {
 	var description:String {
 		get {
-			switch self {
-			case .None(let s):
+			switch substate.mode {
+			case .None:
 				return	"None"
-			case .Incomplete(let s):
+			case .Incomplete:
 				return	"Incomplete"
-			case .Complete(let s):
+			case .Complete:
 				return	"Complete"
 			}
 		}
 	}
 	func isNone() -> Bool {
-		switch self {
-		case .None(let s):			return	true
-		default:					return	false
-		}
+		return	substate.mode	==	.None
 	}
 	func isIncomplete() -> Bool {
-		switch self {
-		case .Incomplete(let s):	return	true
-		default:					return	false
-		}
+		return	substate.mode	==	.Incomplete
 	}
 	func isComplete() -> Bool {
-		switch self {
-		case .Complete(let s):		return	true
-		default:					return	false
-		}
+		return	substate.mode	==	.Complete
 	}
 	func selectionInDataForTest(data:CodeData) -> String {
-		switch self {
-		case .None(let s):
-			return	""
-		case .Incomplete(let s):
-			return	s.subdata.state.selectionInDataForTest(data)
-		case .Complete(let s):
-			return	s.subdata.state.selectionInDataForTest(data)
-		}
+		return	substate.selectionInDataForTest(data)
 	}
 	func restInDataForTest(data:CodeData) -> String {
-		switch self {
-		case .None(let s):
-			return	String(data.substringWithUTF16Range(s.position.endIndex..<data.utf16.endIndex))
-		case .Incomplete(let s):
-			return	s.subdata.state.restInDataForTest(data)
-		case .Complete(let s):
-			return	s.subdata.state.restInDataForTest(data)
-		}
+		return	substate.restInDataForTest(data)
 	}
 }
 
