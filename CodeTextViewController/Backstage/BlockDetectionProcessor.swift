@@ -55,18 +55,16 @@ class BlockDetectionProcessor<T:BlockDetectionProcessorReaction> {
 		//
 		//	`MultiblockDetectionState` will be compared by its start index.
 		//
-		if let p = binarySearchForIndexOfLargestValueEqualToOrLessThanValue(checkpoints, sample, 0..<checkpoints.count) {
-			//	If last checkpoint block is including the editing point, it also need to be removed.
-			let	p1	=	checkpoints[p].selection.endIndex > index ? p : p+1
-			checkpoints.removeRange((p1)..<checkpoints.count)
-			
-			let	pos	=	p1 == 0 ? 0 : checkpoints[p1-1].selection.endIndex
-//			println("requested to invalidate at \(index), and invalidated at \(pos) \(data.substringWithUTF16Range(UTF16Range(start: pos, end: pos+4)))")
-			state	=	MultiblockDetectionState.none(selection: pos..<pos)
-		} else {
-			println("requested invalidation at non-token position. no need to invalidate.")
-			checkpoints	=	[]
+		let	r	=	binarySearchForRangeOfGreaterValues(checkpoints, 0..<checkpoints.count, sample)
+		checkpoints.removeRange(r)
+		if checkpoints.count == 0 {
+//			println("processor reset by invalidation")
 			state		=	MultiblockDetectionState.none(selection: 0..<0)
+		} else {
+			let	cp1	=	checkpoints.last!
+			let	pos	=	cp1.selection.endIndex > index ? cp1.selection.startIndex : cp1.selection.endIndex
+//			println("requested to invalidate at \(index), and invalidated to position \(pos)")
+			state	=	MultiblockDetectionState.none(selection: pos..<pos)
 		}
 	}
 	func step(reactions:T) {
@@ -74,9 +72,6 @@ class BlockDetectionProcessor<T:BlockDetectionProcessorReaction> {
 	}
 	func stepOpt(reactions:Unmanaged<T>) {
 		assert(available)
-//		if state.selection.startIndex % 1000 == 0 {
-//			println(state.selection)
-//		}
 		
 		state.step(definition, data:data)
 		
