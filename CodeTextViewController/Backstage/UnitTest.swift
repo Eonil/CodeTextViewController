@@ -10,7 +10,8 @@ import Foundation
 
 struct UnitTest {
 	static func runAll() {
-		testBinarySearch()
+		testNearestBinarySearch()
+//		testBinarySearch()
 		testCodeData()
 		testCursor()
 		testBlockDetection()

@@ -29,8 +29,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTextStorageDelegate, CodeT
 		if sh!.isProcessing {
 			sh!.stopProcessing()
 		}
-//		sh!.startProcessingFromUTF16Location(range.location)
-		sh!.startProcessingFromUTF16Location(0)
+		sh!.startProcessingFromUTF16Location(range.location)
 	}
 	
 	func applicationDidFinishLaunching(aNotification: NSNotification) {
