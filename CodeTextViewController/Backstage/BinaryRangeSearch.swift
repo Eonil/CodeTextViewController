@@ -1,5 +1,5 @@
 //
-//  BinarySearch+Nearest.swift
+//  BinaryRangeSearch.swift
 //  CodeTextViewController
 //
 //  Created by Hoon H. on 2014/12/29.
@@ -73,9 +73,6 @@ func binarySearchForRangeOfGreaterValues<C:CollectionType where C:Sliceable, C.I
 		if midvalue > value {
 			let	s1	=	scope.startIndex..<midpoint
 			let r1	=	binarySearchForRangeOfGreaterValues(collection, s1, value)
-			println("scope \(scope)")
-			println(midpoint)
-			println(r1)
 			assert(r1.endIndex == midpoint)
 			return	r1.startIndex..<scope.endIndex
 		} else {
