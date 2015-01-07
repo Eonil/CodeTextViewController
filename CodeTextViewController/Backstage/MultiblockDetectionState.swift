@@ -60,25 +60,6 @@ struct MultiblockDetectionState {
 			substate.step(subdefinition!, data: data)
 		}
 	}
-//	private mutating func someStep(subdata:Subdata, data:CodeData) {
-//		var	s1	=	subdata.state
-//		s1.step(subdata.definition, data: data)
-//		
-//		switch s1.mode {
-//		case .None:
-//			assert(s1.selection.startIndex == s1.selection.endIndex)
-//			self	=	MultiblockDetectionState.None(position: s1.selection)
-//			
-//		case .Incomplete:
-//			let	sd	=	Subdata(definition: subdata.definition, state: s1)
-//			self	=	MultiblockDetectionState.Incomplete(subdata: sd)
-//			
-//		case .Complete:
-//			let	sd	=	Subdata(definition: subdata.definition, state: s1)
-//			self	=	MultiblockDetectionState.Complete(subdata: sd)
-//		}
-//	}
-
 }
 extension MultiblockDetectionState {
 	static func none(#selection:UTF16Range) -> MultiblockDetectionState {

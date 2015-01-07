@@ -15,7 +15,6 @@ import AppKit
 ///	This also owns the text-view.
 ///
 class CodeTextViewController: NSViewController {
-//	private lazy var	_codeTextStorage	=	NSTextStorage()
 	private lazy var	_codeTextStorage	=	CodeTextStorage()
 }
 

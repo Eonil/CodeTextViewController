@@ -58,12 +58,10 @@ class BlockDetectionProcessor<T:BlockDetectionProcessorReaction> {
 		let	r	=	binarySearchForRangeOfGreaterValues(checkpoints, 0..<checkpoints.count, sample)
 		checkpoints.removeRange(r)
 		if checkpoints.count == 0 {
-//			println("processor reset by invalidation")
 			state		=	MultiblockDetectionState.none(selection: 0..<0)
 		} else {
 			let	cp1	=	checkpoints.last!
 			let	pos	=	cp1.selection.endIndex > index ? cp1.selection.startIndex : cp1.selection.endIndex
-//			println("requested to invalidate at \(index), and invalidated to position \(pos)")
 			state	=	MultiblockDetectionState.none(selection: pos..<pos)
 		}
 	}
@@ -109,6 +107,21 @@ class BlockDetectionProcessor<T:BlockDetectionProcessorReaction> {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ///	Comparison is based on `unicodeScalarValues.startIndex`.
 extension MultiblockDetectionState: Comparable {
 	var	utf16StartIndex:UTF16Index {
@@ -117,20 +130,6 @@ extension MultiblockDetectionState: Comparable {
 		}
 	}
 }
-
-///	Comparison is based on `unicodeScalarValues.startIndex`.
-extension BlockDetectionState: Comparable {
-	var	utf16StartIndex:UTF16Index {
-		get {
-			return	selection.startIndex
-		}
-	}
-}
-
-
-
-
-
 func < (left:MultiblockDetectionState, right:MultiblockDetectionState) -> Bool {
 	return	left.utf16StartIndex < right.utf16StartIndex
 }
@@ -149,57 +148,53 @@ func == (left:MultiblockDetectionState, right:MultiblockDetectionState) -> Bool 
 
 
 
-func < (left:BlockDetectionState, right:BlockDetectionState) -> Bool {
-	return	left.utf16StartIndex < right.utf16StartIndex
-}
-func > (left:BlockDetectionState, right:BlockDetectionState) -> Bool {
-	return	left.utf16StartIndex > right.utf16StartIndex
-}
-func <= (left:BlockDetectionState, right:BlockDetectionState) -> Bool {
-	return	left.utf16StartIndex <= right.utf16StartIndex
-}
-func >= (left:BlockDetectionState, right:BlockDetectionState) -> Bool {
-	return	left.utf16StartIndex >= right.utf16StartIndex
-}
-func == (left:BlockDetectionState, right:BlockDetectionState) -> Bool {
-	return	left.utf16StartIndex == right.utf16StartIndex
-}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//class CheckpointDatabase {
-//	var	pages	=	[] as [[Checkpoint]]
+/////	Comparison is based on `unicodeScalarValues.startIndex`.
+//extension BlockDetectionState: Comparable {
+//	var	utf16StartIndex:UTF16Index {
+//		get {
+//			return	selection.startIndex
+//		}
+//	}
 //}
-//
-//class Page {
-//	
+//func < (left:BlockDetectionState, right:BlockDetectionState) -> Bool {
+//	return	left.utf16StartIndex < right.utf16StartIndex
 //}
+//func > (left:BlockDetectionState, right:BlockDetectionState) -> Bool {
+//	return	left.utf16StartIndex > right.utf16StartIndex
+//}
+//func <= (left:BlockDetectionState, right:BlockDetectionState) -> Bool {
+//	return	left.utf16StartIndex <= right.utf16StartIndex
+//}
+//func >= (left:BlockDetectionState, right:BlockDetectionState) -> Bool {
+//	return	left.utf16StartIndex >= right.utf16StartIndex
+//}
+//func == (left:BlockDetectionState, right:BlockDetectionState) -> Bool {
+//	return	left.utf16StartIndex == right.utf16StartIndex
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

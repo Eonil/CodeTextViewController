@@ -12,10 +12,8 @@ import AppKit
 
 protocol SyntaxHighlightingControllerDelegate: class {
 	func syntaxHighlightingWantsDisplayUpdate()
-//	optional func processingWillStart()
-//	optional func processingDidFinish()
 }
-class SyntaxHighlightingController: SyntaxHighlightingProtocol {
+class SyntaxHighlightingController {
 	weak var delegate:SyntaxHighlightingControllerDelegate?
 	
 	init(target:NSMutableAttributedString) {

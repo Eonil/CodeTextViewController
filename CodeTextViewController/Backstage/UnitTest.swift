@@ -11,9 +11,7 @@ import Foundation
 struct UnitTest {
 	static func runAll() {
 		testNearestBinarySearch()
-//		testBinarySearch()
 		testCodeData()
-		testCursor()
 		testBlockDetection()
 		testMultiblockDetection()
 		testBlockDetectionController()

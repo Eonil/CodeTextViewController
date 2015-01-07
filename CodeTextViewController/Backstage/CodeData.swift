@@ -41,15 +41,10 @@ final class CodeData {
 
 
 
-//extension CodeData {
-//	///	Fixes current text to provide high performance read without internal conversion.
-//	func beginHighPerformanceImmutableReadSession() {
-//		
-//	}
-//	func endHighPerformanceImmutableReadSession() {
-//		
-//	}
-//}
+
+
+
+
 
 
 
@@ -58,12 +53,6 @@ extension CodeData {
 		let	r	=	NSRange(location: range.startIndex, length: range.endIndex - range.startIndex)
 		return	(target.string as NSString).substringWithRange(r)
 	}
-//	func substringFromUTF16Index(index:UTF16Index) -> String {
-//		return	(target.string as NSString).substringFromIndex(index)
-//	}
-//	func substringToUTF16Index(index:UTF16Index) -> String {
-//		return	(target.string as NSString).substringToIndex(index)
-//	}
 
 	///	Optimised to avoid conversion and RC as much as possible.
 	func hasPrefixAtUTF16IndexUnsafe(inout string:String , index:UTF16Index) -> Bool {
@@ -100,30 +89,6 @@ extension CodeData {
 		}
 		return	true
 	}
-	
-//	///	Optimised to avoid conversion as much as possible.
-//	func hasPrefixAtUTF16Index(mark:BlockMark, index:UTF16Index) -> Bool {
-//		let	availableLen	=	targetNSStringCache.length - index
-//		if availableLen < mark.string.utf16.endIndex {
-//			return	false
-//		}
-//		for i in 0..<mark.string.utf16.endIndex {
-//			let	c1	=	mark.string.utf16[i]
-//			let	c2	=	targetNSStringCache.characterAtIndex(index+i)
-//			if c1 != c2 {
-//				return	false
-//			}
-//		}
-//		return	true
-//		
-////		let	nss	=	targetNSStringCache
-////		if (nss.length - index) < string.utf16Count {
-////			return	false
-////		}
-////		let	r	=	NSRange(location: index, length: string.utf16Count)
-////		let	c	=	(target.string as NSString).compare(string, options: NSStringCompareOptions.allZeros, range: r)
-////		return	c == NSComparisonResult.OrderedSame
-//	}
 }
 
 
