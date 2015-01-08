@@ -13,9 +13,10 @@
 		451BB2661A5DE1E200C98B04 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451BB2621A5DE1E200C98B04 /* Utility.swift */; };
 		452A7DAD1A5638C30015BA0D /* test-example-5kb.rs in Resources */ = {isa = PBXBuildFile; fileRef = 452A7DAC1A5638C30015BA0D /* test-example-5kb.rs */; };
 		452A7DAF1A5638F00015BA0D /* test-example-1kb.rs in Resources */ = {isa = PBXBuildFile; fileRef = 452A7DAE1A5638F00015BA0D /* test-example-1kb.rs */; };
-		456770B71A5BE13000E99C0D /* SyntaxHighlightingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456770B61A5BE13000E99C0D /* SyntaxHighlightingController.swift */; };
-		456770B81A5BE13000E99C0D /* SyntaxHighlightingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456770B61A5BE13000E99C0D /* SyntaxHighlightingController.swift */; };
-		456770B91A5BE13000E99C0D /* SyntaxHighlightingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456770B61A5BE13000E99C0D /* SyntaxHighlightingController.swift */; };
+		454C3E291A5E219900BB0F40 /* text-example2-50kb.rs in Resources */ = {isa = PBXBuildFile; fileRef = 454C3E281A5E219900BB0F40 /* text-example2-50kb.rs */; };
+		456770B71A5BE13000E99C0D /* BlockColoringController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456770B61A5BE13000E99C0D /* BlockColoringController.swift */; };
+		456770B81A5BE13000E99C0D /* BlockColoringController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456770B61A5BE13000E99C0D /* BlockColoringController.swift */; };
+		456770B91A5BE13000E99C0D /* BlockColoringController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456770B61A5BE13000E99C0D /* BlockColoringController.swift */; };
 		456770BE1A5BE56C00E99C0D /* Dispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456770BD1A5BE56C00E99C0D /* Dispatch.swift */; };
 		456770BF1A5BE56C00E99C0D /* Dispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456770BD1A5BE56C00E99C0D /* Dispatch.swift */; };
 		456770C01A5BE56C00E99C0D /* Dispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456770BD1A5BE56C00E99C0D /* Dispatch.swift */; };
@@ -51,9 +52,9 @@
 		459BB4511A5264AB006C7E66 /* CodeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DD61A511BED00B156B2 /* CodeData.swift */; };
 		459BB4531A5264AB006C7E66 /* UnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DD31A51113600B156B2 /* UnitTest.swift */; };
 		459BB4541A5264AB006C7E66 /* BinaryRangeSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DAE1A5110A300B156B2 /* BinaryRangeSearch.swift */; };
+		45A1CCFC1A5E1C1F00A8AB6E /* text-example2-500kb.rs in Resources */ = {isa = PBXBuildFile; fileRef = 45A1CCF91A5E1AED00A8AB6E /* text-example2-500kb.rs */; };
 		45A243191A530F8200AD46E1 /* test-example-50kb.rs in Resources */ = {isa = PBXBuildFile; fileRef = 45A243161A530F8200AD46E1 /* test-example-50kb.rs */; };
 		45A2431A1A530F8200AD46E1 /* test-example-500kb.rs in Resources */ = {isa = PBXBuildFile; fileRef = 45A243171A530F8200AD46E1 /* test-example-500kb.rs */; };
-		45A2431B1A530F8200AD46E1 /* test-example-5000kb.rs in Resources */ = {isa = PBXBuildFile; fileRef = 45A243181A530F8200AD46E1 /* test-example-5000kb.rs */; };
 		45AD58791A514E4200786235 /* test-example.rs in Resources */ = {isa = PBXBuildFile; fileRef = 45AD58781A514E4200786235 /* test-example.rs */; };
 		45C01D531A510ED700B156B2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01D521A510ED700B156B2 /* main.swift */; };
 		45C01D6B1A510FCE00B156B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01D6A1A510FCE00B156B2 /* AppDelegate.swift */; };
@@ -126,7 +127,8 @@
 		451BB2621A5DE1E200C98B04 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		452A7DAC1A5638C30015BA0D /* test-example-5kb.rs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-example-5kb.rs"; sourceTree = "<group>"; };
 		452A7DAE1A5638F00015BA0D /* test-example-1kb.rs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-example-1kb.rs"; sourceTree = "<group>"; };
-		456770B61A5BE13000E99C0D /* SyntaxHighlightingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyntaxHighlightingController.swift; sourceTree = "<group>"; };
+		454C3E281A5E219900BB0F40 /* text-example2-50kb.rs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "text-example2-50kb.rs"; sourceTree = "<group>"; };
+		456770B61A5BE13000E99C0D /* BlockColoringController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockColoringController.swift; sourceTree = "<group>"; };
 		456770BD1A5BE56C00E99C0D /* Dispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatch.swift; sourceTree = "<group>"; };
 		4569C7B91A4DD10600979B72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4569C7BA1A4DD10600979B72 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -139,10 +141,9 @@
 		459BB4101A52521F006C7E66 /* MultiblockDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiblockDefinition.swift; sourceTree = "<group>"; };
 		459BB4431A5264A3006C7E66 /* PerfTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PerfTest; sourceTree = BUILT_PRODUCTS_DIR; };
 		459BB4451A5264A3006C7E66 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		459BB4561A526EE8006C7E66 /* Screen Shot 2014-12-30 at 02.25.37 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2014-12-30 at 02.25.37 PM.png"; sourceTree = "<group>"; };
+		45A1CCF91A5E1AED00A8AB6E /* text-example2-500kb.rs */ = {isa = PBXFileReference; lastKnownFileType = text; path = "text-example2-500kb.rs"; sourceTree = "<group>"; };
 		45A243161A530F8200AD46E1 /* test-example-50kb.rs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-example-50kb.rs"; sourceTree = "<group>"; };
 		45A243171A530F8200AD46E1 /* test-example-500kb.rs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-example-500kb.rs"; sourceTree = "<group>"; };
-		45A243181A530F8200AD46E1 /* test-example-5000kb.rs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-example-5000kb.rs"; sourceTree = "<group>"; };
 		45AD58781A514E4200786235 /* test-example.rs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-example.rs"; sourceTree = "<group>"; };
 		45C01D501A510ED700B156B2 /* UnitTests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = UnitTests; sourceTree = BUILT_PRODUCTS_DIR; };
 		45C01D521A510ED700B156B2 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -206,7 +207,6 @@
 			children = (
 				4569C7E41A4DF0ED00979B72 /* REPORT */,
 				4586BEA21A5208B90024FBE7 /* NOTE.md */,
-				459BB4561A526EE8006C7E66 /* Screen Shot 2014-12-30 at 02.25.37 PM.png */,
 				4569C7B71A4DD10600979B72 /* CodeTextViewController */,
 				45C01D891A510FFA00B156B2 /* CodeTextViewController */,
 				45C01D671A510FCE00B156B2 /* TesterApp */,
@@ -273,7 +273,8 @@
 				452A7DAC1A5638C30015BA0D /* test-example-5kb.rs */,
 				45A243161A530F8200AD46E1 /* test-example-50kb.rs */,
 				45A243171A530F8200AD46E1 /* test-example-500kb.rs */,
-				45A243181A530F8200AD46E1 /* test-example-5000kb.rs */,
+				454C3E281A5E219900BB0F40 /* text-example2-50kb.rs */,
+				45A1CCF91A5E1AED00A8AB6E /* text-example2-500kb.rs */,
 				45C01D6A1A510FCE00B156B2 /* AppDelegate.swift */,
 				45C01D6C1A510FCE00B156B2 /* Images.xcassets */,
 				45C01D6E1A510FCE00B156B2 /* MainMenu.xib */,
@@ -332,7 +333,7 @@
 				45C01DCA1A5110C500B156B2 /* CodeTextViewController.swift */,
 				45C01DC91A5110C500B156B2 /* CodeTextView.swift */,
 				45C01DC81A5110C500B156B2 /* CodeTextStorage.swift */,
-				456770B61A5BE13000E99C0D /* SyntaxHighlightingController.swift */,
+				456770B61A5BE13000E99C0D /* BlockColoringController.swift */,
 				456770BD1A5BE56C00E99C0D /* Dispatch.swift */,
 			);
 			path = GUI;
@@ -472,14 +473,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				454C3E291A5E219900BB0F40 /* text-example2-50kb.rs in Resources */,
 				452A7DAD1A5638C30015BA0D /* test-example-5kb.rs in Resources */,
 				45A2431A1A530F8200AD46E1 /* test-example-500kb.rs in Resources */,
 				452A7DAF1A5638F00015BA0D /* test-example-1kb.rs in Resources */,
-				45A2431B1A530F8200AD46E1 /* test-example-5000kb.rs in Resources */,
 				45C01D6D1A510FCE00B156B2 /* Images.xcassets in Resources */,
 				45C01D701A510FCE00B156B2 /* MainMenu.xib in Resources */,
 				45AD58791A514E4200786235 /* test-example.rs in Resources */,
 				45A243191A530F8200AD46E1 /* test-example-50kb.rs in Resources */,
+				45A1CCFC1A5E1C1F00A8AB6E /* text-example2-500kb.rs in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,7 +526,7 @@
 				45838D401A5A6BBB00D63626 /* BinaryRangeSearch.swift in Sources */,
 				456770C01A5BE56C00E99C0D /* Dispatch.swift in Sources */,
 				45838D3E1A5A6BBB00D63626 /* CodeData.swift in Sources */,
-				456770B91A5BE13000E99C0D /* SyntaxHighlightingController.swift in Sources */,
+				456770B91A5BE13000E99C0D /* BlockColoringController.swift in Sources */,
 				451BB2651A5DE1E200C98B04 /* Utility.swift in Sources */,
 				45C01D531A510ED700B156B2 /* main.swift in Sources */,
 				45838D461A5A6BED00D63626 /* BlockDetectionProcessor.swift in Sources */,
@@ -550,7 +552,7 @@
 				4569D2161A514D7A00C70C61 /* BlockDetectionState.swift in Sources */,
 				45C01DD01A5110CC00B156B2 /* CodeTextStorage.swift in Sources */,
 				45C01DCF1A5110CC00B156B2 /* CodeTextScrollViewController.swift in Sources */,
-				456770B81A5BE13000E99C0D /* SyntaxHighlightingController.swift in Sources */,
+				456770B81A5BE13000E99C0D /* BlockColoringController.swift in Sources */,
 				459BB4121A5252CB006C7E66 /* MultiblockDefinition.swift in Sources */,
 				4569D2121A514D7A00C70C61 /* BlockDetectionProcessor+Rust.swift in Sources */,
 				4569D2131A514D7A00C70C61 /* BlockDetectionProcessor.swift in Sources */,
@@ -561,7 +563,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				456770B71A5BE13000E99C0D /* SyntaxHighlightingController.swift in Sources */,
+				456770B71A5BE13000E99C0D /* BlockColoringController.swift in Sources */,
 				45C01DC41A5110A300B156B2 /* BlockDetectionProcessor.swift in Sources */,
 				45C01DCC1A5110C500B156B2 /* CodeTextStorage.swift in Sources */,
 				45C01DD71A511BED00B156B2 /* CodeData.swift in Sources */,
@@ -648,6 +650,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "-DDEBUG";
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};

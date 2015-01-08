@@ -15,10 +15,16 @@ import Foundation
 class BlockDefinition {
 	let	startMark:String
 	let	endMark:String
+	let	userData:AnyObject?
 	
-	init(startMark:String, endMark:String) {
+	convenience init(startMark:String, endMark:String) {
+		self.init(startMark: startMark, endMark: endMark, userData: nil)
+	}
+	
+	init(startMark:String, endMark:String, userData:AnyObject?) {
 		self.startMark	=	startMark
 		self.endMark	=	endMark
+		self.userData	=	userData
 	}
 }
 

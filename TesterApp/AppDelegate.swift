@@ -9,21 +9,24 @@
 import Cocoa
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate, NSTextStorageDelegate, CodeTextStorageDelegate, SyntaxHighlightingControllerDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, NSTextStorageDelegate, CodeTextStorageDelegate, BlockColoringControllerDelegate {
 	
 	@IBOutlet weak var window: NSWindow!
 	
 	let	vc	=	CodeTextScrollViewController()
 	
-	var	sh	:	SyntaxHighlightingController?
+	var	sh	:	BlockColoringController?
 	
-	func syntaxHighlightingWantsDisplayUpdate() {
-		let	r	=	NSRange(location: 0, length: vc.codeTextViewController.codeTextStorage.length)
-		vc.codeTextViewController.codeTextView.needsDisplay	=	true
+	func syntaxHighlightingDidInvalidateDisplay() {
+		let	lm	=	vc.codeTextViewController.codeTextView.layoutManager!
+		let	b1	=	vc.codeTextViewController.codeTextView.bounds
+		let	r1	=	lm.glyphRangeForBoundingRectWithoutAdditionalLayout(b1, inTextContainer: vc.codeTextViewController.codeTextView.textContainer!)
+		let	r2	=	lm.characterRangeForGlyphRange(r1, actualGlyphRange: nil)
+		vc.codeTextViewController.codeTextView.layoutManager!.invalidateDisplayForCharacterRange(r2)
 	}
 	func codeTextStorageShouldProcessCharacterEditing(sender: CodeTextStorage, range: NSRange) {
 		if sh == nil {
-			sh	=	SyntaxHighlightingController(target: sender.text)
+			sh	=	BlockColoringController(storage: sender, layout: vc.codeTextViewController.codeTextView.layoutManager!)
 			sh!.delegate	=	self
 		}
 		if sh!.isProcessing {
@@ -35,7 +38,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTextStorageDelegate, CodeT
 	func applicationDidFinishLaunching(aNotification: NSNotification) {
 		window.contentView	=	vc.scrollView
 		
-		let	p	=	NSBundle.mainBundle().pathForResource("test-example-50kb", ofType: "rs")!
+		let	p	=	NSBundle.mainBundle().pathForResource("text-example2-50kb", ofType: "rs")!
+//		let	p	=	NSBundle.mainBundle().pathForResource("text-example2-500kb", ofType: "rs")!
+//		let	p	=	NSBundle.mainBundle().pathForResource("test-example-500kb", ofType: "rs")!
 //		let	p	=	NSBundle.mainBundle().pathForResource("test-example-1kb", ofType: "rs")!
 //		let	p	=	NSBundle.mainBundle().pathForResource("test-example", ofType: "rs")!
 		let	s	=	NSString(contentsOfFile: p, encoding: NSUTF8StringEncoding, error: nil)!
@@ -46,6 +51,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTextStorageDelegate, CodeT
 		vc.codeTextViewController.codeTextView.font	=	NSFont(name: "Menlo", size: NSFont.smallSystemFontSize())
 		
 		vc.codeTextViewController.codeTextStorage.codeTextStorageDelegate	=	self
+		
+		////
+		
+		self.codeTextStorageShouldProcessCharacterEditing(vc.codeTextViewController.codeTextStorage, range: NSRange(location: 0, length: 0))
 	}
 }
 

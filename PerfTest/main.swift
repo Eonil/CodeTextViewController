@@ -15,10 +15,11 @@ final class Processor1: BlockDetectionProcessorReaction {
 	}
 	var targetString:NSMutableAttributedString
 	func onBlockNone(range:UTF16Range) {
-		
+//		targetString.addAttribute(NSForegroundColorAttributeName, value: NSColor.blackColor(), range: NSRange.fromUTF16Range(range))
+//		targetString.removeAttribute(NSForegroundColorAttributeName, range: NSRange.fromUTF16Range(range))
 	}
 	func onBlockIncomplete(range:UTF16Range) {
-		
+//		targetString.addAttribute(NSForegroundColorAttributeName, value: NSColor.redColor(), range: NSRange.fromUTF16Range(range))
 	}
 	func onBlockComplete(range:UTF16Range) {
 		targetString.addAttribute(NSForegroundColorAttributeName, value: NSColor.greenColor(), range: NSRange.fromUTF16Range(range))
@@ -32,13 +33,15 @@ let	def	=	MultiblockDefinition(blocks: [
 	BlockDefinition(startMark: "//", endMark: "\n"),
 	])
 let	src	=	String(contentsOfFile: "/Users/Eonil/Workshop/Sandbox3/CodeTextViewController/TesterApp/test-example-5000kb.rs", encoding: NSUTF8StringEncoding, error: nil)!
-let	a	=	NSMutableAttributedString(string: src)
+//let	a	=	NSMutableAttributedString(string: src)
+let	a	=	NSTextStorage(string: src)
 let	d	=	CodeData(target: a)
 let	s	=	MultiblockDetectionState.none(selection: 0..<0)
 let	del	=	Processor1(targetString: a)
 let	p	=	BlockDetectionProcessor<Processor1>(definition: def, state: s, data: d)
 
 let	de1	=	Unmanaged<Processor1>.passUnretained(del)
+
 while p.available {
 	p.stepOpt(de1)
 }

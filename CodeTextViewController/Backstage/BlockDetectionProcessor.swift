@@ -43,6 +43,11 @@ class BlockDetectionProcessor<T:BlockDetectionProcessorReaction> {
 //			return	state.selection.endIndex < data.utf16.endIndex
 		}
 	}
+	var selection:UTF16Range {
+		get {
+			return	state.selection
+		}
+	}
 	
 	///	Removed internal cache for the editing location.
 	///
@@ -59,10 +64,12 @@ class BlockDetectionProcessor<T:BlockDetectionProcessorReaction> {
 		checkpoints.removeRange(r)
 		if checkpoints.count == 0 {
 			state		=	MultiblockDetectionState.none(selection: 0..<0)
+			debugLog("block detection cache reset to 0.")
 		} else {
 			let	cp1	=	checkpoints.last!
 			let	pos	=	cp1.selection.endIndex > index ? cp1.selection.startIndex : cp1.selection.endIndex
 			state	=	MultiblockDetectionState.none(selection: pos..<pos)
+			debugLog("block detection cache reset to \(pos).")
 		}
 	}
 	func step(reactions:T) {

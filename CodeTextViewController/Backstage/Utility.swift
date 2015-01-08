@@ -19,6 +19,13 @@ func assertNonMainThread() {
 
 
 
+func debugLog(s:@autoclosure()->String) {
+	#if DEBUG
+		println(s())
+	#endif
+}
+
+
 
 
 
