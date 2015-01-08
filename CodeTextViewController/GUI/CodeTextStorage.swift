@@ -19,7 +19,7 @@ protocol CodeTextStorageDelegate: NSTextStorageDelegate {
 ///	Ignores all per-character styling attributes.
 class CodeTextStorage: NSTextStorage {
 	
-	weak var codeTextStorageDelegate:CodeTextStorageDelegate?
+	weak var editingDelegate:CodeTextStorageDelegate?
 	
 	///	Provides internal text storage.
 	///	Editing this object will change the text attributes but will not cause any layout.
@@ -92,7 +92,7 @@ extension CodeTextStorage {
 		if (UInt(m) & NSTextStorageEditedOptions.Characters.rawValue) == NSTextStorageEditedOptions.Characters.rawValue {
 			let	r	=	self.editedRange
 			debugLog(r)
-			codeTextStorageDelegate?.codeTextStorageShouldProcessCharacterEditing(self, range: r)
+			editingDelegate?.codeTextStorageShouldProcessCharacterEditing(self, range: r)
 		}
 		super.processEditing()
 		debugLog("processEditing")

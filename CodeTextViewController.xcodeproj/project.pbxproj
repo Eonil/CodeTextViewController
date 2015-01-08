@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4517EEF21A5E762600821931 /* CodeTextStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DC81A5110C500B156B2 /* CodeTextStorage.swift */; };
+		4517EEF31A5E762600821931 /* CodeTextStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DC81A5110C500B156B2 /* CodeTextStorage.swift */; };
+		4517EEF41A5E9E2300821931 /* BlockColoringController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456770B61A5BE13000E99C0D /* BlockColoringController.swift */; };
+		4517EEF51A5E9E6600821931 /* BlockDetectionProcessor+Rust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB41A5110A300B156B2 /* BlockDetectionProcessor+Rust.swift */; };
 		451BB2631A5DE1E200C98B04 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451BB2621A5DE1E200C98B04 /* Utility.swift */; };
 		451BB2641A5DE1E200C98B04 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451BB2621A5DE1E200C98B04 /* Utility.swift */; };
 		451BB2651A5DE1E200C98B04 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451BB2621A5DE1E200C98B04 /* Utility.swift */; };
@@ -14,6 +18,13 @@
 		452A7DAD1A5638C30015BA0D /* test-example-5kb.rs in Resources */ = {isa = PBXBuildFile; fileRef = 452A7DAC1A5638C30015BA0D /* test-example-5kb.rs */; };
 		452A7DAF1A5638F00015BA0D /* test-example-1kb.rs in Resources */ = {isa = PBXBuildFile; fileRef = 452A7DAE1A5638F00015BA0D /* test-example-1kb.rs */; };
 		454C3E291A5E219900BB0F40 /* text-example2-50kb.rs in Resources */ = {isa = PBXBuildFile; fileRef = 454C3E281A5E219900BB0F40 /* text-example2-50kb.rs */; };
+		45562A611A5E46DE002B2344 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45562A601A5E46DE002B2344 /* AppDelegate.swift */; };
+		45562A631A5E46DE002B2344 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45562A621A5E46DE002B2344 /* Images.xcassets */; };
+		45562A661A5E46DE002B2344 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45562A641A5E46DE002B2344 /* MainMenu.xib */; };
+		45562A7C1A5E47C9002B2344 /* ColoringController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45562A7B1A5E47C9002B2344 /* ColoringController.swift */; };
+		45562A7E1A5E47CD002B2344 /* ColoringController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45562A7B1A5E47C9002B2344 /* ColoringController.swift */; };
+		45562A7F1A5E47CD002B2344 /* ColoringController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45562A7B1A5E47C9002B2344 /* ColoringController.swift */; };
+		45562A811A5E47CF002B2344 /* ColoringController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45562A7B1A5E47C9002B2344 /* ColoringController.swift */; };
 		456770B71A5BE13000E99C0D /* BlockColoringController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456770B61A5BE13000E99C0D /* BlockColoringController.swift */; };
 		456770B81A5BE13000E99C0D /* BlockColoringController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456770B61A5BE13000E99C0D /* BlockColoringController.swift */; };
 		456770B91A5BE13000E99C0D /* BlockColoringController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456770B61A5BE13000E99C0D /* BlockColoringController.swift */; };
@@ -38,6 +49,24 @@
 		45838D441A5A6BDF00D63626 /* MultiblockDetectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB31A5110A300B156B2 /* MultiblockDetectionState.swift */; };
 		45838D451A5A6BDF00D63626 /* MultiblockDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459BB4101A52521F006C7E66 /* MultiblockDefinition.swift */; };
 		45838D461A5A6BED00D63626 /* BlockDetectionProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB51A5110A300B156B2 /* BlockDetectionProcessor.swift */; };
+		458B43041A5E49B300D6A8BD /* Aliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB11A5110A300B156B2 /* Aliases.swift */; };
+		458B43051A5E49B800D6A8BD /* UnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DD31A51113600B156B2 /* UnitTest.swift */; };
+		458B43061A5E49B800D6A8BD /* BlockDetectionProcessor+Rust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB41A5110A300B156B2 /* BlockDetectionProcessor+Rust.swift */; };
+		458B43071A5E49B800D6A8BD /* BlockDetectionProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB51A5110A300B156B2 /* BlockDetectionProcessor.swift */; };
+		458B43081A5E49B800D6A8BD /* MultiblockDetectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DB31A5110A300B156B2 /* MultiblockDetectionState.swift */; };
+		458B43091A5E49B800D6A8BD /* MultiblockDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459BB4101A52521F006C7E66 /* MultiblockDefinition.swift */; };
+		458B430A1A5E49B800D6A8BD /* BlockDetectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DAF1A5110A300B156B2 /* BlockDetectionState.swift */; };
+		458B430B1A5E49B800D6A8BD /* BlockDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459BB40C1A525192006C7E66 /* BlockDefinition.swift */; };
+		458B430C1A5E49B800D6A8BD /* CodeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DD61A511BED00B156B2 /* CodeData.swift */; };
+		458B430D1A5E49B800D6A8BD /* BinaryRangeSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DAE1A5110A300B156B2 /* BinaryRangeSearch.swift */; };
+		458B430E1A5E49B800D6A8BD /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451BB2621A5DE1E200C98B04 /* Utility.swift */; };
+		458B43151A5E49BF00D6A8BD /* CodeTextScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DC71A5110C500B156B2 /* CodeTextScrollViewController.swift */; };
+		458B43161A5E49BF00D6A8BD /* CodeTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DCA1A5110C500B156B2 /* CodeTextViewController.swift */; };
+		458B43171A5E49BF00D6A8BD /* CodeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DC91A5110C500B156B2 /* CodeTextView.swift */; };
+		458B43181A5E49BF00D6A8BD /* CodeTextStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C01DC81A5110C500B156B2 /* CodeTextStorage.swift */; };
+		458B43191A5E49BF00D6A8BD /* BlockColoringController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456770B61A5BE13000E99C0D /* BlockColoringController.swift */; };
+		458B431A1A5E49BF00D6A8BD /* ColoringController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45562A7B1A5E47C9002B2344 /* ColoringController.swift */; };
+		458B431B1A5E49BF00D6A8BD /* Dispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456770BD1A5BE56C00E99C0D /* Dispatch.swift */; };
 		459BB40D1A525192006C7E66 /* BlockDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459BB40C1A525192006C7E66 /* BlockDefinition.swift */; };
 		459BB40F1A5251C0006C7E66 /* BlockDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459BB40C1A525192006C7E66 /* BlockDefinition.swift */; };
 		459BB4111A52521F006C7E66 /* MultiblockDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459BB4101A52521F006C7E66 /* MultiblockDefinition.swift */; };
@@ -128,6 +157,12 @@
 		452A7DAC1A5638C30015BA0D /* test-example-5kb.rs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-example-5kb.rs"; sourceTree = "<group>"; };
 		452A7DAE1A5638F00015BA0D /* test-example-1kb.rs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-example-1kb.rs"; sourceTree = "<group>"; };
 		454C3E281A5E219900BB0F40 /* text-example2-50kb.rs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "text-example2-50kb.rs"; sourceTree = "<group>"; };
+		45562A5C1A5E46DE002B2344 /* MinimalExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MinimalExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		45562A5F1A5E46DE002B2344 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		45562A601A5E46DE002B2344 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		45562A621A5E46DE002B2344 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		45562A651A5E46DE002B2344 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		45562A7B1A5E47C9002B2344 /* ColoringController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColoringController.swift; sourceTree = "<group>"; };
 		456770B61A5BE13000E99C0D /* BlockColoringController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockColoringController.swift; sourceTree = "<group>"; };
 		456770BD1A5BE56C00E99C0D /* Dispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatch.swift; sourceTree = "<group>"; };
 		4569C7B91A4DD10600979B72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -135,7 +170,6 @@
 		4569C7BC1A4DD10600979B72 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4569C7BF1A4DD10600979B72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		4569C7E01A4DD9DA00979B72 /* test-example.rs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-example.rs"; sourceTree = "<group>"; };
-		4569C7E41A4DF0ED00979B72 /* REPORT */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = REPORT; sourceTree = "<group>"; };
 		4586BEA21A5208B90024FBE7 /* NOTE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = NOTE.md; sourceTree = "<group>"; };
 		459BB40C1A525192006C7E66 /* BlockDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockDefinition.swift; sourceTree = "<group>"; };
 		459BB4101A52521F006C7E66 /* MultiblockDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiblockDefinition.swift; sourceTree = "<group>"; };
@@ -167,9 +201,17 @@
 		45C01DCA1A5110C500B156B2 /* CodeTextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeTextViewController.swift; sourceTree = "<group>"; };
 		45C01DD31A51113600B156B2 /* UnitTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitTest.swift; sourceTree = "<group>"; };
 		45C01DD61A511BED00B156B2 /* CodeData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeData.swift; sourceTree = "<group>"; };
+		45DB68831A5E70C0004651C7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		45562A591A5E46DE002B2344 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		459BB4401A5264A3006C7E66 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -202,16 +244,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		45562A5D1A5E46DE002B2344 /* MinimalExample */ = {
+			isa = PBXGroup;
+			children = (
+				45562A601A5E46DE002B2344 /* AppDelegate.swift */,
+				45562A621A5E46DE002B2344 /* Images.xcassets */,
+				45562A641A5E46DE002B2344 /* MainMenu.xib */,
+				45562A5E1A5E46DE002B2344 /* Supporting Files */,
+			);
+			path = MinimalExample;
+			sourceTree = "<group>";
+		};
+		45562A5E1A5E46DE002B2344 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				45562A5F1A5E46DE002B2344 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		4569C7AC1A4DD10600979B72 = {
 			isa = PBXGroup;
 			children = (
-				4569C7E41A4DF0ED00979B72 /* REPORT */,
+				45DB68831A5E70C0004651C7 /* README.md */,
 				4586BEA21A5208B90024FBE7 /* NOTE.md */,
 				4569C7B71A4DD10600979B72 /* CodeTextViewController */,
 				45C01D891A510FFA00B156B2 /* CodeTextViewController */,
-				45C01D671A510FCE00B156B2 /* TesterApp */,
 				45C01D511A510ED700B156B2 /* UnitTests */,
 				459BB4441A5264A3006C7E66 /* PerfTest */,
+				45C01D671A510FCE00B156B2 /* TesterApp */,
+				45562A5D1A5E46DE002B2344 /* MinimalExample */,
 				4569C7B61A4DD10600979B72 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -223,6 +285,7 @@
 				45C01D661A510FCE00B156B2 /* TesterApp.app */,
 				45C01D881A510FFA00B156B2 /* CodeTextViewController.framework */,
 				459BB4431A5264A3006C7E66 /* PerfTest */,
+				45562A5C1A5E46DE002B2344 /* MinimalExample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -268,6 +331,7 @@
 		45C01D671A510FCE00B156B2 /* TesterApp */ = {
 			isa = PBXGroup;
 			children = (
+				45C01D6A1A510FCE00B156B2 /* AppDelegate.swift */,
 				45AD58781A514E4200786235 /* test-example.rs */,
 				452A7DAE1A5638F00015BA0D /* test-example-1kb.rs */,
 				452A7DAC1A5638C30015BA0D /* test-example-5kb.rs */,
@@ -275,7 +339,6 @@
 				45A243171A530F8200AD46E1 /* test-example-500kb.rs */,
 				454C3E281A5E219900BB0F40 /* text-example2-50kb.rs */,
 				45A1CCF91A5E1AED00A8AB6E /* text-example2-500kb.rs */,
-				45C01D6A1A510FCE00B156B2 /* AppDelegate.swift */,
 				45C01D6C1A510FCE00B156B2 /* Images.xcassets */,
 				45C01D6E1A510FCE00B156B2 /* MainMenu.xib */,
 				45C01D681A510FCE00B156B2 /* Supporting Files */,
@@ -334,6 +397,7 @@
 				45C01DC91A5110C500B156B2 /* CodeTextView.swift */,
 				45C01DC81A5110C500B156B2 /* CodeTextStorage.swift */,
 				456770B61A5BE13000E99C0D /* BlockColoringController.swift */,
+				45562A7B1A5E47C9002B2344 /* ColoringController.swift */,
 				456770BD1A5BE56C00E99C0D /* Dispatch.swift */,
 			);
 			path = GUI;
@@ -353,6 +417,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		45562A5B1A5E46DE002B2344 /* MinimalExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 45562A771A5E46DE002B2344 /* Build configuration list for PBXNativeTarget "MinimalExample" */;
+			buildPhases = (
+				45562A581A5E46DE002B2344 /* Sources */,
+				45562A591A5E46DE002B2344 /* Frameworks */,
+				45562A5A1A5E46DE002B2344 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MinimalExample;
+			productName = MinimalExample;
+			productReference = 45562A5C1A5E46DE002B2344 /* MinimalExample.app */;
+			productType = "com.apple.product-type.application";
+		};
 		459BB4421A5264A3006C7E66 /* PerfTest */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 459BB4471A5264A3006C7E66 /* Build configuration list for PBXNativeTarget "PerfTest" */;
@@ -433,6 +514,9 @@
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = Eonil;
 				TargetAttributes = {
+					45562A5B1A5E46DE002B2344 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
 					459BB4421A5264A3006C7E66 = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
@@ -461,6 +545,7 @@
 			projectRoot = "";
 			targets = (
 				45C01D871A510FFA00B156B2 /* CodeTextViewController */,
+				45562A5B1A5E46DE002B2344 /* MinimalExample */,
 				45C01D651A510FCE00B156B2 /* TesterApp */,
 				45C01D4F1A510ED700B156B2 /* UnitTests */,
 				459BB4421A5264A3006C7E66 /* PerfTest */,
@@ -469,6 +554,15 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		45562A5A1A5E46DE002B2344 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45562A631A5E46DE002B2344 /* Images.xcassets in Resources */,
+				45562A661A5E46DE002B2344 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		45C01D641A510FCE00B156B2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -495,18 +589,48 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		45562A581A5E46DE002B2344 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				458B43151A5E49BF00D6A8BD /* CodeTextScrollViewController.swift in Sources */,
+				458B430C1A5E49B800D6A8BD /* CodeData.swift in Sources */,
+				458B43061A5E49B800D6A8BD /* BlockDetectionProcessor+Rust.swift in Sources */,
+				458B430D1A5E49B800D6A8BD /* BinaryRangeSearch.swift in Sources */,
+				458B430A1A5E49B800D6A8BD /* BlockDetectionState.swift in Sources */,
+				458B43181A5E49BF00D6A8BD /* CodeTextStorage.swift in Sources */,
+				458B43051A5E49B800D6A8BD /* UnitTest.swift in Sources */,
+				458B43191A5E49BF00D6A8BD /* BlockColoringController.swift in Sources */,
+				458B43171A5E49BF00D6A8BD /* CodeTextView.swift in Sources */,
+				458B430B1A5E49B800D6A8BD /* BlockDefinition.swift in Sources */,
+				458B431A1A5E49BF00D6A8BD /* ColoringController.swift in Sources */,
+				458B430E1A5E49B800D6A8BD /* Utility.swift in Sources */,
+				458B431B1A5E49BF00D6A8BD /* Dispatch.swift in Sources */,
+				458B43161A5E49BF00D6A8BD /* CodeTextViewController.swift in Sources */,
+				458B43081A5E49B800D6A8BD /* MultiblockDetectionState.swift in Sources */,
+				458B43091A5E49B800D6A8BD /* MultiblockDefinition.swift in Sources */,
+				45562A611A5E46DE002B2344 /* AppDelegate.swift in Sources */,
+				458B43071A5E49B800D6A8BD /* BlockDetectionProcessor.swift in Sources */,
+				458B43041A5E49B300D6A8BD /* Aliases.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		459BB43F1A5264A3006C7E66 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4517EEF51A5E9E6600821931 /* BlockDetectionProcessor+Rust.swift in Sources */,
 				459BB44F1A5264AB006C7E66 /* BlockDetectionState.swift in Sources */,
 				459BB4531A5264AB006C7E66 /* UnitTest.swift in Sources */,
+				4517EEF31A5E762600821931 /* CodeTextStorage.swift in Sources */,
 				459BB44A1A5264AB006C7E66 /* Aliases.swift in Sources */,
 				459BB44E1A5264AB006C7E66 /* MultiblockDefinition.swift in Sources */,
+				45562A811A5E47CF002B2344 /* ColoringController.swift in Sources */,
 				459BB4501A5264AB006C7E66 /* BlockDefinition.swift in Sources */,
 				459BB4511A5264AB006C7E66 /* CodeData.swift in Sources */,
 				451BB2661A5DE1E200C98B04 /* Utility.swift in Sources */,
 				459BB4541A5264AB006C7E66 /* BinaryRangeSearch.swift in Sources */,
+				4517EEF41A5E9E2300821931 /* BlockColoringController.swift in Sources */,
 				459BB44C1A5264AB006C7E66 /* BlockDetectionProcessor.swift in Sources */,
 				459BB44D1A5264AB006C7E66 /* MultiblockDetectionState.swift in Sources */,
 				459BB4461A5264A3006C7E66 /* main.swift in Sources */,
@@ -522,11 +646,13 @@
 				45838D3D1A5A6BA900D63626 /* UnitTest.swift in Sources */,
 				45838D441A5A6BDF00D63626 /* MultiblockDetectionState.swift in Sources */,
 				45838D411A5A6BC200D63626 /* Aliases.swift in Sources */,
+				4517EEF21A5E762600821931 /* CodeTextStorage.swift in Sources */,
 				45838D451A5A6BDF00D63626 /* MultiblockDefinition.swift in Sources */,
 				45838D401A5A6BBB00D63626 /* BinaryRangeSearch.swift in Sources */,
 				456770C01A5BE56C00E99C0D /* Dispatch.swift in Sources */,
 				45838D3E1A5A6BBB00D63626 /* CodeData.swift in Sources */,
 				456770B91A5BE13000E99C0D /* BlockColoringController.swift in Sources */,
+				45562A7F1A5E47CD002B2344 /* ColoringController.swift in Sources */,
 				451BB2651A5DE1E200C98B04 /* Utility.swift in Sources */,
 				45C01D531A510ED700B156B2 /* main.swift in Sources */,
 				45838D461A5A6BED00D63626 /* BlockDetectionProcessor.swift in Sources */,
@@ -552,6 +678,7 @@
 				4569D2161A514D7A00C70C61 /* BlockDetectionState.swift in Sources */,
 				45C01DD01A5110CC00B156B2 /* CodeTextStorage.swift in Sources */,
 				45C01DCF1A5110CC00B156B2 /* CodeTextScrollViewController.swift in Sources */,
+				45562A7E1A5E47CD002B2344 /* ColoringController.swift in Sources */,
 				456770B81A5BE13000E99C0D /* BlockColoringController.swift in Sources */,
 				459BB4121A5252CB006C7E66 /* MultiblockDefinition.swift in Sources */,
 				4569D2121A514D7A00C70C61 /* BlockDetectionProcessor+Rust.swift in Sources */,
@@ -573,6 +700,7 @@
 				45C01DC21A5110A300B156B2 /* BlockDetectionProcessor+Rust.swift in Sources */,
 				45C01DBC1A5110A300B156B2 /* Aliases.swift in Sources */,
 				45C01DD41A51113600B156B2 /* UnitTest.swift in Sources */,
+				45562A7C1A5E47C9002B2344 /* ColoringController.swift in Sources */,
 				456770BE1A5BE56C00E99C0D /* Dispatch.swift in Sources */,
 				459BB40D1A525192006C7E66 /* BlockDefinition.swift in Sources */,
 				45C01DC01A5110A300B156B2 /* MultiblockDetectionState.swift in Sources */,
@@ -594,6 +722,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		45562A641A5E46DE002B2344 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				45562A651A5E46DE002B2344 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
 		4569C7BE1A4DD10600979B72 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -613,6 +749,32 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		45562A731A5E46DE002B2344 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MinimalExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		45562A741A5E46DE002B2344 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = MinimalExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		4569C7CD1A4DD10600979B72 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -802,6 +964,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		45562A771A5E46DE002B2344 /* Build configuration list for PBXNativeTarget "MinimalExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45562A731A5E46DE002B2344 /* Debug */,
+				45562A741A5E46DE002B2344 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4569C7B01A4DD10600979B72 /* Build configuration list for PBXProject "CodeTextViewController" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
