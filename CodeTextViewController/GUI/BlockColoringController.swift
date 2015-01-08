@@ -12,8 +12,14 @@ import AppKit
 
 protocol BlockColoringControllerDelegate: class {
 	func syntaxHighlightingDidInvalidateDisplay()
+//	func syntaxHighlightingDidInvalidateDisplay(mode:InvalidationMode)
 }
 class BlockColoringController {
+//	enum InvalidationMode {
+//	case Quickly
+//	case Completely
+//	}
+	
 	weak var delegate:BlockColoringControllerDelegate?
 	
 	init(storage:CodeTextStorage, layout:NSLayoutManager) {

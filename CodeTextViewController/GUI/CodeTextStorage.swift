@@ -66,11 +66,9 @@ extension CodeTextStorage {
 	
 	override func attributesAtIndex(location: Int, effectiveRange range: NSRangePointer) -> [NSObject : AnyObject] {
 		//	Nonsense, but happens.
-		if location > s.length {
+		if location >= s.length {
 			return	[:]
 		}
-		
-		
 		
 		return	s.attributesAtIndex(location, effectiveRange: range)
 	}
@@ -93,6 +91,7 @@ extension CodeTextStorage {
 		let	m	=	self.editedMask
 		if (UInt(m) & NSTextStorageEditedOptions.Characters.rawValue) == NSTextStorageEditedOptions.Characters.rawValue {
 			let	r	=	self.editedRange
+			debugLog(r)
 			codeTextStorageDelegate?.codeTextStorageShouldProcessCharacterEditing(self, range: r)
 		}
 		super.processEditing()

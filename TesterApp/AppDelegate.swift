@@ -18,11 +18,17 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTextStorageDelegate, CodeT
 	var	sh	:	BlockColoringController?
 	
 	func syntaxHighlightingDidInvalidateDisplay() {
-		let	lm	=	vc.codeTextViewController.codeTextView.layoutManager!
-		let	b1	=	vc.codeTextViewController.codeTextView.bounds
-		let	r1	=	lm.glyphRangeForBoundingRectWithoutAdditionalLayout(b1, inTextContainer: vc.codeTextViewController.codeTextView.textContainer!)
-		let	r2	=	lm.characterRangeForGlyphRange(r1, actualGlyphRange: nil)
-		vc.codeTextViewController.codeTextView.layoutManager!.invalidateDisplayForCharacterRange(r2)
+//		let	lm	=	vc.codeTextViewController.codeTextView.layoutManager!
+//		let	b1	=	vc.codeTextViewController.codeTextView.bounds
+//		let	r0	=	0..<vc.codeTextViewController.codeTextStorage.length
+//		let	r1	=	lm.glyphRangeForBoundingRectWithoutAdditionalLayout(b1, inTextContainer: vc.codeTextViewController.codeTextView.textContainer!)
+//		let	r1b	=	lm.characterRangeForGlyphRange(r1, actualGlyphRange: nil).toRange()!
+//		let	r2	=	intersect(r0, r1b)
+//		if let r3 = r2 {
+//			debugLog(NSRange.fromUTF16Range(r3))
+//			vc.codeTextViewController.codeTextView.layoutManager!.invalidateDisplayForCharacterRange(NSRange.fromUTF16Range(r3))
+//		}
+		vc.codeTextViewController.codeTextView.needsDisplay	=	true
 	}
 	func codeTextStorageShouldProcessCharacterEditing(sender: CodeTextStorage, range: NSRange) {
 		if sh == nil {
@@ -51,6 +57,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTextStorageDelegate, CodeT
 		vc.codeTextViewController.codeTextView.font	=	NSFont(name: "Menlo", size: NSFont.smallSystemFontSize())
 		
 		vc.codeTextViewController.codeTextStorage.codeTextStorageDelegate	=	self
+		vc.codeTextViewController.codeTextView.layoutManager!.backgroundLayoutEnabled	=	true
 		
 		////
 		

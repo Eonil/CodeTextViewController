@@ -19,11 +19,12 @@ func assertNonMainThread() {
 
 
 
-func debugLog(s:@autoclosure()->String) {
+func debugLog<T>(s:@autoclosure()->T) {
 	#if DEBUG
-		println(s())
+		println("\(s())")
 	#endif
 }
+
 
 
 
@@ -48,6 +49,14 @@ extension NSRange {
 }
 
 
+func intersect<T:RandomAccessIndexType>(left:Range<T>, right:Range<T>) -> Range<T>? {
+	let	start	=	max(left.startIndex, right.startIndex)
+	let	end		=	min(left.endIndex, right.endIndex)
+	if start <= end {
+		return	start..<end
+	}
+	return	nil
+}
 
 
 
